@@ -1,0 +1,81 @@
+{
+  "manifest": {
+    "name": "@oclif/errors",
+    "description": "display friendly CLI errors and log to error log",
+    "version": "1.2.0",
+    "author": {
+      "name": "Jeff Dickey @jdxcode"
+    },
+    "bugs": {
+      "url": "https://github.com/oclif/errors/issues"
+    },
+    "dependencies": {
+      "clean-stack": "^1.3.0",
+      "fs-extra": "^7.0.0",
+      "indent-string": "^3.2.0",
+      "strip-ansi": "^4.0.0",
+      "wrap-ansi": "^3.0.1"
+    },
+    "devDependencies": {
+      "@oclif/tslint": "^2.0.0",
+      "@types/chai": "^4.1.4",
+      "@types/clean-stack": "^1.3.0",
+      "@types/fs-extra": "^5.0.4",
+      "@types/indent-string": "^3.0.0",
+      "@types/mocha": "^5.2.5",
+      "@types/node": "^10.7.1",
+      "@types/strip-ansi": "^3.0.0",
+      "@types/wrap-ansi": "^3.0.0",
+      "chai": "^4.1.2",
+      "chalk": "^2.4.1",
+      "concurrently": "^3.6.1",
+      "fancy-test": "^1.2.0",
+      "mocha": "^5.2.0",
+      "ts-node": "^7.0.1",
+      "tslint": "^5.11.0",
+      "typescript": "^3.0.1"
+    },
+    "engines": {
+      "node": ">=8.0.0"
+    },
+    "files": [
+      "/handle.js",
+      "/lib"
+    ],
+    "homepage": "https://github.com/oclif/errors",
+    "keywords": [
+      "oclif"
+    ],
+    "license": "MIT",
+    "main": "lib/index.js",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/oclif/errors.git"
+    },
+    "scripts": {
+      "build": "rm -rf lib && tsc",
+      "lint": "concurrently -p command \"tsc -p test --noEmit\" \"tslint -p test -t stylish\"",
+      "posttest": "yarn run lint",
+      "prepublishOnly": "yarn run build",
+      "pretest": "yarn run build",
+      "test": "mocha --forbid-only \"test/**/*.test.ts\""
+    },
+    "types": "lib/index.d.ts",
+    "_registry": "npm",
+    "_loc": "/home/vagrant/.cache/yarn/v2/npm-@oclif/errors-1.2.0-4166952699724c25af2ab4528fe223e930655e72/package.json",
+    "readmeFilename": "README.md",
+    "readme": "@oclif/errors\n==============\n\ndisplay friendly CLI errors and log to error log\n\n[![Version](https://img.shields.io/npm/v/@oclif/errors.svg)](https://npmjs.org/package/@oclif/errors)\n[![CircleCI](https://circleci.com/gh/oclif/errors/tree/master.svg?style=svg)](https://circleci.com/gh/oclif/errors/tree/master)\n[![Appveyor CI](https://ci.appveyor.com/api/projects/status/github/oclif/errors?branch=master&svg=true)](https://ci.appveyor.com/project/heroku/errors/branch/master)\n[![Codecov](https://codecov.io/gh/oclif/errors/branch/master/graph/badge.svg)](https://codecov.io/gh/oclif/errors)\n[![Greenkeeper](https://badges.greenkeeper.io/oclif/errors.svg)](https://greenkeeper.io/)\n[![Known Vulnerabilities](https://snyk.io/test/npm/@oclif/errors/badge.svg)](https://snyk.io/test/npm/@oclif/errors)\n[![Downloads/week](https://img.shields.io/npm/dw/@oclif/errors.svg)](https://npmjs.org/package/@oclif/errors)\n[![License](https://img.shields.io/npm/l/@oclif/errors.svg)](https://github.com/oclif/errors/blob/master/package.json)\n",
+    "licenseText": "MIT License\n\nCopyright (c) 2018 Salesforce.com\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all\ncopies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\nSOFTWARE.\n"
+  },
+  "artifacts": [],
+  "remote": {
+    "resolved": "https://registry.npmjs.org/@oclif/errors/-/errors-1.2.0.tgz#4166952699724c25af2ab4528fe223e930655e72",
+    "type": "tarball",
+    "reference": "https://registry.npmjs.org/@oclif/errors/-/errors-1.2.0.tgz",
+    "hash": "4166952699724c25af2ab4528fe223e930655e72",
+    "registry": "npm",
+    "packageName": "@oclif/errors"
+  },
+  "registry": "npm",
+  "hash": "4166952699724c25af2ab4528fe223e930655e72"
+}

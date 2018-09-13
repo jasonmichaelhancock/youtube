@@ -1,0 +1,167 @@
+{
+  "manifest": {
+    "name": "aws-sdk",
+    "description": "AWS SDK for JavaScript",
+    "version": "2.315.0",
+    "author": {
+      "name": "Amazon Web Services",
+      "url": "https://aws.amazon.com/"
+    },
+    "homepage": "https://github.com/aws/aws-sdk-js",
+    "contributors": [
+      {
+        "name": "Loren Segal",
+        "email": "lsegal@amazon.com"
+      },
+      {
+        "name": "Trevor Rowe",
+        "email": "trevrowe@amazon.com"
+      }
+    ],
+    "devDependencies": {
+      "@types/node": "6.0.92",
+      "browserify": "13.1.0",
+      "chai": "^3.0",
+      "codecov": "^1.0.1",
+      "coffee-script": "1.6.3",
+      "coffeeify": "*",
+      "cucumber": "0.5.x",
+      "eslint": "1.x",
+      "hash-test-vectors": "^1.3.2",
+      "insert-module-globals": "^7.0.0",
+      "istanbul": "*",
+      "jasmine": "^2.5.3",
+      "jasmine-core": "^2.5.2",
+      "json-loader": "^0.5.4",
+      "karma": "^1.4.1",
+      "karma-jasmine": "^1.1.0",
+      "karma-phantomjs-launcher": "1.0.2",
+      "mocha": "^3.0.0",
+      "phantomjs-prebuilt": "2.1.15",
+      "repl.history": "*",
+      "semver": "*",
+      "typescript": "2.0.8",
+      "uglify-js": "2.x",
+      "webpack": "^1.15.0"
+    },
+    "dependencies": {
+      "buffer": "4.9.1",
+      "events": "1.1.1",
+      "ieee754": "1.1.8",
+      "jmespath": "0.15.0",
+      "querystring": "0.2.0",
+      "sax": "1.2.1",
+      "url": "0.10.3",
+      "uuid": "3.1.0",
+      "xml2js": "0.4.19"
+    },
+    "main": "lib/aws.js",
+    "browser": {
+      "lib/aws.js": "./lib/browser.js",
+      "fs": false,
+      "./global.js": "./browser.js",
+      "./lib/node_loader.js": "./lib/browser_loader.js"
+    },
+    "browserify": {
+      "transform": "./dist-tools/transform.js"
+    },
+    "react-native": {
+      "fs": "./lib/empty.js",
+      "./lib/node_loader.js": "./lib/react-native-loader.js",
+      "./lib/browser_loader.js": "./lib/react-native-loader.js",
+      "./lib/core.js": "./dist/aws-sdk-core-react-native.js",
+      "xml2js": "./dist/xml2js.js"
+    },
+    "types": "index.d.ts",
+    "typings": "index.d.ts",
+    "engines": {
+      "node": ">= 0.8.0"
+    },
+    "repository": {
+      "type": "git",
+      "url": "git://github.com/aws/aws-sdk-js"
+    },
+    "bugs": {
+      "url": "https://github.com/aws/aws-sdk-js/issues",
+      "mail": ""
+    },
+    "license": "Apache-2.0",
+    "keywords": [
+      "api",
+      "amazon",
+      "aws",
+      "ec2",
+      "simpledb",
+      "s3",
+      "sqs",
+      "ses",
+      "sns",
+      "route53",
+      "rds",
+      "elasticache",
+      "cloudfront",
+      "fps",
+      "cloudformation",
+      "cloudwatch",
+      "dynamodb",
+      "iam",
+      "swf",
+      "autoscaling",
+      "cloudsearch",
+      "elb",
+      "loadbalancing",
+      "emr",
+      "mapreduce",
+      "importexport",
+      "storagegateway",
+      "workflow",
+      "ebs",
+      "vpc",
+      "beanstalk",
+      "glacier",
+      "kinesis",
+      "cloudtrail",
+      "waf"
+    ],
+    "scripts": {
+      "test": "node ./scripts/composite-test.js",
+      "unit": "mocha -- test test/json test/model test/protocol test/query test/services test/signers test/xml test/s3 test/cloudfront test/dynamodb test/polly test/rds test/publisher test/event-stream",
+      "coverage": "istanbul cover ./node_modules/mocha/bin/_mocha --reporter=lcovonly -- test test/json test/model test/protocol test/query test/services test/signers test/xml test/s3 test/cloudfront test/dynamodb test/polly test/rds test/publisher test/event-stream",
+      "browsertest": "rake browser:test && karma start",
+      "buildertest": "mocha --compilers coffee:coffee-script -s 1000 -t 10000 dist-tools/test",
+      "integration": "cucumber.js",
+      "lint": "eslint lib dist-tools/*.js",
+      "console": "./scripts/console",
+      "testfiles": "istanbul `[ $COVERAGE ] && echo 'cover _mocha' || echo 'test mocha'`",
+      "tstest": "npm -s run-script build-typings && tsc -p ./ts",
+      "build-typings": "node ./scripts/typings-generator.js",
+      "add-change": "node ./scripts/changelog/add-change.js",
+      "build-react-native-deps": "webpack --config dist-tools/webpack.config.rn-dep.js",
+      "build-react-native-core": "webpack --config dist-tools/webpack.config.rn-core.js",
+      "build-react-native-dist": "webpack --config dist-tools/webpack.config.rn.js",
+      "build-react-native": "npm -s run-script build-react-native-deps && npm -s run-script build-react-native-core && npm -s run-script build-react-native-dist",
+      "react-native-test": "npm -s run-script build-react-native && rake reactnative:test && karma start",
+      "region-check": "node ./scripts/region-checker/index.js",
+      "translate-api-test": "mocha scripts/lib/translate-api.spec.js",
+      "typings-generator-test": "mocha scripts/lib/prune-shapes.spec.js",
+      "helper-test": "mocha scripts/lib/test-helper.spec.js"
+    },
+    "_registry": "npm",
+    "_loc": "/home/vagrant/.cache/yarn/v2/npm-aws-sdk-2.315.0-7f393162af038cbef722374444a9bc9ae1bdbbe9/package.json",
+    "readmeFilename": "README.md",
+    "readme": "# AWS SDK for JavaScript\n\n[![NPM](https://nodei.co/npm/aws-sdk.svg?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/aws-sdk/)\n\n[![Gitter chat](https://badges.gitter.im/gitterHQ/gitter.svg)](https://gitter.im/aws/aws-sdk-js)\n\n[![Version](https://badge.fury.io/js/aws-sdk.svg)](http://badge.fury.io/js/aws-sdk) [![Build Status](https://travis-ci.org/aws/aws-sdk-js.svg?branch=master)](https://travis-ci.org/aws/aws-sdk-js) [![Coverage Status](https://coveralls.io/repos/aws/aws-sdk-js/badge.svg?branch=master)](https://coveralls.io/r/aws/aws-sdk-js?branch=master)\n\nThe official AWS SDK for JavaScript, available for browsers and mobile devices,\nor Node.js backends\n\nFor release notes, see the [CHANGELOG](https://github.com/aws/aws-sdk-js/blob/master/CHANGELOG.md). Prior to v2.4.8, release notes can be found at https://aws.amazon.com/releasenotes/?tag=releasenotes%23keywords%23javascript\n\n<p class=\"note\">\nIf you are upgrading from 1.x to 2.0 of the SDK, please see the\n[upgrading](https://github.com/aws/aws-sdk-js/blob/master/UPGRADING.md) notes\nfor information on how to migrate existing code to work with the new major\nversion.\n</p>\n\n## Installing\n\n### In the Browser\n\nTo use the SDK in the browser, simply add the following script tag to your\nHTML pages:\n\n    <script src=\"https://sdk.amazonaws.com/js/aws-sdk-2.315.0.min.js\"></script>\n\nYou can also build a custom browser SDK with your specified set of AWS services.\nThis can allow you to reduce the SDK's size, specify different API versions of\nservices, or use AWS services that don't currently support CORS if you are\nworking in an environment that does not enforce CORS. To get started:\n\nhttp://docs.aws.amazon.com/sdk-for-javascript/v2/developer-guide/building-sdk-for-browsers.html\n\nThe AWS SDK is also compatible with [browserify](http://browserify.org).\n\nFor browser-based web, mobile and hybrid apps, you can use [AWS Amplify Library](https://aws.github.io/aws-amplify/?utm_source=aws-js-sdk&utm_campaign=browser) which extends the AWS SDK and provides an easier and declarative interface.\n\n### In Node.js\n\nThe preferred way to install the AWS SDK for Node.js is to use the\n[npm](http://npmjs.org) package manager for Node.js. Simply type the following\ninto a terminal window:\n\n```sh\nnpm install aws-sdk\n```\n\n### In React Native\nTo use the SDK in a react native project, first install the SDK using npm:\n\n```sh\nnpm install aws-sdk\n```\n\nThen within your application, you can reference the react native compatible version of the SDK with the following:\n\n```javascript\nvar AWS = require('aws-sdk/dist/aws-sdk-react-native');\n```\n\nAlternatively, you can use [AWS Amplify Library](https://aws.github.io/aws-amplify/media/react_native_guide?utm_source=aws-js-sdk&utm_campaign=react-native) which extends AWS SDK and provides React Native UI components and CLI support to work with AWS services.\n\n### Using Bower\n\nYou can also use [Bower](http://bower.io) to install the SDK by typing the\nfollowing into a terminal window:\n\n```sh\nbower install aws-sdk-js\n```\n\n## Usage and Getting Started\n\nYou can find a getting started guide at:\n\nhttp://docs.aws.amazon.com/sdk-for-javascript/v2/developer-guide\n\n## Usage with TypeScript\nThe AWS SDK for JavaScript bundles TypeScript definition files for use in TypeScript projects and to support tools that can read `.d.ts` files.\nOur goal is to keep these TypeScript definition files updated with each release for any public api.\n\n### Pre-requisites\nBefore you can begin using these TypeScript definitions with your project, you need to make sure your project meets a few of these requirements:\n\n * Use TypeScript v2.x\n * Includes the TypeScript definitions for node. You can use npm to install this by typing the following into a terminal window:\n\n    ```sh\n    npm install --save-dev @types/node\n    ```\n\n * If you are targeting at es5 or older ECMA standards, your `tsconfig.json` has to include `'es5'` and `'es2015.promise'` under `compilerOptions.lib`.\n See [tsconfig.json](https://github.com/aws/aws-sdk-js/blob/master/ts/tsconfig.json) for an example.\n\n### In the Browser\nTo use the TypeScript definition files with the global `AWS` object in a front-end project, add the following line to the top of your JavaScript file:\n\n```javascript\n/// <reference types=\"aws-sdk\" />\n```\n\nThis will provide support for the global `AWS` object.\n\n### In Node.js\nTo use the TypeScript definition files within a Node.js project, simply import `aws-sdk` as you normally would.\n\nIn a TypeScript file:\n\n```javascript\n// import entire SDK\nimport AWS = require('aws-sdk');\n// import AWS object without services\nimport AWS = require('aws-sdk/global');\n// import individual service\nimport S3 = require('aws-sdk/clients/s3');\n```\n\nIn a JavaScript file:\n\n```javascript\n// import entire SDK\nvar AWS = require('aws-sdk');\n// import AWS object without services\nvar AWS = require('aws-sdk/global');\n// import individual service\nvar S3 = require('aws-sdk/clients/s3');\n```\n\n### With React\n\nTo create React applications with AWS SDK, you can use [AWS Amplify Library](https://aws.github.io/aws-amplify/media/react_guide?utm_source=aws-js-sdk&utm_campaign=react) which provides React components and CLI support to work with AWS services.\n\n### With Angular\nDue to the SDK's reliance on node.js typings, you may encounter compilation \n[issues](https://github.com/aws/aws-sdk-js/issues/1271) when using the\ntypings provided by the SDK in an Angular project created using the Angular CLI.\n\nTo resolve these issues, either add `\"types\": [\"node\"]` to the project's `tsconfig.app.json`\nfile, or remove the `\"types\"` field entirely.\n\n[AWS Amplify Library](https://aws.github.io/aws-amplify/media/angular_guide?utm_source=aws-js-sdk&utm_campaign=angular) provides Angular components and CLI support to work with AWS services.\n\n### Known Limitations\nThere are a few known limitations with the bundled TypeScript definitions at this time:\n\n * Service client typings reflect the latest `apiVersion`, regardless of which `apiVersion` is specified when creating a client.\n * Service-bound parameters use the `any` type.\n\n## Getting Help\nPlease use these community resources for getting help. We use the GitHub issues for tracking bugs and feature requests and have limited bandwidth to address them.\n\n * Ask a question on [StackOverflow](https://stackoverflow.com/) and tag it with `aws-sdk-js`\n * Come join the AWS JavaScript community on [gitter](https://gitter.im/aws/aws-sdk-js?source=orgpage)\n * Open a support ticket with [AWS Support](https://console.aws.amazon.com/support/home#/)\n * If it turns out that you may have found a bug, please [open an issue](https://github.com/aws/aws-sdk-js/issues/new)\n\n## Opening Issues\nIf you encounter a bug with the AWS SDK for JavaScript we would like to hear\nabout it. Search the [existing issues](https://github.com/aws/aws-sdk-js/issues)\nand try to make sure your problem doesn’t already exist before opening a new\nissue. It’s helpful if you include the version of the SDK, Node.js or browser\nenvironment and OS you’re using. Please include a stack trace and reduced repro\ncase when appropriate, too.\n\nThe GitHub issues are intended for bug reports and feature requests. For help\nand questions with using the AWS SDK for JavaScript please make use of the\nresources listed in the [Getting Help](https://github.com/aws/aws-sdk-js#getting-help)\nsection. There are limited resources available for handling issues and by\nkeeping the list of open issues lean we can respond in a timely manner.\n\n## Supported Services\n\nPlease see [SERVICES.md](https://github.com/aws/aws-sdk-js/blob/master/SERVICES.md) for a list of supported services.\n\n## License\n\nThis SDK is distributed under the\n[Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0),\nsee LICENSE.txt and NOTICE.txt for more information.\n",
+    "licenseText": "\n                                 Apache License\n                           Version 2.0, January 2004\n                        http://www.apache.org/licenses/\n\n   TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION\n\n   1. Definitions.\n\n      \"License\" shall mean the terms and conditions for use, reproduction,\n      and distribution as defined by Sections 1 through 9 of this document.\n\n      \"Licensor\" shall mean the copyright owner or entity authorized by\n      the copyright owner that is granting the License.\n\n      \"Legal Entity\" shall mean the union of the acting entity and all\n      other entities that control, are controlled by, or are under common\n      control with that entity. For the purposes of this definition,\n      \"control\" means (i) the power, direct or indirect, to cause the\n      direction or management of such entity, whether by contract or\n      otherwise, or (ii) ownership of fifty percent (50%) or more of the\n      outstanding shares, or (iii) beneficial ownership of such entity.\n\n      \"You\" (or \"Your\") shall mean an individual or Legal Entity\n      exercising permissions granted by this License.\n\n      \"Source\" form shall mean the preferred form for making modifications,\n      including but not limited to software source code, documentation\n      source, and configuration files.\n\n      \"Object\" form shall mean any form resulting from mechanical\n      transformation or translation of a Source form, including but\n      not limited to compiled object code, generated documentation,\n      and conversions to other media types.\n\n      \"Work\" shall mean the work of authorship, whether in Source or\n      Object form, made available under the License, as indicated by a\n      copyright notice that is included in or attached to the work\n      (an example is provided in the Appendix below).\n\n      \"Derivative Works\" shall mean any work, whether in Source or Object\n      form, that is based on (or derived from) the Work and for which the\n      editorial revisions, annotations, elaborations, or other modifications\n      represent, as a whole, an original work of authorship. For the purposes\n      of this License, Derivative Works shall not include works that remain\n      separable from, or merely link (or bind by name) to the interfaces of,\n      the Work and Derivative Works thereof.\n\n      \"Contribution\" shall mean any work of authorship, including\n      the original version of the Work and any modifications or additions\n      to that Work or Derivative Works thereof, that is intentionally\n      submitted to Licensor for inclusion in the Work by the copyright owner\n      or by an individual or Legal Entity authorized to submit on behalf of\n      the copyright owner. For the purposes of this definition, \"submitted\"\n      means any form of electronic, verbal, or written communication sent\n      to the Licensor or its representatives, including but not limited to\n      communication on electronic mailing lists, source code control systems,\n      and issue tracking systems that are managed by, or on behalf of, the\n      Licensor for the purpose of discussing and improving the Work, but\n      excluding communication that is conspicuously marked or otherwise\n      designated in writing by the copyright owner as \"Not a Contribution.\"\n\n      \"Contributor\" shall mean Licensor and any individual or Legal Entity\n      on behalf of whom a Contribution has been received by Licensor and\n      subsequently incorporated within the Work.\n\n   2. Grant of Copyright License. Subject to the terms and conditions of\n      this License, each Contributor hereby grants to You a perpetual,\n      worldwide, non-exclusive, no-charge, royalty-free, irrevocable\n      copyright license to reproduce, prepare Derivative Works of,\n      publicly display, publicly perform, sublicense, and distribute the\n      Work and such Derivative Works in Source or Object form.\n\n   3. Grant of Patent License. Subject to the terms and conditions of\n      this License, each Contributor hereby grants to You a perpetual,\n      worldwide, non-exclusive, no-charge, royalty-free, irrevocable\n      (except as stated in this section) patent license to make, have made,\n      use, offer to sell, sell, import, and otherwise transfer the Work,\n      where such license applies only to those patent claims licensable\n      by such Contributor that are necessarily infringed by their\n      Contribution(s) alone or by combination of their Contribution(s)\n      with the Work to which such Contribution(s) was submitted. If You\n      institute patent litigation against any entity (including a\n      cross-claim or counterclaim in a lawsuit) alleging that the Work\n      or a Contribution incorporated within the Work constitutes direct\n      or contributory patent infringement, then any patent licenses\n      granted to You under this License for that Work shall terminate\n      as of the date such litigation is filed.\n\n   4. Redistribution. You may reproduce and distribute copies of the\n      Work or Derivative Works thereof in any medium, with or without\n      modifications, and in Source or Object form, provided that You\n      meet the following conditions:\n\n      (a) You must give any other recipients of the Work or\n          Derivative Works a copy of this License; and\n\n      (b) You must cause any modified files to carry prominent notices\n          stating that You changed the files; and\n\n      (c) You must retain, in the Source form of any Derivative Works\n          that You distribute, all copyright, patent, trademark, and\n          attribution notices from the Source form of the Work,\n          excluding those notices that do not pertain to any part of\n          the Derivative Works; and\n\n      (d) If the Work includes a \"NOTICE\" text file as part of its\n          distribution, then any Derivative Works that You distribute must\n          include a readable copy of the attribution notices contained\n          within such NOTICE file, excluding those notices that do not\n          pertain to any part of the Derivative Works, in at least one\n          of the following places: within a NOTICE text file distributed\n          as part of the Derivative Works; within the Source form or\n          documentation, if provided along with the Derivative Works; or,\n          within a display generated by the Derivative Works, if and\n          wherever such third-party notices normally appear. The contents\n          of the NOTICE file are for informational purposes only and\n          do not modify the License. You may add Your own attribution\n          notices within Derivative Works that You distribute, alongside\n          or as an addendum to the NOTICE text from the Work, provided\n          that such additional attribution notices cannot be construed\n          as modifying the License.\n\n      You may add Your own copyright statement to Your modifications and\n      may provide additional or different license terms and conditions\n      for use, reproduction, or distribution of Your modifications, or\n      for any such Derivative Works as a whole, provided Your use,\n      reproduction, and distribution of the Work otherwise complies with\n      the conditions stated in this License.\n\n   5. Submission of Contributions. Unless You explicitly state otherwise,\n      any Contribution intentionally submitted for inclusion in the Work\n      by You to the Licensor shall be under the terms and conditions of\n      this License, without any additional terms or conditions.\n      Notwithstanding the above, nothing herein shall supersede or modify\n      the terms of any separate license agreement you may have executed\n      with Licensor regarding such Contributions.\n\n   6. Trademarks. This License does not grant permission to use the trade\n      names, trademarks, service marks, or product names of the Licensor,\n      except as required for reasonable and customary use in describing the\n      origin of the Work and reproducing the content of the NOTICE file.\n\n   7. Disclaimer of Warranty. Unless required by applicable law or\n      agreed to in writing, Licensor provides the Work (and each\n      Contributor provides its Contributions) on an \"AS IS\" BASIS,\n      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or\n      implied, including, without limitation, any warranties or conditions\n      of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A\n      PARTICULAR PURPOSE. You are solely responsible for determining the\n      appropriateness of using or redistributing the Work and assume any\n      risks associated with Your exercise of permissions under this License.\n\n   8. Limitation of Liability. In no event and under no legal theory,\n      whether in tort (including negligence), contract, or otherwise,\n      unless required by applicable law (such as deliberate and grossly\n      negligent acts) or agreed to in writing, shall any Contributor be\n      liable to You for damages, including any direct, indirect, special,\n      incidental, or consequential damages of any character arising as a\n      result of this License or out of the use or inability to use the\n      Work (including but not limited to damages for loss of goodwill,\n      work stoppage, computer failure or malfunction, or any and all\n      other commercial damages or losses), even if such Contributor\n      has been advised of the possibility of such damages.\n\n   9. Accepting Warranty or Additional Liability. While redistributing\n      the Work or Derivative Works thereof, You may choose to offer,\n      and charge a fee for, acceptance of support, warranty, indemnity,\n      or other liability obligations and/or rights consistent with this\n      License. However, in accepting such obligations, You may act only\n      on Your own behalf and on Your sole responsibility, not on behalf\n      of any other Contributor, and only if You agree to indemnify,\n      defend, and hold each Contributor harmless for any liability\n      incurred by, or claims asserted against, such Contributor by reason\n      of your accepting any such warranty or additional liability.\n\n   END OF TERMS AND CONDITIONS\n\n   APPENDIX: How to apply the Apache License to your work.\n\n      To apply the Apache License to your work, attach the following\n      boilerplate notice, with the fields enclosed by brackets \"[]\"\n      replaced with your own identifying information. (Don't include\n      the brackets!)  The text should be enclosed in the appropriate\n      comment syntax for the file format. We also recommend that a\n      file or class name and description of purpose be included on the\n      same \"printed page\" as the copyright notice for easier\n      identification within third-party archives.\n\n   Copyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.\n\n   Licensed under the Apache License, Version 2.0 (the \"License\");\n   you may not use this file except in compliance with the License.\n   You may obtain a copy of the License at\n\n       http://www.apache.org/licenses/LICENSE-2.0\n\n   Unless required by applicable law or agreed to in writing, software\n   distributed under the License is distributed on an \"AS IS\" BASIS,\n   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n   See the License for the specific language governing permissions and\n   limitations under the License.\n",
+    "noticeText": "AWS SDK for JavaScript\nCopyright 2012-2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.\n\nThis product includes software developed at\nAmazon Web Services, Inc. (http://aws.amazon.com/).\n"
+  },
+  "artifacts": [],
+  "remote": {
+    "resolved": "https://registry.npmjs.org/aws-sdk/-/aws-sdk-2.315.0.tgz#7f393162af038cbef722374444a9bc9ae1bdbbe9",
+    "type": "tarball",
+    "reference": "https://registry.npmjs.org/aws-sdk/-/aws-sdk-2.315.0.tgz",
+    "hash": "7f393162af038cbef722374444a9bc9ae1bdbbe9",
+    "registry": "npm",
+    "packageName": "aws-sdk"
+  },
+  "registry": "npm",
+  "hash": "7f393162af038cbef722374444a9bc9ae1bdbbe9"
+}

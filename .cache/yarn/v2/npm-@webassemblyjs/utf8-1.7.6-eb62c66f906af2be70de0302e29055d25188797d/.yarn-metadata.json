@@ -1,0 +1,36 @@
+{
+  "manifest": {
+    "name": "@webassemblyjs/utf8",
+    "version": "1.7.6",
+    "description": "UTF8 encoder/decoder for WASM",
+    "main": "lib/index.js",
+    "module": "esm/index.js",
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/xtuc/webassemblyjs.git"
+    },
+    "publishConfig": {
+      "access": "public"
+    },
+    "author": {
+      "name": "Sven Sauleau"
+    },
+    "license": "MIT",
+    "_registry": "npm",
+    "_loc": "/home/vagrant/.cache/yarn/v2/npm-@webassemblyjs/utf8-1.7.6-eb62c66f906af2be70de0302e29055d25188797d/package.json"
+  },
+  "artifacts": [],
+  "remote": {
+    "resolved": "https://registry.npmjs.org/@webassemblyjs/utf8/-/utf8-1.7.6.tgz#eb62c66f906af2be70de0302e29055d25188797d",
+    "type": "tarball",
+    "reference": "https://registry.npmjs.org/@webassemblyjs/utf8/-/utf8-1.7.6.tgz",
+    "hash": "eb62c66f906af2be70de0302e29055d25188797d",
+    "registry": "npm",
+    "packageName": "@webassemblyjs/utf8"
+  },
+  "registry": "npm",
+  "hash": "eb62c66f906af2be70de0302e29055d25188797d"
+}

@@ -1,0 +1,65 @@
+{
+  "manifest": {
+    "name": "jest",
+    "description": "Delightful JavaScript Testing.",
+    "version": "23.6.0",
+    "main": "build/jest.js",
+    "dependencies": {
+      "import-local": "^1.0.0",
+      "jest-cli": "^23.6.0"
+    },
+    "bin": {
+      "jest": "./bin/jest.js"
+    },
+    "engines": {
+      "node": ">= 6"
+    },
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/facebook/jest"
+    },
+    "homepage": "https://jestjs.io/",
+    "license": "MIT",
+    "keywords": [
+      "ava",
+      "babel",
+      "coverage",
+      "easy",
+      "expect",
+      "facebook",
+      "immersive",
+      "instant",
+      "jasmine",
+      "jest",
+      "jsdom",
+      "mocha",
+      "mocking",
+      "painless",
+      "qunit",
+      "runner",
+      "sandboxed",
+      "snapshot",
+      "tap",
+      "tape",
+      "test",
+      "testing",
+      "typescript",
+      "watch"
+    ],
+    "_registry": "npm",
+    "_loc": "/home/vagrant/.cache/yarn/v2/npm-jest-23.6.0-ad5835e923ebf6e19e7a1d7529a432edfee7813d/package.json",
+    "readmeFilename": "README.md",
+    "readme": "# Jest\n\n🃏 Delightful JavaScript Testing\n\n- **👩🏻‍💻 Developer Ready**: Complete and ready to set-up JavaScript testing solution. Works out of the box for any React project.\n\n- **🏃🏽 Instant Feedback**: Failed tests run first. Fast interactive mode can switch between running all tests or only test files related to changed files.\n\n- **📸 Snapshot Testing**: Jest can [capture snapshots](https://jestjs.io/docs/snapshot-testing.html) of React trees or other serializable values to simplify UI testing.\n\nRead More: https://jestjs.io/\n"
+  },
+  "artifacts": [],
+  "remote": {
+    "resolved": "https://registry.npmjs.org/jest/-/jest-23.6.0.tgz#ad5835e923ebf6e19e7a1d7529a432edfee7813d",
+    "type": "tarball",
+    "reference": "https://registry.npmjs.org/jest/-/jest-23.6.0.tgz",
+    "hash": "ad5835e923ebf6e19e7a1d7529a432edfee7813d",
+    "registry": "npm",
+    "packageName": "jest"
+  },
+  "registry": "npm",
+  "hash": "ad5835e923ebf6e19e7a1d7529a432edfee7813d"
+}

@@ -1,0 +1,57 @@
+{
+  "manifest": {
+    "name": "tarn",
+    "version": "1.1.4",
+    "description": "Simple and robust resource pool for node.js",
+    "main": "lib/tarn.js",
+    "license": "MIT",
+    "scripts": {
+      "test": "mocha --slow 10 --timeout 5000 --reporter spec tests.js",
+      "test-bail": "mocha --slow 10 --timeout 5000 --reporter spec --bail tests.js"
+    },
+    "author": {
+      "name": "Sami Koskimäki",
+      "email": "sami.koskimaki@vincit.com",
+      "url": "https://github.com/koskimas"
+    },
+    "repository": {
+      "type": "git",
+      "url": "git://github.com/vincit/tarn.js.git"
+    },
+    "engines": {
+      "node": ">=4.0.0"
+    },
+    "keywords": [
+      "pool",
+      "pooling",
+      "throttle"
+    ],
+    "files": [
+      "README.md",
+      "LICENSE",
+      "lib/*"
+    ],
+    "devDependencies": {
+      "bluebird": "^3.5.1",
+      "expect.js": "^0.3.1",
+      "mocha": "^4.1.0"
+    },
+    "dependencies": {},
+    "_registry": "npm",
+    "_loc": "/home/vagrant/.cache/yarn/v2/npm-tarn-1.1.4-aeeb85964b1afa0bbf381359c1167df237c27b6a/package.json",
+    "readmeFilename": "README.md",
+    "readme": "[![Build Status](https://travis-ci.org/Vincit/tarn.js.svg?branch=master)](https://travis-ci.org/Vincit/tarn.js)\n\n## Why yet another resource pool?\n\nTarn is focused on robustness and ability to recover from errors. Tarn has timeouts for all operations\nthat can fail or timeout so that you should never end up with pool full of crap. Tarn has a comprehensive\ntest suite and we are committed to adding tests and fixing all bugs that are found.\n\nTarn will always remain simple.\n\n## Install\n\n```\nnpm install tarn\n```\n\n## Usage\n\n```js\nconst { Pool, TimeoutError } = require('tarn');\n\nconst pool = new Pool({\n\n  // function that creates a resource. You can either pass the resource\n  // to the callback or return a promise that resolves the resource\n  // (but not both).\n  create: (cb) => {\n    cb(null, new SomeResource());\n  },\n\n  // validates a connection before it is used. Return true or false\n  // from it. If false is returned, the resource is destroyed and a\n  // another one is acquired.\n  validate: (resource) {\n    return true;\n  },\n\n  // function that destroys a resource. This is always synchronous\n  // as nothing waits for the return value.\n  destroy: (someResource) => {\n    someResource.cleanup();\n  },\n\n  // minimum size\n  min: 2,\n\n  // maximum size\n  max: 10,\n\n  // acquire promises are rejected after this many milliseconds\n  // if a resource cannot be acquired\n  acquireTimeoutMillis: 30000,\n\n  // create operations are cancelled after this many milliseconds\n  // if a resource cannot be acquired\n  createTimeoutMillis: 30000,\n\n  // free resouces are destroyed after this many milliseconds\n  idleTimeoutMillis: 30000,\n\n  // how often to check for idle resources to destroy\n  reapIntervalMillis: 1000,\n\n  // long long to idle after failed create before trying again\n  createRetryIntervalMillis: 200,\n\n  // If true, when a create fails, the first pending acquire is\n  // rejected with the error. If this is false (the default) then\n  // create is retried until acquireTimeoutMillis milliseconds has\n  // passed.\n  propagateCreateError: false\n});\n\n// acquires a resource. The promise is rejected with `tarn.TimeoutError`\n// after `acquireTimeoutMillis` if a resource could not be acquired.\nconst acquire = pool.acquire();\n\n// acquire can be aborted using the abort method\nacquire.abort();\n\n// the acquire object has a promise property that gets reolved with\n// the acquired resource\ntry {\n  const resource = await acquire.promise;\n} catch (err) {\n  // if the acquire times out an error of class TimeoutError is thrown\n  if (err instanceof TimeoutError) {\n    console.log('timeout');\n  }\n}\n\n// releases the resource.\npool.release(resource);\n\n// returns the number of non-free resources\npool.numUsed()\n\n// returns the number of free resources\npool.numFree()\n\n// how many acquires are waiting for a resource to be released\npool.numPendingAcquires()\n\n// how many asynchronous create calls are running\npool.numPendingCreates()\n\n// waits for all resources to be returned to the pool and destroys them.\n// pool cannot be used after this.\nawait pool.destroy();\n```\n",
+    "licenseText": "The MIT License (MIT)\n\nCopyright (c) 2015 Vincit Oy\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all\ncopies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\nSOFTWARE.\n\n"
+  },
+  "artifacts": [],
+  "remote": {
+    "resolved": "https://registry.npmjs.org/tarn/-/tarn-1.1.4.tgz#aeeb85964b1afa0bbf381359c1167df237c27b6a",
+    "type": "tarball",
+    "reference": "https://registry.npmjs.org/tarn/-/tarn-1.1.4.tgz",
+    "hash": "aeeb85964b1afa0bbf381359c1167df237c27b6a",
+    "registry": "npm",
+    "packageName": "tarn"
+  },
+  "registry": "npm",
+  "hash": "aeeb85964b1afa0bbf381359c1167df237c27b6a"
+}

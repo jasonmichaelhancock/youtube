@@ -1,0 +1,39 @@
+{
+  "manifest": {
+    "name": "@webassemblyjs/helper-code-frame",
+    "version": "1.7.6",
+    "description": "",
+    "main": "lib/index.js",
+    "module": "esm/index.js",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/xtuc/webassemblyjs.git"
+    },
+    "publishConfig": {
+      "access": "public"
+    },
+    "author": {
+      "name": "Sven Sauleau"
+    },
+    "license": "MIT",
+    "dependencies": {
+      "@webassemblyjs/wast-printer": "1.7.6"
+    },
+    "devDependencies": {
+      "@webassemblyjs/ast": "1.7.6"
+    },
+    "_registry": "npm",
+    "_loc": "/home/vagrant/.cache/yarn/v2/npm-@webassemblyjs/helper-code-frame-1.7.6-5a94d21b0057b69a7403fca0c253c3aaca95b1a5/package.json"
+  },
+  "artifacts": [],
+  "remote": {
+    "resolved": "https://registry.npmjs.org/@webassemblyjs/helper-code-frame/-/helper-code-frame-1.7.6.tgz#5a94d21b0057b69a7403fca0c253c3aaca95b1a5",
+    "type": "tarball",
+    "reference": "https://registry.npmjs.org/@webassemblyjs/helper-code-frame/-/helper-code-frame-1.7.6.tgz",
+    "hash": "5a94d21b0057b69a7403fca0c253c3aaca95b1a5",
+    "registry": "npm",
+    "packageName": "@webassemblyjs/helper-code-frame"
+  },
+  "registry": "npm",
+  "hash": "5a94d21b0057b69a7403fca0c253c3aaca95b1a5"
+}

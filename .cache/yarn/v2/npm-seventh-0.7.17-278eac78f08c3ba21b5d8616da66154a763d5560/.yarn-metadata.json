@@ -1,0 +1,75 @@
+{
+  "manifest": {
+    "name": "seventh",
+    "version": "0.7.17",
+    "description": "A lean Promises and Async lib for ES6/ES7",
+    "main": "lib/seventh.js",
+    "engines": {
+      "node": ">=7.6.0"
+    },
+    "dependencies": {
+      "setimmediate": "^1.0.5"
+    },
+    "scripts": {
+      "test": "tea-time -R dot -O"
+    },
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/cronvel/seventh.git"
+    },
+    "keywords": [
+      "async",
+      "await",
+      "promise",
+      "foreach",
+      "map",
+      "reduce",
+      "filter",
+      "once",
+      "timeout",
+      "retry",
+      "debounce",
+      "serialize",
+      "es6",
+      "es7"
+    ],
+    "author": {
+      "name": "Cédric Ronvel"
+    },
+    "license": "MIT",
+    "bugs": {
+      "url": "https://github.com/cronvel/seventh/issues"
+    },
+    "config": {
+      "tea-time": {
+        "coverDir": [
+          "lib"
+        ]
+      }
+    },
+    "copyright": {
+      "title": "Seventh",
+      "years": [
+        2017,
+        2018
+      ],
+      "owner": "Cédric Ronvel"
+    },
+    "_registry": "npm",
+    "_loc": "/home/vagrant/.cache/yarn/v2/npm-seventh-0.7.17-278eac78f08c3ba21b5d8616da66154a763d5560/package.json",
+    "readmeFilename": "README.md",
+    "readme": "\n\n# Seventh\n\nA lean Promises and Async lib for ES6/ES7.\n\n* License: MIT\n* Current status: alpha\n* Platform: Node.js and browsers\n\nIt comes with a standard Promise implementation, with additional utilities (forEach, map, reduce, filter)\nand a set of decorators and wrappers to do the job (once, timeout, retry, debounce, serialize, promisify node function and api).\n\n",
+    "licenseText": "The MIT License (MIT)\n\nCopyright (c) 2014 cronvel\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all\ncopies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\nSOFTWARE."
+  },
+  "artifacts": [],
+  "remote": {
+    "resolved": "https://registry.npmjs.org/seventh/-/seventh-0.7.17.tgz#278eac78f08c3ba21b5d8616da66154a763d5560",
+    "type": "tarball",
+    "reference": "https://registry.npmjs.org/seventh/-/seventh-0.7.17.tgz",
+    "hash": "278eac78f08c3ba21b5d8616da66154a763d5560",
+    "registry": "npm",
+    "packageName": "seventh"
+  },
+  "registry": "npm",
+  "hash": "278eac78f08c3ba21b5d8616da66154a763d5560"
+}

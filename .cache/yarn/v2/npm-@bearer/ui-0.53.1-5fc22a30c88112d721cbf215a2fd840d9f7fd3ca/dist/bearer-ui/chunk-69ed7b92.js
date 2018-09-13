@@ -1,0 +1,2 @@
+/*! Built with http://stenciljs.com */
+const{h:e}=window.BearerUi;class t{constructor(e){this.set=e}get(e){return this.set.find(t=>t.controlName===e)}getValue(e){return this.get(e).value}setValue(e,t){this.set.map(r=>r.controlName===e?(r.value=t,r):r)}map(e){return this.set.map(e)}reduce(e){return this.set.reduce(e)}filter(e){return this.set.filter(e)}}export{t as a};

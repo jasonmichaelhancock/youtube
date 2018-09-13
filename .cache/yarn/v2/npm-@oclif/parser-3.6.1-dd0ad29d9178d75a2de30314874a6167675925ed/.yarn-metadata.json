@@ -1,0 +1,75 @@
+{
+  "manifest": {
+    "name": "@oclif/parser",
+    "description": "arg and flag parser for oclif",
+    "version": "3.6.1",
+    "author": {
+      "name": "Jeff Dickey @jdxcode"
+    },
+    "bugs": {
+      "url": "https://github.com/oclif/parser/issues"
+    },
+    "dependencies": {
+      "@oclif/linewrap": "^1.0.0",
+      "chalk": "^2.4.1",
+      "tslib": "^1.9.3"
+    },
+    "devDependencies": {
+      "@oclif/errors": "^1.2.0",
+      "@oclif/tslint": "^2.0.0",
+      "@types/chai": "^4.1.4",
+      "@types/mocha": "^5.2.5",
+      "@types/nock": "^9.3.0",
+      "@types/node": "^10.9.4",
+      "@types/node-notifier": "^0.0.28",
+      "@types/read-pkg": "^3.0.0",
+      "chai": "^4.1.2",
+      "eslint": "^5.4.0",
+      "eslint-config-oclif": "^3.0.0",
+      "mocha": "^5.2.0",
+      "ts-node": "^7.0.1",
+      "tslint": "^5.11.0",
+      "typescript": "^3.0.3"
+    },
+    "engines": {
+      "node": ">=8.0.0"
+    },
+    "files": [
+      "/lib"
+    ],
+    "homepage": "https://github.com/oclif/parser",
+    "keywords": [
+      "oclif"
+    ],
+    "license": "MIT",
+    "main": "lib/index.js",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/oclif/parser.git"
+    },
+    "scripts": {
+      "build": "rm -rf lib && tsc",
+      "lint": "yarn run build && eslint . && tsc -p test --noEmit && tslint -p test",
+      "posttest": "yarn run lint",
+      "prepublishOnly": "yarn run build",
+      "test": "mocha --forbid-only \"test/**/*.test.ts\""
+    },
+    "types": "lib/index.d.ts",
+    "_registry": "npm",
+    "_loc": "/home/vagrant/.cache/yarn/v2/npm-@oclif/parser-3.6.1-dd0ad29d9178d75a2de30314874a6167675925ed/package.json",
+    "readmeFilename": "README.md",
+    "readme": "@oclif/parser\n=============\n\narg and flag parser for oclif\n\n[![Version](https://img.shields.io/npm/v/@oclif/parser.svg)](https://npmjs.org/package/@oclif/parser)\n[![CircleCI](https://circleci.com/gh/oclif/parser/tree/master.svg?style=svg)](https://circleci.com/gh/oclif/parser/tree/master)\n[![Appveyor CI](https://ci.appveyor.com/api/projects/status/github/oclif/parser?branch=master&svg=true)](https://ci.appveyor.com/project/heroku/parser/branch/master)\n[![Codecov](https://codecov.io/gh/oclif/parser/branch/master/graph/badge.svg)](https://codecov.io/gh/oclif/parser)\n[![Greenkeeper](https://badges.greenkeeper.io/oclif/parser.svg)](https://greenkeeper.io/)\n[![Known Vulnerabilities](https://snyk.io/test/npm/@oclif/parser/badge.svg)](https://snyk.io/test/npm/@oclif/parser)\n[![Downloads/week](https://img.shields.io/npm/dw/@oclif/parser.svg)](https://npmjs.org/package/@oclif/parser)\n[![License](https://img.shields.io/npm/l/@oclif/parser.svg)](https://github.com/oclif/parser/blob/master/package.json)\n\nCLI flag parser.\n\nUsage:\n\n```js\nconst CLI = require('cli-flags')\n\nconst {flags, args} = CLI.parse({\n  flags: {\n    'output-file': CLI.flags.string({char: 'o'}),\n    force: CLI.flags.boolean({char: 'f'})\n  },\n  args: [\n    {name: 'input', required: true}\n  ]\n})\n\nif (flags.force) {\n  console.log('--force was set')\n}\n\nif (flags['output-file']) {\n  console.log(`output file is: ${flags['output-file']}`)\n}\n\nconsole.log(`input arg: ${args.input}`)\n\n// $ node example.js -f myinput --output-file=myexample.txt\n// --force was set\n// output file is: myexample.txt\n// input arg: myinput\n```\n",
+    "licenseText": "MIT License\n\nCopyright (c) 2018 Salesforce.com\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all\ncopies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\nSOFTWARE.\n"
+  },
+  "artifacts": [],
+  "remote": {
+    "resolved": "https://registry.npmjs.org/@oclif/parser/-/parser-3.6.1.tgz#dd0ad29d9178d75a2de30314874a6167675925ed",
+    "type": "tarball",
+    "reference": "https://registry.npmjs.org/@oclif/parser/-/parser-3.6.1.tgz",
+    "hash": "dd0ad29d9178d75a2de30314874a6167675925ed",
+    "registry": "npm",
+    "packageName": "@oclif/parser"
+  },
+  "registry": "npm",
+  "hash": "dd0ad29d9178d75a2de30314874a6167675925ed"
+}

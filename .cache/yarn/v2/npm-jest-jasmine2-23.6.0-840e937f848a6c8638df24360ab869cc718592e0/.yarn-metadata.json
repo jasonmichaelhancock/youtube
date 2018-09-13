@@ -1,0 +1,42 @@
+{
+  "manifest": {
+    "name": "jest-jasmine2",
+    "version": "23.6.0",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/facebook/jest.git"
+    },
+    "license": "MIT",
+    "main": "build/index.js",
+    "dependencies": {
+      "babel-traverse": "^6.0.0",
+      "chalk": "^2.0.1",
+      "co": "^4.6.0",
+      "expect": "^23.6.0",
+      "is-generator-fn": "^1.0.0",
+      "jest-diff": "^23.6.0",
+      "jest-each": "^23.6.0",
+      "jest-matcher-utils": "^23.6.0",
+      "jest-message-util": "^23.4.0",
+      "jest-snapshot": "^23.6.0",
+      "jest-util": "^23.4.0",
+      "pretty-format": "^23.6.0"
+    },
+    "devDependencies": {
+      "jest-runtime": "^23.6.0"
+    },
+    "_registry": "npm",
+    "_loc": "/home/vagrant/.cache/yarn/v2/npm-jest-jasmine2-23.6.0-840e937f848a6c8638df24360ab869cc718592e0/package.json"
+  },
+  "artifacts": [],
+  "remote": {
+    "resolved": "https://registry.npmjs.org/jest-jasmine2/-/jest-jasmine2-23.6.0.tgz#840e937f848a6c8638df24360ab869cc718592e0",
+    "type": "tarball",
+    "reference": "https://registry.npmjs.org/jest-jasmine2/-/jest-jasmine2-23.6.0.tgz",
+    "hash": "840e937f848a6c8638df24360ab869cc718592e0",
+    "registry": "npm",
+    "packageName": "jest-jasmine2"
+  },
+  "registry": "npm",
+  "hash": "840e937f848a6c8638df24360ab869cc718592e0"
+}

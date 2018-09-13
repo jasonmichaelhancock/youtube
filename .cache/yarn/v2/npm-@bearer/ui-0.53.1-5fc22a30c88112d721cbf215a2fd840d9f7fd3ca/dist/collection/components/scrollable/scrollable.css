@@ -1,0 +1,7 @@
+.scrollable-list {
+  height: 300px;
+  overflow-x: hidden;
+  overflow-y: scroll; }
+
+.scrollable-list::-webkit-scrollbar {
+  display: none; }

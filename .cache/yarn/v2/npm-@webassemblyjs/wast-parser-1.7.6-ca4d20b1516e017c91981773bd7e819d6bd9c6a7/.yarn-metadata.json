@@ -1,0 +1,58 @@
+{
+  "manifest": {
+    "name": "@webassemblyjs/wast-parser",
+    "version": "1.7.6",
+    "description": "WebAssembly text format parser",
+    "keywords": [
+      "webassembly",
+      "javascript",
+      "ast",
+      "parser",
+      "wat",
+      "wast"
+    ],
+    "main": "lib/index.js",
+    "module": "esm/index.js",
+    "scripts": {
+      "test": "mocha"
+    },
+    "author": {
+      "name": "Sven Sauleau"
+    },
+    "license": "MIT",
+    "dependencies": {
+      "@webassemblyjs/ast": "1.7.6",
+      "@webassemblyjs/floating-point-hex-parser": "1.7.6",
+      "@webassemblyjs/helper-api-error": "1.7.6",
+      "@webassemblyjs/helper-code-frame": "1.7.6",
+      "@webassemblyjs/helper-fsm": "1.7.6",
+      "@xtuc/long": "4.2.1",
+      "mamacro": "^0.0.3"
+    },
+    "devDependencies": {
+      "@webassemblyjs/helper-test-framework": "1.7.6"
+    },
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/xtuc/webassemblyjs.git"
+    },
+    "publishConfig": {
+      "access": "public"
+    },
+    "_registry": "npm",
+    "_loc": "/home/vagrant/.cache/yarn/v2/npm-@webassemblyjs/wast-parser-1.7.6-ca4d20b1516e017c91981773bd7e819d6bd9c6a7/package.json",
+    "readmeFilename": "README.md",
+    "readme": "# @webassemblyjs/wast-parser\n\n> WebAssembly text format parser\n\n## Installation\n\n```sh\nyarn add @webassemblyjs/wast-parser\n```\n\n## Usage\n\n```js\nimport { parse } from \"@webassemblyjs/wast-parser\";\n\nconst ast = parse(source);\n```\n"
+  },
+  "artifacts": [],
+  "remote": {
+    "resolved": "https://registry.npmjs.org/@webassemblyjs/wast-parser/-/wast-parser-1.7.6.tgz#ca4d20b1516e017c91981773bd7e819d6bd9c6a7",
+    "type": "tarball",
+    "reference": "https://registry.npmjs.org/@webassemblyjs/wast-parser/-/wast-parser-1.7.6.tgz",
+    "hash": "ca4d20b1516e017c91981773bd7e819d6bd9c6a7",
+    "registry": "npm",
+    "packageName": "@webassemblyjs/wast-parser"
+  },
+  "registry": "npm",
+  "hash": "ca4d20b1516e017c91981773bd7e819d6bd9c6a7"
+}

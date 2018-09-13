@@ -1,0 +1,46 @@
+{
+  "manifest": {
+    "name": "koa-cookie",
+    "version": "1.0.0",
+    "description": "Koa cookie parser middleware",
+    "main": "index.js",
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/varunpal/koa-cookie.git"
+    },
+    "keywords": [
+      "koa",
+      "cookie",
+      "middleware",
+      "parser",
+      "cookie-parser",
+      "koa-router"
+    ],
+    "author": {
+      "name": "Varun Pal"
+    },
+    "license": "ISC",
+    "bugs": {
+      "url": "https://github.com/varunpal/koa-cookie/issues"
+    },
+    "homepage": "https://github.com/varunpal/koa-cookie#readme",
+    "_registry": "npm",
+    "_loc": "/home/vagrant/.cache/yarn/v2/npm-koa-cookie-1.0.0-7c79723dd03b97abcfe430028b700bd47a36dafb/package.json",
+    "readmeFilename": "README.md",
+    "readme": "# koa-cookie\nCookie parser middleware for koa.\nCan also be used with [koa-router](https://www.npmjs.com/package/koa-router).\n\n## Install\n```node\nnpm install koa-cookie --save\n```\n\n### Example\n\n```javascript\nimport Koa from 'koa';\nimport cookie from 'koa-cookie';\n\nconst app = Koa();\napp.use(cookie());\n\napp.use(async function (ctx, next) {\n  const cookies = ctx.cookie;\n  /*\n    if cookies sent are of the form: 'name=abc; age=20; token = xyz;'\n    Then ctx.cookie is an object of the form:\n    {\n      name: 'abc',\n      age: '20',\n      token: 'xyz'\n    }\n  */\n});\n\n```\n\n### Example with koa-router\n```javascript\nvar app = require('koa')();\nvar cookie = require('koa-cookie');\nvar router = require('koa-router')();\n\nrouter.use(cookie());\n \nrouter.get('/', async (context) => {\n  const cookies = context.cookie;\n  /*\n    if cookies sent are of the form: 'name=abc; age=20; token = xyz;'\n    Then ctx.cookie is an object of the form:\n    {\n      name: 'abc',\n      age: '20',\n      token: 'xyz'\n    }\n  */\n});\n \napp\n  .use(router.routes())\n  .use(router.allowedMethods());\n```"
+  },
+  "artifacts": [],
+  "remote": {
+    "resolved": "https://registry.npmjs.org/koa-cookie/-/koa-cookie-1.0.0.tgz#7c79723dd03b97abcfe430028b700bd47a36dafb",
+    "type": "tarball",
+    "reference": "https://registry.npmjs.org/koa-cookie/-/koa-cookie-1.0.0.tgz",
+    "hash": "7c79723dd03b97abcfe430028b700bd47a36dafb",
+    "registry": "npm",
+    "packageName": "koa-cookie"
+  },
+  "registry": "npm",
+  "hash": "7c79723dd03b97abcfe430028b700bd47a36dafb"
+}

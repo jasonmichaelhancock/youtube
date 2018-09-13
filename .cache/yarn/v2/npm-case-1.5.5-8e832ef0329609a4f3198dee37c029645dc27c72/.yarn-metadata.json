@@ -1,0 +1,87 @@
+{
+  "manifest": {
+    "name": "case",
+    "description": "Extensible string utility for converting, identifying and flipping string case",
+    "keywords": [
+      "string",
+      "case",
+      "camel",
+      "title",
+      "upper",
+      "lower",
+      "snake",
+      "squish",
+      "pascal",
+      "constant",
+      "flip",
+      "capitalization",
+      "converter"
+    ],
+    "version": "1.5.5",
+    "author": {
+      "name": "Nathan Bubna",
+      "email": "nathan@esha.com",
+      "url": "http://www.esha.com/"
+    },
+    "engines": {
+      "node": ">= 0.8.0"
+    },
+    "files": [
+      "dist",
+      "case.d.ts"
+    ],
+    "main": "dist/Case.js",
+    "bugs": {
+      "url": "http://github.com/nbubna/Case/issues",
+      "email": "nathan@esharesearch.com"
+    },
+    "repository": {
+      "type": "git",
+      "url": "http://github.com/nbubna/Case.git"
+    },
+    "licenses": [
+      {
+        "type": "MIT",
+        "url": "http://www.opensource.org/licenses/mit-license.php"
+      },
+      {
+        "type": "GPL",
+        "url": "http://www.gnu.org/licenses/gpl.html"
+      }
+    ],
+    "scripts": {
+      "test": "grunt qunit"
+    },
+    "devDependencies": {
+      "grunt": "^1.0.1",
+      "grunt-cli": "^1.2.0",
+      "grunt-component-build": "^0.5.3",
+      "grunt-contrib-clean": "^1.0.0",
+      "grunt-contrib-concat": "^1.0.1",
+      "grunt-contrib-jasmine": "^1.1.0",
+      "grunt-contrib-jshint": "^1.1.0",
+      "grunt-contrib-qunit": "^1.3.0",
+      "grunt-contrib-uglify": "^2.2.0",
+      "grunt-contrib-watch": "^1.0.0",
+      "grunt-notify": "^0.4.5",
+      "grunt-nuget": "~0.2.0"
+    },
+    "typings": "case.d.ts",
+    "_registry": "npm",
+    "_loc": "/home/vagrant/.cache/yarn/v2/npm-case-1.5.5-8e832ef0329609a4f3198dee37c029645dc27c72/package.json",
+    "readmeFilename": "README.md",
+    "readme": "### Case: An extensible utility to convert, identify, and flip string case.\n\nDownload: [Case.min.js][min]  or  [Case.js][full]  \n[NPM][npm]: `npm install case`  (little 'c' due to NPM restrictions)  \nBower: `bower install Case`  (note the big 'C')  \n[Component][component]: `component install nbubna/Case`  \n[NuGet][]: `Install-Package Case`  \n\n\n[![Build Status](https://img.shields.io/travis/nbubna/Case.svg)](https://travis-ci.org/nbubna/Case)\n[![NPM version](https://img.shields.io/npm/v/case.svg)][npm]\n[![NPM](https://img.shields.io/npm/dm/case.svg)][npm]\n\n[NuGet]: http://nuget.org/packages/Case/\n[min]: https://raw.github.com/nbubna/Case/master/dist/Case.min.js\n[full]: https://raw.github.com/nbubna/Case/master/dist/Case.js\n[npm]: https://npmjs.org/package/case\n[component]: https://github.com/componentjs/guide\n\n## Documentation\nEach of the following functions will first \"undo\" previous case manipulations\nbefore applying the desired case to the given string.\n\n### Foundations\n```javascript\nCase.upper('foo_bar')     -> 'FOO BAR'\nCase.lower('fooBar')      -> 'foo bar'\nCase.capital('foo_v_bar') -> 'Foo V Bar'\n```\n\n### Code Helpers\n```javascript\nCase.snake('Foo bar!')   -> 'foo_bar'\nCase.pascal('foo.bar')   -> 'FooBar'\nCase.camel('foo, bar')   -> 'fooBar'\nCase.kebab('Foo? Bar.')  -> 'foo-bar'\nCase.header('fooBar=')   -> 'Foo-Bar'\nCase.constant('Foo-Bar') -> 'FOO_BAR'\n```\n\n\n### UI Helpers\n```javascript\nCase.title('foo v. bar')                    -> 'Foo v. Bar'\nCase.sentence('\"foo!\" said bar', ['Bar'])   -> '\"Foo!\" said Bar'\n```\n`Case.sentence(str, names)` accepts an array of proper names that should be capitalized,\nregardless of location in the sentence.  This function is specialized, but useful\nwhen dealing with input generated with capslock on (i.e. everything my grandma types).\n\n\n### Custom Casing\n```javascript\nCase.lower('FOO-BAR', '.')                  -> 'foo.bar'\nCase.upper('Foo? Bar.', '__')               -> 'FOO__BAR'\nCase.capital('fooBar', ' + ')               -> 'Foo + Bar'\n\nCase.lower(\"Don't keep 'em!\", \"/\", true)    -> 'dont/keep/em'\nCase.capital(\"'ello, world.\", null, true)   -> 'Ello, World.'\n```\n`Case.upper`, `Case.lower`, and `Case.capital` accept an optional \"fill\" value\nthat will replace any characters which are not letters and numbers. All three also accept \na third optional boolean argument indicating if apostrophes are to be stripped out or left in.\nFor example, programmatic case changes (snake, kebab, pascal, camel, constant) are best without\napostrophes, but user-facing ones (title, sentence) do not want \"don't\" turned into \"Dont\".\n\n\n### Extending Case\n```javascript\nCase.type('bang', function(s) {\n    return Case.upper(s, '!')+'!';\n});\nCase.bang('bang')       -> 'BANG!'\nCase.of('TEST!THIS!')   -> 'bang'\n```\n`Case.type(name, fn)`: extends Case, creating a new function on `Case` and adding `Case.of` support automatically.\n\n\n### Utilities\n```javascript\nCase.of('foo')          -> 'lower'\nCase.of('foo_bar')      -> 'snake'\nCase.of('Foo v Bar')    -> 'title'\nCase.of('foo_ Bar')     -> undefined\n\nCase.of('Hello there, Bob!', ['Bob']) -> 'sentence'\n\nCase.flip('FlipMe')     -> 'fLIPmE'\nCase.flip('TEST THIS!') -> 'test this!'\n\nCase.random('Hello!')   -> 'hElLO!'\n```\n* `Case.of(str[, names])`: identifies the case of a string, returns undefined if it doesn't match a known type\n* `Case.flip(str)`: reverses the case of letters, no other changes\n* `Case.random(str)`: randomizes the case of letters, no other changes\n\n\n## Release History\n* 2013-06-10 [v1.0.0][] (public, initial)\n* 2013-06-20 [v1.0.1][] (regex improvements)\n* 2013-08-23 [v1.0.3][] (better support for Node, Component and AMD)\n* 2014-10-24 [v1.1.2][] (regexps used are now extensible and support more latin diacritics)\n* 2015-01-27 [v1.2.0][] (deprecate squish in favor of pascal)\n* 2015-01-28 [v1.2.1][] (fix UMD regression)\n* 2015-10-27 [v1.3.0][] (Case.kebab and Case.random)\n* 2015-12-02 [v1.3.2][] (fix title case when small word is first or last)\n* 2016-02-01 [v1.3.3][] (Case.of('foo') to return lower, not snake)\n* 2016-02-07 [v1.4.0][] (fix apostrophe handling)\n* 2016-02-08 [v1.4.1][] (fix swallowed prefix/suffix on lone words)\n* 2016-11-11 [v1.4.2][] (add typings for TypeScript support)\n* 2017-03-09 [v1.5.2][] (add Header-Case and expose noApostrophes option for upper/lower/capital fns)\n* 2017-07-11 [v1.5.3][] (Case.of and to[Type]Case functions should accept extra arguments, like the rest)\n* 2017-10-23 [v1.5.4][] (Shift order of Case.of tests to prioritize 'capital' over 'header')\n* 2018-05-04 [v1.5.5][] (Fix issue #26, corner case of bad \"decamelizing\" of string w/number after caps)\n\n[v1.0.0]: https://github.com/nbubna/store/tree/1.0.0\n[v1.0.1]: https://github.com/nbubna/store/tree/1.0.1\n[v1.0.3]: https://github.com/nbubna/store/tree/1.0.3\n[v1.1.2]: https://github.com/nbubna/store/tree/1.1.2\n[v1.2.0]: https://github.com/nbubna/store/tree/1.2.0\n[v1.2.1]: https://github.com/nbubna/store/tree/1.2.1\n[v1.3.0]: https://github.com/nbubna/store/tree/1.3.0\n[v1.3.2]: https://github.com/nbubna/store/tree/1.3.2\n[v1.3.3]: https://github.com/nbubna/store/tree/1.3.3\n[v1.4.0]: https://github.com/nbubna/store/tree/1.4.0\n[v1.4.1]: https://github.com/nbubna/store/tree/1.4.1\n[v1.4.2]: https://github.com/nbubna/store/tree/1.4.2\n[v1.5.2]: https://github.com/nbubna/store/tree/1.5.2\n[v1.5.3]: https://github.com/nbubna/store/tree/1.5.3\n[v1.5.4]: https://github.com/nbubna/store/tree/1.5.4\n[v1.5.5]: https://github.com/nbubna/store/tree/1.5.5\n",
+    "license": "MIT"
+  },
+  "artifacts": [],
+  "remote": {
+    "resolved": "https://registry.npmjs.org/case/-/case-1.5.5.tgz#8e832ef0329609a4f3198dee37c029645dc27c72",
+    "type": "tarball",
+    "reference": "https://registry.npmjs.org/case/-/case-1.5.5.tgz",
+    "hash": "8e832ef0329609a4f3198dee37c029645dc27c72",
+    "registry": "npm",
+    "packageName": "case"
+  },
+  "registry": "npm",
+  "hash": "8e832ef0329609a4f3198dee37c029645dc27c72"
+}

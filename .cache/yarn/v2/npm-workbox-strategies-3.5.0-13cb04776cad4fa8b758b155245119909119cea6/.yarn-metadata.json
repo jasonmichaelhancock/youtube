@@ -1,0 +1,56 @@
+{
+  "manifest": {
+    "name": "workbox-strategies",
+    "version": "3.5.0",
+    "license": "Apache-2.0",
+    "author": {
+      "name": "Google's Web DevRel Team"
+    },
+    "description": "A service worker helper library implementing common caching strategies.",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/googlechrome/workbox.git"
+    },
+    "bugs": {
+      "url": "https://github.com/googlechrome/workbox/issues"
+    },
+    "homepage": "https://github.com/GoogleChrome/workbox",
+    "keywords": [
+      "workbox",
+      "workboxjs",
+      "service worker",
+      "sw",
+      "router",
+      "routing"
+    ],
+    "scripts": {
+      "build": "gulp build-packages --package workbox-strategies",
+      "version": "npm run build",
+      "prepare": "npm run build"
+    },
+    "workbox": {
+      "browserNamespace": "workbox.strategies",
+      "packageType": "browser"
+    },
+    "main": "build/workbox-strategies.prod.js",
+    "module": "index.mjs",
+    "dependencies": {
+      "workbox-core": "^3.5.0"
+    },
+    "_registry": "npm",
+    "_loc": "/home/vagrant/.cache/yarn/v2/npm-workbox-strategies-3.5.0-13cb04776cad4fa8b758b155245119909119cea6/package.json",
+    "readmeFilename": "README.md",
+    "readme": "This module's documentation can be found at https://developers.google.com/web/tools/workbox/modules/workbox-strategies\n"
+  },
+  "artifacts": [],
+  "remote": {
+    "resolved": "https://registry.npmjs.org/workbox-strategies/-/workbox-strategies-3.5.0.tgz#13cb04776cad4fa8b758b155245119909119cea6",
+    "type": "tarball",
+    "reference": "https://registry.npmjs.org/workbox-strategies/-/workbox-strategies-3.5.0.tgz",
+    "hash": "13cb04776cad4fa8b758b155245119909119cea6",
+    "registry": "npm",
+    "packageName": "workbox-strategies"
+  },
+  "registry": "npm",
+  "hash": "13cb04776cad4fa8b758b155245119909119cea6"
+}

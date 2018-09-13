@@ -1,0 +1,68 @@
+{
+  "manifest": {
+    "name": "tree-kit",
+    "version": "0.5.27",
+    "description": "Tree utilities which provides a full-featured extend and object-cloning facility, and various tools to deal with nested object structures.",
+    "main": "lib/tree.js",
+    "dependencies": {},
+    "devDependencies": {
+      "browserify": "^16.2.2",
+      "uglify-js-es6": "^2.8.9"
+    },
+    "scripts": {
+      "test": "tea-time -R dot"
+    },
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/cronvel/tree-kit.git"
+    },
+    "keywords": [
+      "tree",
+      "extend",
+      "clone",
+      "prototype",
+      "inherit",
+      "deep",
+      "diff",
+      "mask"
+    ],
+    "author": {
+      "name": "Cédric Ronvel"
+    },
+    "license": "MIT",
+    "bugs": {
+      "url": "https://github.com/cronvel/tree-kit/issues"
+    },
+    "config": {
+      "tea-time": {
+        "coverDir": [
+          "lib"
+        ]
+      }
+    },
+    "copyright": {
+      "title": "Tree Kit",
+      "years": [
+        2014,
+        2018
+      ],
+      "owner": "Cédric Ronvel"
+    },
+    "_registry": "npm",
+    "_loc": "/home/vagrant/.cache/yarn/v2/npm-tree-kit-0.5.27-d055a7ae6a087dda918cd92ac8c8c2abf5cfaea3/package.json",
+    "readmeFilename": "README.md",
+    "readme": "\n# Tree Kit\n\nThis lib is a toolbox that provide functions to operate with nested `Object` structure.\nIt features the best `.extend()` method, providing dozen of options that all others libs miss.\n\n* License: MIT\n* Current status: release candidate\n* Platform: Node.js only (browser support is planned)\n\nSome tutorials are available at [blog.soulserv.net/tag/tree-kit](http://blog.soulserv.net/tag/tree-kit/).\n\n\n\n# Install\n\nUse Node Package Manager:\n\n    npm install tree-kit\n\n\n\n# Library references\n\n* [.extend()](#ref.extend): full-featured extend facility, copy, clone, extend\n* [.clone()](#ref.clone): clone any object\n* [.diff()](#ref.diff): report differences between two objects\n\n\n\nIn all examples below, it is assumed that you have required the lib into the `tree` variable:\n```js\nvar tree = require( 'tree-kit' ) ;\n```\n\n\n\n<a name=\"ref.extend\"></a>\n## .extend( options , target , source1 , [source2] , [...] )\n\n* options `Object` extend options, it supports the properties:\n\t* own `boolean` only copy enumerable own properties from the sources\n    * nonEnum `boolean` copy non-enumerable properties as well, works only with own:true\n    * descriptor `boolean` preserve property's descriptor (i.e. writable, enumerable, configurable, get & set)\n\t* deep `boolean` perform a deep (recursive) extend\n\t* circular `boolean` (default to false) if true then circular references are checked and each identical objects are reconnected\n\t\t(referenced), if false then nested object are blindly cloned\n\t* maxDepth `integer` used in conjunction with deep, when the max depth is reached an exception is raised, it defaults to 100\n\t\twhen the 'circular' option is off, or defaults to null if 'circular' is on\n\t* move `boolean` move properties from the sources object to the target object (delete properties from the sources object)\n\t* preserve `boolean` existing properties in the target object will not be overwritten\n\t* nofunc `boolean` skip properties that are functions\n\t* deepFunc `boolean` in conjunction with 'deep', this will process sources functions like objects rather than\n\t  copying/referencing them directly into the source (default behaviour), thus, the result will not be a function,\n\t  it forces 'deep' options\n\t* proto `boolean` alter the target's prototype so that it matches the source's prototype.\n\t  It forces option 'own'. Specifying multiple sources does not make sens here.\n\t* inherit `boolean` make the target inherit from the source (the target's prototype will be the source itself, not its prototype).\n\t  It forces option 'own' and disable 'proto'. Specifying multiple sources does not make sens here.\n\t* skipRoot `boolean` prevent the prototype of the target **root** object from mutation.\n\t  Only nested objects' prototype will be mutated.\n\t* flat `boolean|string` sources properties are copied in a way to produce a *flat* target, the target's key\n\t  is the full path (separated by '.') of the source's key, also if a string is provided it will be used as\n\t  the path separator\n\t* unflat `boolean|string` it is the opposite of 'flat': assuming that the sources are in the *flat* format,\n\t  it expands all flat properties -- whose name are path with '.' as the separator -- deeply into the target, \n\t  also if a string is provided it will be used as the path separator\n\t* deepFilter `Object` filter the recursiveness of the 'deep' option, filtered objects will be referenced\n\t  just the way it would be if the 'deep' option was turned off, objects are filtered based upon their\n\t  prototypes (only direct prototype match, for performance purpose the rest of the prototype chain will\n\t  not be checked)\n\t\t* blacklist `Array` list of black-listed prototype\n\t\t* whitelist `Array` list of white-listed prototype\n* target `Object` the target of the extend, properties will be copied to this object\n* source1 `Object` the source of the extend, properties will be copied from this object\n* ...\n\nThis is a full-featured *extend* of an object with one or more source object.\n\nIt is easily translated from jQuery-like *extend()*:\n* `extend( target , source )` translate into `tree.extend( null , target , source )`\n* `extend( true , target , source )` translate into `tree.extend( { deep: true } , target , source )`\n\nHowever, here we have full control over what will be extended and how.\n\n**All the options above are inactive by default**.\nYou can pass null as argument #0 to get the default behaviour (= all options are inactive).\nSo using the default behaviour, `tree.extend()` will copy all enumerable properties, and perform a shallow copy (a nested object\nis not cloned, it remains a reference of the original one).\n\nWith the *deep* option, a deep copy is performed, so nested object are cloned too.\n\nThe *own* option clone only owned properties from the sources, properties that are part of the source's prototype would not\nbe copied/cloned.\n\nThe *nonEnum* option will clone properties that are not enumerable.\n\nThe *descriptor* option will preserve property's descriptor, e.g. if the source property is not writable and not enumerable,\nso will be the copied property.\n\nIn case of a *getter* properties:\n\n* without the *descriptor* option, the getter function of the source object will be called, the return value will be put\n  into the target property (so it lose its getter/setter behaviour)\n* with the *descriptor* option, the getter & setter function of the source object will be copied (but not called) into the target\n  property: the getter/setter behaviour is preserved\n\nIf *circular* is on, the lib will detect when the source's data structure reuses the same object multiple time and will preserve it.\nWe can see this *circular* feature in action in [this example](#example.circular).\n\nMixing *inherit* and *deep* provides a nice multi-level inheritance.\n\nWith the *flat* option example:\n```js\nvar o = {\n\tone: 1,\n\tsub: {\n\t\ttwo: 2,\n\t\tthree: 3\n\t}\n} ;\n\nvar flatCopy = tree.extend( { flat: true } , {} , o ) ;\n```\n... it will produce:\n```js\n{\n\tone: 1,\n\t\"sub.two\": 2,\n\t\"sub.three\": 3\n}\n```\n\nBy the way, the *unflat* option does the opposite, and thus can reverse this back to the original form.\n\nThe *deepFilter* option is used when you do not want to clone some type of object.\nLet's say you want a deep copy except for `Buffer` objects, you simply want them to share the same reference:\n```js\nvar o = {\n\tone: '1' ,\n\tbuf: new Buffer( \"My buffer\" ) ,\n\tsubtree: {\n\t\ttwo: 2 ,\n\t\tthree: 'THREE'\n\t}\n} ;\n\n// either\nvar extended1 = tree.extend( { deep: true, deepFilter: { whitelist: [ Object.prototype ] } } , {} , o ) ;\n// or\nvar extended2 = tree.extend( { deep: true, deepFilter: { blacklist: [ Buffer.prototype ] } } , {} , o ) ;\n```\n\nDoing this, we have `o.buf === extended1.buf === extended2.buf`, and `o.subtree !== extended1.subtree !== extended2.subtree`.\n\n\n\n<a name=\"ref.clone\"></a>\n## .clone( original , [circular] )\n\n* original `Object` the source object to clone\n* circular `boolean` (default to false) if true then circular references are checked and each identical objects are reconnected\n\t(referenced), if false then nested object are blindly cloned\n\nIt returns a clone of the *original* object, providing the best object-cloning facility that this lib can offer.\n\nThe clone produced are perfect independant copy **in 99% of use case**, but there is one big limitation:\nmethod that access variables in the parent's scope.\n\nThe clone will share those variables with the *original* object, so they are not totally independant entity.\nDesign pattern using closure to emulate *private member* (e.g. the revealing pattern) can cause trouble.\n\nIf *circular* is on, the lib will detect when the source's data structure reuses the same object multiple time and will preserve it.\n\n<a name=\"example.circular\"></a>\nHere is an example of this *circular* feature:\n```js\nvar o = {\n\ta: 'a',\n\tsub: {\n\t\tb: 'b'\n\t},\n\tsub2: {\n\t\tc: 'c'\n\t}\n} ;\n\no.loop = o ;\no.sub.loop = o ;\no.subcopy = o.sub ;\no.sub.link = o.sub2 ;\no.sub2.link = o.sub ;\n\nvar c = tree.clone( o , true ) ;\n\nexpect( c.loop ).to.be( c ) ;\nexpect( c.sub ).to.be( c.subcopy ) ;\nexpect( c.sub.loop ).to.be( c ) ;\nexpect( c.subcopy.loop ).to.be( c ) ;\nexpect( c.sub.link ).to.be( c.sub2 ) ;\nexpect( c.sub2.link ).to.be( c.sub ) ;\n```\n\n... without *circular* on, the `clone()` method would run forever, creating a new object independant nested object each time\nit reaches the *loop* property.\nWe can see that the *subcopy* property remains a reference of *sub* even in the clone, thanks to the *circular* option.\n\nHowever, if we are sure that there isn't multiple reference to the same object or circular references, we can gain a lot of\nperformances by leaving that options off.\nIt can save a lot of `.indexOf()` call on big data structure.\n\nThis method does not uses `extend()` anymore like in version 0.3.x, it now uses its own optimized code.\nHowever it is equivalent to an `extend()` with those options turned on: *deep, own, nonEnum, descriptor & proto*.\nIf *circular* is on, it has the same effect than the `extend()`'s *circular* option.\n\n**Also please note that design pattern emulating private members using a closure's scope cannot be truly cloned**\n(e.g. the *revealing pattern*).\nThis is not possible to mutate a function's scope.\nSo the clone's methods will continue to inherit the parent's scope of the original function.\n\n\n\n<a name=\"ref.diff\"></a>\n## .diff( left , right , [options] )\n\n* left `Object` the left-hand side object structure\n* right `Object` the right-hand side object structure\n* options `Object` containing options, it supports:\n\t* path `string` the initial path, default: empty string\n\t* pathSeparator `string` the path separator, default: '.'\n\nThis tool reports diff between a left-hand side and right-hand side object structure.\nIt returns an object, each key is a path where a difference is reported, the value being an object containing (again) the path\nand a human-readable message.\n\nSee this example:\n```js\nvar left = {\n\ta: 'a',\n\tb: 2,\n\tc: 'three',\n\tsub: {\n\t\te: 5,\n\t\tf: 'six',\n\t}\n} ;\n\nvar right = {\n\tb: 2,\n\tc: 3,\n\td: 'dee',\n\tsub: {\n\t\te: 5,\n\t\tf: 6,\n\t}\n} ;\n\nconsole.log( tree.diff( a , b ) ) ;\n```\nIt will output:\n```js\n{ '.a': { path: '.a', message: 'does not exist in right-hand side' },\n  '.c': { path: '.c', message: 'different typeof: string - number' },\n  '.sub.f': { path: '.sub.f', message: 'different typeof: string - number' },\n  '.d': { path: '.d', message: 'does not exist in left-hand side' } }\n```\n\n",
+    "licenseText": "The MIT License (MIT)\n\nCopyright (c) 2014 Cédric Ronvel\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all\ncopies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\nSOFTWARE.\n"
+  },
+  "artifacts": [],
+  "remote": {
+    "resolved": "https://registry.npmjs.org/tree-kit/-/tree-kit-0.5.27.tgz#d055a7ae6a087dda918cd92ac8c8c2abf5cfaea3",
+    "type": "tarball",
+    "reference": "https://registry.npmjs.org/tree-kit/-/tree-kit-0.5.27.tgz",
+    "hash": "d055a7ae6a087dda918cd92ac8c8c2abf5cfaea3",
+    "registry": "npm",
+    "packageName": "tree-kit"
+  },
+  "registry": "npm",
+  "hash": "d055a7ae6a087dda918cd92ac8c8c2abf5cfaea3"
+}

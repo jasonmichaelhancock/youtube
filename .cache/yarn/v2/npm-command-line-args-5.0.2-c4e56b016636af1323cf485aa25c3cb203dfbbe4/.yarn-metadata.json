@@ -1,0 +1,65 @@
+{
+  "manifest": {
+    "name": "command-line-args",
+    "version": "5.0.2",
+    "description": "A mature, feature-complete library to parse command-line options.",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/75lb/command-line-args.git"
+    },
+    "scripts": {
+      "test": "test-runner test/*.js test/internals/*.js",
+      "docs": "jsdoc2md index.js > doc/API.md && jsdoc2md lib/option-definition.js > doc/option-definition.md",
+      "cover": "istanbul cover ./node_modules/.bin/test-runner test/*.js test/internals/*.js && cat coverage/lcov.info | ./node_modules/.bin/coveralls #&& rm -rf coverage; echo"
+    },
+    "keywords": [
+      "argv",
+      "parse",
+      "argument",
+      "args",
+      "option",
+      "options",
+      "parser",
+      "parsing",
+      "cli",
+      "command",
+      "line"
+    ],
+    "author": {
+      "name": "Lloyd Brookes",
+      "email": "75pound@gmail.com"
+    },
+    "license": "MIT",
+    "engines": {
+      "node": ">=4.0.0"
+    },
+    "devDependencies": {
+      "coveralls": "^3.0.0",
+      "jsdoc-to-markdown": "^4.0.1",
+      "test-runner": "^0.5.0"
+    },
+    "dependencies": {
+      "argv-tools": "^0.1.1",
+      "array-back": "^2.0.0",
+      "find-replace": "^2.0.1",
+      "lodash.camelcase": "^4.3.0",
+      "typical": "^2.6.1"
+    },
+    "_registry": "npm",
+    "_loc": "/home/vagrant/.cache/yarn/v2/npm-command-line-args-5.0.2-c4e56b016636af1323cf485aa25c3cb203dfbbe4/package.json",
+    "readmeFilename": "README.md",
+    "readme": "[![view on npm](https://img.shields.io/npm/v/command-line-args.svg)](https://www.npmjs.org/package/command-line-args)\n[![npm module downloads](https://img.shields.io/npm/dt/command-line-args.svg)](https://www.npmjs.org/package/command-line-args)\n[![Build Status](https://travis-ci.org/75lb/command-line-args.svg?branch=master)](https://travis-ci.org/75lb/command-line-args)\n[![Coverage Status](https://coveralls.io/repos/github/75lb/command-line-args/badge.svg?branch=master)](https://coveralls.io/github/75lb/command-line-args?branch=master)\n[![Dependency Status](https://david-dm.org/75lb/command-line-args.svg)](https://david-dm.org/75lb/command-line-args)\n[![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](https://github.com/feross/standard)\n[![Join the chat at https://gitter.im/75lb/command-line-args](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/75lb/command-line-args?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)\n\n***Upgraders, please read the [release notes](https://github.com/75lb/command-line-args/releases)***\n\n# command-line-args\nA mature, feature-complete library to parse command-line options.\n\n## Synopsis\nYou can set options using the main notation standards ([learn more](https://github.com/75lb/command-line-args/wiki/Notation-rules)). These commands are all equivalent, setting the same values:\n```\n$ example --verbose --timeout=1000 --src one.js --src two.js\n$ example --verbose --timeout 1000 --src one.js two.js\n$ example -vt 1000 --src one.js two.js\n$ example -vt 1000 one.js two.js\n```\n\nTo access the values, first create a list of [option definitions](https://github.com/75lb/command-line-args/blob/master/doc/option-definition.md) describing the options your application accepts. The [`type`](https://github.com/75lb/command-line-args/blob/master/doc/option-definition.md#optiontype--function) property is a setter function (the value supplied is passed through this), giving you full control over the value received.\n\n```js\nconst optionDefinitions = [\n  { name: 'verbose', alias: 'v', type: Boolean },\n  { name: 'src', type: String, multiple: true, defaultOption: true },\n  { name: 'timeout', alias: 't', type: Number }\n]\n```\n\nNext, parse the options using [commandLineArgs()](https://github.com/75lb/command-line-args/blob/master/doc/API.md#commandlineargsoptiondefinitions-options--object-):\n```js\nconst commandLineArgs = require('command-line-args')\nconst options = commandLineArgs(optionDefinitions)\n```\n\n`options` now looks like this:\n```js\n{\n  src: [\n    'one.js',\n    'two.js'\n  ],\n  verbose: true,\n  timeout: 1000\n}\n```\n\n### Advanced usage\n\nBeside the above typical usage, you can configure command-line-args to accept more advanced syntax forms.\n\n* [Command-based syntax](https://github.com/75lb/command-line-args/wiki/Implement-command-parsing-(git-style)) (git style) in the form:\n\n  ```\n  $ executable <command> [options]\n  ```\n\n  For example.\n\n  ```\n  $ git commit --squash -m \"This is my commit message\"\n  ```\n\n* [Command and sub-command syntax](https://github.com/75lb/command-line-args/wiki/Implement-multiple-command-parsing-(docker-style)) (docker style) in the form:\n\n  ```\n  $ executable <command> [options] <sub-command> [options]\n  ```\n\n  For example.\n\n  ```\n  $ docker run --detached --image centos bash -c yum install -y httpd\n  ```\n\n## Usage guide generation\n\nA usage guide (typically printed when `--help` is set) can be generated using [command-line-usage](https://github.com/75lb/command-line-usage). See the examples below and [read the documentation](https://github.com/75lb/command-line-usage) for instructions how to create them.\n\nA typical usage guide example.\n\n![usage](https://raw.githubusercontent.com/75lb/command-line-usage/master/example/screens/footer.png)\n\nThe [polymer-cli](https://github.com/Polymer/polymer-cli/) usage guide is a good real-life example.\n\n![usage](https://raw.githubusercontent.com/75lb/command-line-usage/master/example/screens/polymer.png)\n\n## Further Reading\n\nThere is plenty more to learn, please see [the wiki](https://github.com/75lb/command-line-args/wiki) for examples and documentation.\n\n## Install\n\n```sh\n$ npm install command-line-args --save\n```\n\n* * *\n\n&copy; 2014-18 Lloyd Brookes \\<75pound@gmail.com\\>. Documented by [jsdoc-to-markdown](https://github.com/75lb/jsdoc-to-markdown).\n",
+    "licenseText": "The MIT License (MIT)\n\nCopyright (c) 2014-18 Lloyd Brookes <75pound@gmail.com>\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all\ncopies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\nSOFTWARE.\n"
+  },
+  "artifacts": [],
+  "remote": {
+    "resolved": "https://registry.npmjs.org/command-line-args/-/command-line-args-5.0.2.tgz#c4e56b016636af1323cf485aa25c3cb203dfbbe4",
+    "type": "tarball",
+    "reference": "https://registry.npmjs.org/command-line-args/-/command-line-args-5.0.2.tgz",
+    "hash": "c4e56b016636af1323cf485aa25c3cb203dfbbe4",
+    "registry": "npm",
+    "packageName": "command-line-args"
+  },
+  "registry": "npm",
+  "hash": "c4e56b016636af1323cf485aa25c3cb203dfbbe4"
+}

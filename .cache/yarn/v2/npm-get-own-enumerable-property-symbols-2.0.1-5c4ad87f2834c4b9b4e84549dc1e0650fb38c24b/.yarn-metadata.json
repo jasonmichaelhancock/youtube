@@ -1,0 +1,65 @@
+{
+  "manifest": {
+    "name": "get-own-enumerable-property-symbols",
+    "version": "2.0.1",
+    "description": "Returns an array of all enumerable symbol properties found directly upon a given object",
+    "main": "lib/index.js",
+    "types": "lib/index.d.ts",
+    "files": [
+      "lib"
+    ],
+    "scripts": {
+      "transpile": "tsc",
+      "lint-js": "standard",
+      "unit": "node test.js",
+      "test": "run-s lint-js transpile unit"
+    },
+    "standard": {
+      "ignore": [
+        "lib"
+      ]
+    },
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/mightyiam/get-own-enumerable-property-symbols.git"
+    },
+    "keywords": [
+      "get",
+      "enumerable",
+      "symbol",
+      "property",
+      "key",
+      "object"
+    ],
+    "author": {
+      "name": "Shahar Or",
+      "email": "mightyiampresence@gmail.com",
+      "url": "mightyiam"
+    },
+    "license": "ISC",
+    "bugs": {
+      "url": "https://github.com/mightyiam/get-own-enumerable-property-symbols/issues"
+    },
+    "homepage": "https://github.com/mightyiam/get-own-enumerable-property-symbols#readme",
+    "devDependencies": {
+      "npm-run-all": "^4.0.2",
+      "standard": "^10.0.0",
+      "typescript": "^2.3.4"
+    },
+    "_registry": "npm",
+    "_loc": "/home/vagrant/.cache/yarn/v2/npm-get-own-enumerable-property-symbols-2.0.1-5c4ad87f2834c4b9b4e84549dc1e0650fb38c24b/package.json",
+    "readmeFilename": "README.md",
+    "readme": "# get-own-enumerable-property-symbols [![Build Status](https://travis-ci.org/mightyiam/get-own-enumerable-property-symbols.svg?branch=master)](https://travis-ci.org/mightyiam/get-own-enumerable-property-symbols)\n\nReturns an array of all *enumerable* symbol properties found directly upon a given object.\n\nSimilar to [`Object.getOwnPropertySymbols`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/getOwnPropertySymbols)\nbut only [enumerable](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Enumerability_and_ownership_of_properties) keys.\n\n```js\nimport getOwnEnumPropSymbols from 'get-own-enumerable-property-symbols'\n\ngetOwnEnumPropSymbols({ [Symbol()]: undefined })\n// [Symbol()]\ngetOwnEnumPropSymbols(Object.defineProperty({}, Symbol(), {enumerable: false}))\n// []\n```\n"
+  },
+  "artifacts": [],
+  "remote": {
+    "resolved": "https://registry.npmjs.org/get-own-enumerable-property-symbols/-/get-own-enumerable-property-symbols-2.0.1.tgz#5c4ad87f2834c4b9b4e84549dc1e0650fb38c24b",
+    "type": "tarball",
+    "reference": "https://registry.npmjs.org/get-own-enumerable-property-symbols/-/get-own-enumerable-property-symbols-2.0.1.tgz",
+    "hash": "5c4ad87f2834c4b9b4e84549dc1e0650fb38c24b",
+    "registry": "npm",
+    "packageName": "get-own-enumerable-property-symbols"
+  },
+  "registry": "npm",
+  "hash": "5c4ad87f2834c4b9b4e84549dc1e0650fb38c24b"
+}

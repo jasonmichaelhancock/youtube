@@ -1,0 +1,45 @@
+{
+  "manifest": {
+    "name": "@webassemblyjs/helper-wasm-section",
+    "version": "1.7.6",
+    "description": "",
+    "main": "lib/index.js",
+    "module": "esm/index.js",
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/xtuc/webassemblyjs.git"
+    },
+    "publishConfig": {
+      "access": "public"
+    },
+    "author": {
+      "name": "Sven Sauleau"
+    },
+    "license": "MIT",
+    "dependencies": {
+      "@webassemblyjs/ast": "1.7.6",
+      "@webassemblyjs/helper-buffer": "1.7.6",
+      "@webassemblyjs/helper-wasm-bytecode": "1.7.6",
+      "@webassemblyjs/wasm-gen": "1.7.6"
+    },
+    "devDependencies": {
+      "@webassemblyjs/wasm-parser": "1.7.6"
+    },
+    "_registry": "npm",
+    "_loc": "/home/vagrant/.cache/yarn/v2/npm-@webassemblyjs/helper-wasm-section-1.7.6-783835867bdd686df7a95377ab64f51a275e8333/package.json"
+  },
+  "artifacts": [],
+  "remote": {
+    "resolved": "https://registry.npmjs.org/@webassemblyjs/helper-wasm-section/-/helper-wasm-section-1.7.6.tgz#783835867bdd686df7a95377ab64f51a275e8333",
+    "type": "tarball",
+    "reference": "https://registry.npmjs.org/@webassemblyjs/helper-wasm-section/-/helper-wasm-section-1.7.6.tgz",
+    "hash": "783835867bdd686df7a95377ab64f51a275e8333",
+    "registry": "npm",
+    "packageName": "@webassemblyjs/helper-wasm-section"
+  },
+  "registry": "npm",
+  "hash": "783835867bdd686df7a95377ab64f51a275e8333"
+}

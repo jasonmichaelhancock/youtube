@@ -1,0 +1,29 @@
+{
+  "manifest": {
+    "name": "jest-resolve-dependencies",
+    "version": "23.6.0",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/facebook/jest.git"
+    },
+    "license": "MIT",
+    "main": "build/index.js",
+    "dependencies": {
+      "jest-regex-util": "^23.3.0",
+      "jest-snapshot": "^23.6.0"
+    },
+    "_registry": "npm",
+    "_loc": "/home/vagrant/.cache/yarn/v2/npm-jest-resolve-dependencies-23.6.0-b4526af24c8540d9a3fab102c15081cf509b723d/package.json"
+  },
+  "artifacts": [],
+  "remote": {
+    "resolved": "https://registry.npmjs.org/jest-resolve-dependencies/-/jest-resolve-dependencies-23.6.0.tgz#b4526af24c8540d9a3fab102c15081cf509b723d",
+    "type": "tarball",
+    "reference": "https://registry.npmjs.org/jest-resolve-dependencies/-/jest-resolve-dependencies-23.6.0.tgz",
+    "hash": "b4526af24c8540d9a3fab102c15081cf509b723d",
+    "registry": "npm",
+    "packageName": "jest-resolve-dependencies"
+  },
+  "registry": "npm",
+  "hash": "b4526af24c8540d9a3fab102c15081cf509b723d"
+}

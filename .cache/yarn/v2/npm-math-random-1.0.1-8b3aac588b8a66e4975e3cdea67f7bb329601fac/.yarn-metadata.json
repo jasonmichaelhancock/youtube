@@ -1,0 +1,50 @@
+{
+  "manifest": {
+    "name": "math-random",
+    "version": "1.0.1",
+    "description": "a drop-in replacement for Math.random that uses cryptographically secure random number generation, where available",
+    "main": "node.js",
+    "browser": "browser.js",
+    "scripts": {
+      "test": "tape test.js"
+    },
+    "devDependencies": {
+      "array-unique": "~0.2.1",
+      "tape": "~4.2.2"
+    },
+    "testling": {
+      "files": "test.js"
+    },
+    "repository": {
+      "type": "git",
+      "url": "git@github.com:michaelrhodes/math-random"
+    },
+    "keywords": [
+      "Math.random",
+      "crypto.getRandomValues"
+    ],
+    "author": {
+      "name": "Michael Rhodes"
+    },
+    "license": "MIT",
+    "bugs": {
+      "url": "https://github.com/michaelrhodes/math-random/issues"
+    },
+    "homepage": "https://github.com/michaelrhodes/math-random",
+    "_registry": "npm",
+    "_loc": "/home/vagrant/.cache/yarn/v2/npm-math-random-1.0.1-8b3aac588b8a66e4975e3cdea67f7bb329601fac/package.json",
+    "readmeFilename": "readme.md",
+    "readme": "# math-random\n\nmath-random is an drop-in replacement for Math.random that uses cryptographically secure random number generation, where available. It works in both browser and node environments.\n\n[![Build status](https://travis-ci.org/michaelrhodes/math-random.svg?branch=master)](https://travis-ci.org/michaelrhodes/math-random)\n\n## Install\n\n```sh\nnpm install math-random\n```\n\n### Usage\n\n```js\nvar random = require('math-random')\n\nconsole.log(random())\n=> 0.584293719381094\n\nconsole.log(random.cryptographic)\n=> true || undefined\n```\n\n### License\n[MIT](http://opensource.org/licenses/MIT)\n"
+  },
+  "artifacts": [],
+  "remote": {
+    "resolved": "https://registry.npmjs.org/math-random/-/math-random-1.0.1.tgz#8b3aac588b8a66e4975e3cdea67f7bb329601fac",
+    "type": "tarball",
+    "reference": "https://registry.npmjs.org/math-random/-/math-random-1.0.1.tgz",
+    "hash": "8b3aac588b8a66e4975e3cdea67f7bb329601fac",
+    "registry": "npm",
+    "packageName": "math-random"
+  },
+  "registry": "npm",
+  "hash": "8b3aac588b8a66e4975e3cdea67f7bb329601fac"
+}

@@ -1,0 +1,32 @@
+{
+  "manifest": {
+    "name": "@webassemblyjs/ieee754",
+    "version": "1.7.6",
+    "description": "IEEE754 decoder and encoder",
+    "license": "MIT",
+    "main": "lib/index.js",
+    "module": "esm/index.js",
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "publishConfig": {
+      "access": "public"
+    },
+    "dependencies": {
+      "@xtuc/ieee754": "^1.2.0"
+    },
+    "_registry": "npm",
+    "_loc": "/home/vagrant/.cache/yarn/v2/npm-@webassemblyjs/ieee754-1.7.6-c34fc058f2f831fae0632a8bb9803cf2d3462eb1/package.json"
+  },
+  "artifacts": [],
+  "remote": {
+    "resolved": "https://registry.npmjs.org/@webassemblyjs/ieee754/-/ieee754-1.7.6.tgz#c34fc058f2f831fae0632a8bb9803cf2d3462eb1",
+    "type": "tarball",
+    "reference": "https://registry.npmjs.org/@webassemblyjs/ieee754/-/ieee754-1.7.6.tgz",
+    "hash": "c34fc058f2f831fae0632a8bb9803cf2d3462eb1",
+    "registry": "npm",
+    "packageName": "@webassemblyjs/ieee754"
+  },
+  "registry": "npm",
+  "hash": "c34fc058f2f831fae0632a8bb9803cf2d3462eb1"
+}

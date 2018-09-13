@@ -1,0 +1,80 @@
+{
+  "name": "@bearer/ui",
+  "version": "0.53.1",
+  "description": "Bearer UI helper",
+  "main": "dist/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/types/components.d.ts",
+  "collection": "dist/collection/collection-manifest.json",
+  "files": [
+    "src/",
+    "dist/"
+  ],
+  "scripts": {
+    "build:storybook": "stencil build && build-storybook -s www",
+    "storybook": "start-storybook -p 9006 -s www",
+    "build": "stencil build",
+    "dev": "stencil build --dev --watch --serve",
+    "serve": "stencil-dev-server",
+    "start": "sd concurrent \"npm run dev\" \"npm run storybook\"",
+    "test": "jest --no-cache",
+    "test.watch": "jest --watch --no-cache",
+    "prepublishOnly": "BUILD=distribution yarn build",
+    "publish:demo": "cd demo && yarn install && yarn publish:demo"
+  },
+  "dependencies": {
+    "@bearer/core": "^0.53.1",
+    "@stencil/core": "0.11.2",
+    "@stencil/sass": "^0.0.5",
+    "bootstrap": "^4.1.0"
+  },
+  "devDependencies": {
+    "@stencil/dev-server": "latest",
+    "@stencil/utils": "latest",
+    "@storybook/addon-a11y": "4.0.0-alpha.9",
+    "@storybook/addon-actions": "4.0.0-alpha.9",
+    "@storybook/addon-backgrounds": "4.0.0-alpha.9",
+    "@storybook/addon-centered": "4.0.0-alpha.9",
+    "@storybook/addon-events": "4.0.0-alpha.9",
+    "@storybook/addon-jest": "4.0.0-alpha.9",
+    "@storybook/addon-knobs": "4.0.0-alpha.9",
+    "@storybook/addon-links": "4.0.0-alpha.9",
+    "@storybook/addon-notes": "4.0.0-alpha.9",
+    "@storybook/addon-options": "4.0.0-alpha.9",
+    "@storybook/addon-storyshots": "4.0.0-alpha.9",
+    "@storybook/addon-storysource": "4.0.0-alpha.9",
+    "@storybook/addon-viewport": "4.0.0-alpha.9",
+    "@storybook/addons": "4.0.0-alpha.9",
+    "@storybook/core": "4.0.0-alpha.9",
+    "@storybook/core-events": "4.0.0-alpha.9",
+    "@storybook/html": "4.0.0-alpha.9",
+    "@types/jest": "^23.1.1",
+    "autoprefixer": "^8.6.0",
+    "jest": "^23.0.1",
+    "rollup-plugin-replace": "^2.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ionic-team/stencil-component-starter.git"
+  },
+  "author": "Ionic Team",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ionic-team/stencil"
+  },
+  "homepage": "https://github.com/ionic-team/stencil",
+  "jest": {
+    "transform": {
+      "^.+\\.(ts|tsx)$": "<rootDir>/node_modules/@stencil/core/testing/jest.preprocessor.js"
+    },
+    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(tsx?|jsx?)$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "json",
+      "jsx"
+    ]
+  },
+  "gitHead": "cb2654b19000e2ad6f31a0e4ed715a6298c8df2d"
+}

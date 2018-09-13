@@ -1,0 +1,91 @@
+{
+  "manifest": {
+    "name": "@oclif/plugin-warn-if-update-available",
+    "description": "warns if there is a newer version of CLI released",
+    "version": "1.5.2",
+    "author": {
+      "name": "Jeff Dickey @jdxcode"
+    },
+    "bugs": {
+      "url": "https://github.com/oclif/plugin-warn-if-update-available/issues"
+    },
+    "dependencies": {
+      "@oclif/command": "^1.5.0",
+      "@oclif/config": "^1.7.2",
+      "@oclif/errors": "^1.2.0",
+      "chalk": "^2.4.1",
+      "debug": "^3.1.0",
+      "fs-extra": "^7.0.0",
+      "http-call": "^5.2.1",
+      "semver": "^5.5.1"
+    },
+    "devDependencies": {
+      "@oclif/dev-cli": "^1.17.0",
+      "@oclif/test": "^1.2.0",
+      "@oclif/tslint": "^2.0.0",
+      "@types/chai": "^4.1.4",
+      "@types/fs-extra": "^5.0.4",
+      "@types/mocha": "^5.2.5",
+      "@types/node": "^10.9.3",
+      "@types/semver": "^5.5.0",
+      "chai": "^4.1.2",
+      "globby": "^8.0.1",
+      "mocha": "^5.2.0",
+      "ts-node": "^7.0.1",
+      "tslib": "^1.9.3",
+      "tslint": "^5.11.0",
+      "typescript": "^3.0.1"
+    },
+    "engines": {
+      "node": ">=8.0.0"
+    },
+    "files": [
+      "oclif.manifest.json",
+      "/lib"
+    ],
+    "homepage": "https://github.com/oclif/plugin-warn-if-update-available",
+    "keywords": [
+      "oclif-plugin"
+    ],
+    "license": "MIT",
+    "oclif": {
+      "bin": "oclif-example",
+      "hooks": {
+        "init": [
+          "./lib/hooks/init/check-update"
+        ]
+      }
+    },
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/oclif/plugin-warn-if-update-available.git"
+    },
+    "scripts": {
+      "build": "rm -rf lib && tsc",
+      "clean": "rm -f oclif.manifest.json",
+      "lint": "tsc -p test --noEmit && tslint -p test -t stylish",
+      "postpublish": "yarn run clean",
+      "posttest": "yarn run lint",
+      "prepublishOnly": "yarn run build && oclif-dev manifest && oclif-dev readme",
+      "preversion": "yarn run clean",
+      "test": "mocha --forbid-only \"test/**/*.test.ts\"",
+      "version": "oclif-dev readme && git add README.md"
+    },
+    "_registry": "npm",
+    "_loc": "/home/vagrant/.cache/yarn/v2/npm-@oclif/plugin-warn-if-update-available-1.5.2-b1e06a9e1c9d2f079f39831b67d2b1d8cb95d264/package.json",
+    "readmeFilename": "README.md",
+    "readme": "@oclif/plugin-warn-if-update-available\n======================================\n\nwarns if there is a newer version of CLI released\n\n[![Version](https://img.shields.io/npm/v/@oclif/plugin-warn-if-update-available.svg)](https://npmjs.org/package/@oclif/plugin-warn-if-update-available)\n[![CircleCI](https://circleci.com/gh/oclif/plugin-warn-if-update-available/tree/master.svg?style=shield)](https://circleci.com/gh/oclif/plugin-warn-if-update-available/tree/master)\n[![Appveyor CI](https://ci.appveyor.com/api/projects/status/github/oclif/plugin-warn-if-update-available?branch=master&svg=true)](https://ci.appveyor.com/project/oclif/plugin-warn-if-update-available/branch/master)\n[![Codecov](https://codecov.io/gh/oclif/plugin-warn-if-update-available/branch/master/graph/badge.svg)](https://codecov.io/gh/oclif/plugin-warn-if-update-available)\n[![Greenkeeper badge](https://badges.greenkeeper.io/oclif/plugin-warn-if-update-available.svg)](https://greenkeeper.io/)\n[![Downloads/week](https://img.shields.io/npm/dw/@oclif/plugin-warn-if-update-available.svg)](https://npmjs.org/package/@oclif/plugin-warn-if-update-available)\n[![License](https://img.shields.io/npm/l/@oclif/plugin-warn-if-update-available.svg)](https://github.com/oclif/plugin-warn-if-update-available/blob/master/package.json)\n\n<!-- toc -->\n* [What is this?](#what-is-this)\n* [How it works](#how-it-works)\n* [Installation](#installation)\n* [Configuration](#configuration)\n<!-- tocstop -->\n\n# What is this?\n\nThis plugin shows a warning message if a user is running an out of date CLI.\n\n![screenshot](./assets/screenshot.png)\n\n# How it works\n\nThis checks the version against the npm registry asynchronously in a forked process, at most once per 7 days. It then saves a version file to the cache directory that will enable the warning. The upside of this method is that it won't block a user while they're using your CLI—the downside is that it will only display _after_ running a command that fetches the new version.\n\n# Installation\n\nAdd the plugin to your project with `yarn add @oclif/plugin-warn-if-update-available`, then add it to the `package.json` of the oclif CLI:\n\n```js\n{\n  \"name\": \"mycli\",\n  \"version\": \"0.0.0\",\n  // ...\n  \"oclif\": {\n    \"plugins\": [\"@oclif/plugin-help\", \"@oclif/plugin-warn-if-update-available\"]\n  }\n}\n```\n\n# Configuration\n\nIn `package.json`, set `oclif['warn-if-update-available']` to an object with\nany of the following configuration properties:\n\n- `timeoutInDays` - Duration between update checks. Defaults to 60.\n- `registry` - URL of registry. Defaults to the public npm registry: `https://registry.npmjs.org`\n- `authorization` - Authorization header value for registries that require auth.\n\n## Example configuration\n\n```json\n{\n  \"oclif\": {\n    \"plugins\": [\n      \"@oclif/plugin-warn-if-update-available\"\n    ],\n    \"warn-if-update-available\": {\n      \"timeoutInDays\": 7,\n      \"registry\": \"https://my.example.com/module/registry\",\n      \"authorization\": \"Basic <SOME READ ONLY AUTH TOKEN>\"\n    }\n  }\n}\n```\n",
+    "licenseText": "MIT License\n\nCopyright (c) 2018 Salesforce.com\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all\ncopies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\nSOFTWARE.\n"
+  },
+  "artifacts": [],
+  "remote": {
+    "resolved": "https://registry.npmjs.org/@oclif/plugin-warn-if-update-available/-/plugin-warn-if-update-available-1.5.2.tgz#b1e06a9e1c9d2f079f39831b67d2b1d8cb95d264",
+    "type": "tarball",
+    "reference": "https://registry.npmjs.org/@oclif/plugin-warn-if-update-available/-/plugin-warn-if-update-available-1.5.2.tgz",
+    "hash": "b1e06a9e1c9d2f079f39831b67d2b1d8cb95d264",
+    "registry": "npm",
+    "packageName": "@oclif/plugin-warn-if-update-available"
+  },
+  "registry": "npm",
+  "hash": "b1e06a9e1c9d2f079f39831b67d2b1d8cb95d264"
+}

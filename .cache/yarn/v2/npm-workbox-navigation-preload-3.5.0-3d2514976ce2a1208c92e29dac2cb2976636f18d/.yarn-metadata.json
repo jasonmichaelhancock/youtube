@@ -1,0 +1,55 @@
+{
+  "manifest": {
+    "name": "workbox-navigation-preload",
+    "version": "3.5.0",
+    "license": "Apache-2.0",
+    "author": {
+      "name": "Google's Web DevRel Team"
+    },
+    "description": "This library allows developers to opt-in to using Navigation Preload in their service worker.",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/googlechrome/workbox.git"
+    },
+    "bugs": {
+      "url": "https://github.com/googlechrome/workbox/issues"
+    },
+    "homepage": "https://github.com/GoogleChrome/workbox",
+    "keywords": [
+      "workbox",
+      "workboxjs",
+      "service worker",
+      "sw",
+      "navigation"
+    ],
+    "scripts": {
+      "build": "gulp build-packages --package workbox-navigation-preload",
+      "version": "npm run build",
+      "prepare": "npm run build"
+    },
+    "workbox": {
+      "browserNamespace": "workbox.navigationPreload",
+      "packageType": "browser"
+    },
+    "main": "build/workbox-navigation-preload.prod.js",
+    "module": "index.mjs",
+    "dependencies": {
+      "workbox-core": "^3.5.0"
+    },
+    "_registry": "npm",
+    "_loc": "/home/vagrant/.cache/yarn/v2/npm-workbox-navigation-preload-3.5.0-3d2514976ce2a1208c92e29dac2cb2976636f18d/package.json",
+    "readmeFilename": "README.md",
+    "readme": "This module's documentation can be found at https://developers.google.com/web/tools/workbox/modules/workbox-navigation-preload\n"
+  },
+  "artifacts": [],
+  "remote": {
+    "resolved": "https://registry.npmjs.org/workbox-navigation-preload/-/workbox-navigation-preload-3.5.0.tgz#3d2514976ce2a1208c92e29dac2cb2976636f18d",
+    "type": "tarball",
+    "reference": "https://registry.npmjs.org/workbox-navigation-preload/-/workbox-navigation-preload-3.5.0.tgz",
+    "hash": "3d2514976ce2a1208c92e29dac2cb2976636f18d",
+    "registry": "npm",
+    "packageName": "workbox-navigation-preload"
+  },
+  "registry": "npm",
+  "hash": "3d2514976ce2a1208c92e29dac2cb2976636f18d"
+}

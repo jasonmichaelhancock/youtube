@@ -1,0 +1,50 @@
+{
+  "manifest": {
+    "name": "@bearer/templates",
+    "version": "0.53.1",
+    "description": "Bearer templates",
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "author": {
+      "name": "Bearer"
+    },
+    "license": "MIT",
+    "files": [
+      "dist/"
+    ],
+    "scripts": {
+      "start": "yarn build",
+      "build": "tsc -p tsconfig.json",
+      "prepublish": "yarn build",
+      "prepublishOnly": "yarn build",
+      "test": "jest"
+    },
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/Bearer/bearer.git"
+    },
+    "dependencies": {
+      "typescript": "^2.9.2"
+    },
+    "devDependencies": {
+      "@types/jest": "^23.1.5",
+      "@types/node": "^10.5.2",
+      "jest": "^23.4.0",
+      "ts-jest": "^23.0.0"
+    },
+    "gitHead": "cb2654b19000e2ad6f31a0e4ed715a6298c8df2d",
+    "_registry": "npm",
+    "_loc": "/home/vagrant/.cache/yarn/v2/npm-@bearer/templates-0.53.1-fdba89c71794abbca0609899ca731f582adbf42c/package.json"
+  },
+  "artifacts": [],
+  "remote": {
+    "resolved": "https://registry.npmjs.org/@bearer/templates/-/templates-0.53.1.tgz#fdba89c71794abbca0609899ca731f582adbf42c",
+    "type": "tarball",
+    "reference": "https://registry.npmjs.org/@bearer/templates/-/templates-0.53.1.tgz",
+    "hash": "fdba89c71794abbca0609899ca731f582adbf42c",
+    "registry": "npm",
+    "packageName": "@bearer/templates"
+  },
+  "registry": "npm",
+  "hash": "fdba89c71794abbca0609899ca731f582adbf42c"
+}

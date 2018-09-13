@@ -1,0 +1,55 @@
+{
+  "manifest": {
+    "name": "@bearer/transpiler",
+    "version": "0.53.1",
+    "description": "Bearer transpiler",
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "author": {
+      "name": "Bearer"
+    },
+    "license": "MIT",
+    "files": [
+      "dist/"
+    ],
+    "scripts": {
+      "start": "yarn build",
+      "build": "tsc -p tsconfig.json",
+      "prepublish": "yarn build",
+      "prepublishOnly": "yarn build",
+      "test": "jest"
+    },
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/Bearer/bearer.git"
+    },
+    "devDependencies": {
+      "@types/fs-extra": "^5.0.3",
+      "@types/jest": "^23.1.1",
+      "@types/node": "^10.5.2",
+      "jest": "^23.1.0",
+      "ts-jest": "^22.4.6"
+    },
+    "dependencies": {
+      "async-foreach": "^0.1.3",
+      "case": "^1.5.5",
+      "command-line-args": "^5.0.2",
+      "fs-extra": "^6.0.1",
+      "typescript": "^2.9.2"
+    },
+    "gitHead": "cb2654b19000e2ad6f31a0e4ed715a6298c8df2d",
+    "_registry": "npm",
+    "_loc": "/home/vagrant/.cache/yarn/v2/npm-@bearer/transpiler-0.53.1-6d93894f62a4cf02aff044c58740e3c9cd6610cb/package.json"
+  },
+  "artifacts": [],
+  "remote": {
+    "resolved": "https://registry.npmjs.org/@bearer/transpiler/-/transpiler-0.53.1.tgz#6d93894f62a4cf02aff044c58740e3c9cd6610cb",
+    "type": "tarball",
+    "reference": "https://registry.npmjs.org/@bearer/transpiler/-/transpiler-0.53.1.tgz",
+    "hash": "6d93894f62a4cf02aff044c58740e3c9cd6610cb",
+    "registry": "npm",
+    "packageName": "@bearer/transpiler"
+  },
+  "registry": "npm",
+  "hash": "6d93894f62a4cf02aff044c58740e3c9cd6610cb"
+}

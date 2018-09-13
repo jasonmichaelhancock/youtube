@@ -1,0 +1,29 @@
+{
+  "manifest": {
+    "name": "jest-environment-node",
+    "version": "23.4.0",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/facebook/jest.git"
+    },
+    "license": "MIT",
+    "main": "build/index.js",
+    "dependencies": {
+      "jest-mock": "^23.2.0",
+      "jest-util": "^23.4.0"
+    },
+    "_registry": "npm",
+    "_loc": "/home/vagrant/.cache/yarn/v2/npm-jest-environment-node-23.4.0-57e80ed0841dea303167cce8cd79521debafde10/package.json"
+  },
+  "artifacts": [],
+  "remote": {
+    "resolved": "https://registry.npmjs.org/jest-environment-node/-/jest-environment-node-23.4.0.tgz#57e80ed0841dea303167cce8cd79521debafde10",
+    "type": "tarball",
+    "reference": "https://registry.npmjs.org/jest-environment-node/-/jest-environment-node-23.4.0.tgz",
+    "hash": "57e80ed0841dea303167cce8cd79521debafde10",
+    "registry": "npm",
+    "packageName": "jest-environment-node"
+  },
+  "registry": "npm",
+  "hash": "57e80ed0841dea303167cce8cd79521debafde10"
+}

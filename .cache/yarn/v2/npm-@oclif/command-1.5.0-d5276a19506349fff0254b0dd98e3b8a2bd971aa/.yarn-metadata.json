@@ -1,0 +1,84 @@
+{
+  "manifest": {
+    "name": "@oclif/command",
+    "description": "oclif base command",
+    "version": "1.5.0",
+    "author": {
+      "name": "Jeff Dickey @jdxcode"
+    },
+    "bugs": {
+      "url": "https://github.com/oclif/command/issues"
+    },
+    "oclif": {
+      "devPlugins": [
+        "@oclif/plugin-help",
+        "@oclif/plugin-plugins"
+      ]
+    },
+    "dependencies": {
+      "@oclif/errors": "^1.1.2",
+      "@oclif/parser": "^3.6.0",
+      "debug": "^3.1.0",
+      "semver": "^5.5.0"
+    },
+    "devDependencies": {
+      "@oclif/config": "^1.7.0",
+      "@oclif/plugin-help": "^2.0.5",
+      "@oclif/plugin-plugins": "^1.5.4",
+      "@oclif/tslint": "^2.0.0",
+      "@types/chai": "^4.1.4",
+      "@types/mocha": "^5.2.5",
+      "@types/node": "^10.7.1",
+      "@types/semver": "^5.5.0",
+      "chai": "^4.1.2",
+      "cli-ux": "^4.7.3",
+      "fancy-test": "^1.2.0",
+      "globby": "^8.0.1",
+      "mocha": "^5.2.0",
+      "ts-node": "^7.0.1",
+      "tslint": "^5.11.0",
+      "typescript": "^3.0.1"
+    },
+    "engines": {
+      "node": ">=8.0.0"
+    },
+    "files": [
+      "/flush.js",
+      "/lib"
+    ],
+    "homepage": "https://github.com/oclif/command",
+    "keywords": [
+      "oclif"
+    ],
+    "license": "MIT",
+    "main": "lib/index.js",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/oclif/command.git"
+    },
+    "scripts": {
+      "build": "rm -rf lib && tsc",
+      "lint": "tsc -p test --noEmit && tslint -p test -t stylish",
+      "posttest": "yarn run lint",
+      "prepublishOnly": "yarn run build",
+      "test": "mocha --forbid-only \"test/**/*.test.ts\""
+    },
+    "types": "lib/index.d.ts",
+    "_registry": "npm",
+    "_loc": "/home/vagrant/.cache/yarn/v2/npm-@oclif/command-1.5.0-d5276a19506349fff0254b0dd98e3b8a2bd971aa/package.json",
+    "readmeFilename": "README.md",
+    "readme": "@oclif/command\n===============\n\noclif base command\n\n[![Version](https://img.shields.io/npm/v/@oclif/command.svg)](https://npmjs.org/package/@oclif/command)\n[![CircleCI](https://circleci.com/gh/oclif/command/tree/master.svg?style=shield)](https://circleci.com/gh/oclif/command/tree/master)\n[![Appveyor CI](https://ci.appveyor.com/api/projects/status/github/oclif/command?branch=master&svg=true)](https://ci.appveyor.com/project/heroku/command/branch/master)\n[![Codecov](https://codecov.io/gh/oclif/command/branch/master/graph/badge.svg)](https://codecov.io/gh/oclif/command)\n[![Greenkeeper](https://badges.greenkeeper.io/oclif/command.svg)](https://greenkeeper.io/)\n[![Known Vulnerabilities](https://snyk.io/test/npm/@oclif/command/badge.svg)](https://snyk.io/test/npm/@oclif/command)\n[![Downloads/week](https://img.shields.io/npm/dw/@oclif/command.svg)](https://npmjs.org/package/@oclif/command)\n[![License](https://img.shields.io/npm/l/@oclif/command.svg)](https://github.com/oclif/command/blob/master/package.json)\n\nThis is about half of the main codebase for oclif. The other half lives in [@oclif/config](https://github.com/oclif/config). This can be used directly, but it probably makes more sense to build your CLI with the [generator](https://github.com/oclif/oclif).\n\nUsage\n=====\n\nWithout the generator, you can create a simple CLI like this:\n\n**TypeScript**\n```js\n#!/usr/bin/env ts-node\n\nimport * as fs from 'fs'\nimport {Command, flags} from '@oclif/command'\n\nclass LS extends Command {\n  static flags = {\n    version: flags.version(),\n    help: flags.help(),\n    // run with --dir= or -d=\n    dir: flags.string({\n      char: 'd',\n      default: process.cwd(),\n    }),\n  }\n\n  async run() {\n    const {flags} = this.parse(LS)\n    let files = fs.readdirSync(flags.dir)\n    for (let f of files) {\n      this.log(f)\n    }\n  }\n}\n\nLS.run()\n.catch(require('@oclif/errors/handle'))\n```\n\n**JavaScript**\n```js\n#!/usr/bin/env node\n\nconst fs = require('fs')\nconst {Command, flags} = require('@oclif/command')\n\nclass LS extends Command {\n  async run() {\n    const {flags} = this.parse(LS)\n    let files = fs.readdirSync(flags.dir)\n    for (let f of files) {\n      this.log(f)\n    }\n  }\n}\n\nLS.flags = {\n  version: flags.version(),\n  help: flags.help(),\n  // run with --dir= or -d=\n  dir: flags.string({\n    char: 'd',\n    default: process.cwd(),\n  }),\n}\n\nLS.run()\n.catch(require('@oclif/errors/handle'))\n```\n\nThen run either of these with:\n\n```sh-session\n$ ./myscript\n...files in current dir...\n$ ./myscript --dir foobar\n...files in ./foobar...\n$ ./myscript --version\nmyscript/0.0.0 darwin-x64 node-v9.5.0\n$ ./myscript --help\nUSAGE\n  $ @oclif/command\n\nOPTIONS\n  -d, --dir=dir  [default: /Users/jdickey/src/github.com/oclif/command]\n  --help         show CLI help\n  --version      show CLI version\n```\n\nSee the [generator](https://github.com/oclif/oclif) for all the options you can pass to the command.\n",
+    "licenseText": "MIT License\n\nCopyright (c) 2018 Salesforce.com\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all\ncopies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\nSOFTWARE.\n"
+  },
+  "artifacts": [],
+  "remote": {
+    "resolved": "https://registry.npmjs.org/@oclif/command/-/command-1.5.0.tgz#d5276a19506349fff0254b0dd98e3b8a2bd971aa",
+    "type": "tarball",
+    "reference": "https://registry.npmjs.org/@oclif/command/-/command-1.5.0.tgz",
+    "hash": "d5276a19506349fff0254b0dd98e3b8a2bd971aa",
+    "registry": "npm",
+    "packageName": "@oclif/command"
+  },
+  "registry": "npm",
+  "hash": "d5276a19506349fff0254b0dd98e3b8a2bd971aa"
+}

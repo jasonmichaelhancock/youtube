@@ -1,0 +1,55 @@
+{
+  "manifest": {
+    "name": "find-replace",
+    "author": {
+      "name": "Lloyd Brookes",
+      "email": "75pound@gmail.com"
+    },
+    "version": "2.0.1",
+    "description": "Find and either replace or remove items from an array",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/75lb/find-replace.git"
+    },
+    "license": "MIT",
+    "main": "./lib/find-replace.js",
+    "keywords": [
+      "find",
+      "replace",
+      "array",
+      "remove",
+      "splice"
+    ],
+    "engines": {
+      "node": ">=4.0.0"
+    },
+    "scripts": {
+      "test": "test-runner test/*.js",
+      "docs": "jsdoc2md -t jsdoc2md/README.hbs lib/*.js > README.md; echo"
+    },
+    "devDependencies": {
+      "jsdoc-to-markdown": "^3.0.2",
+      "test-runner": "^0.4.1"
+    },
+    "dependencies": {
+      "array-back": "^2.0.0",
+      "test-value": "^3.0.0"
+    },
+    "_registry": "npm",
+    "_loc": "/home/vagrant/.cache/yarn/v2/npm-find-replace-2.0.1-6d9683a7ca20f8f9aabeabad07e4e2580f528550/package.json",
+    "readmeFilename": "README.md",
+    "readme": "[![view on npm](http://img.shields.io/npm/v/find-replace.svg)](https://www.npmjs.org/package/find-replace)\n[![npm module downloads](http://img.shields.io/npm/dt/find-replace.svg)](https://www.npmjs.org/package/find-replace)\n[![Build Status](https://travis-ci.org/75lb/find-replace.svg?branch=master)](https://travis-ci.org/75lb/find-replace)\n[![Dependency Status](https://david-dm.org/75lb/find-replace.svg)](https://david-dm.org/75lb/find-replace)\n[![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](https://github.com/feross/standard)\n\n<a name=\"module_find-replace\"></a>\n\n## find-replace\nFind and either replace or remove items from an array.\n\n**Example**  \n```js\n> findReplace = require('find-replace')\n\n> findReplace([ 1, 2, 3], 2, 'two')\n[ 1, 'two', 3 ]\n\n> findReplace([ 1, 2, 3], 2, [ 'two', 'zwei' ])\n[ 1, [ 'two', 'zwei' ], 3 ]\n\n> findReplace([ 1, 2, 3], 2, 'two', 'zwei')\n[ 1, 'two', 'zwei', 3 ]\n\n> findReplace([ 1, 2, 3], 2) // no replacement, so remove\n[ 1, 3 ]\n```\n<a name=\"exp_module_find-replace--findReplace\"></a>\n\n### findReplace(array, valueTest, [...replaceWith]) ⇒ <code>array</code> ⏏\n**Kind**: Exported function  \n\n| Param | Type | Description |\n| --- | --- | --- |\n| array | <code>array</code> | the input array |\n| valueTest | <code>valueTest</code> | a [test-value](https://github.com/75lb/test-value) query to match the value you're looking for |\n| [...replaceWith] | <code>any</code> | If specified, found values will be replaced with these values, else  removed. |\n\n\n* * *\n\n&copy; 2015-18 Lloyd Brookes \\<75pound@gmail.com\\>. Documented by [jsdoc-to-markdown](https://github.com/jsdoc2md/jsdoc-to-markdown).\n",
+    "licenseText": "The MIT License (MIT)\n\nCopyright (c) 2015-18 Lloyd Brookes <75pound@gmail.com>\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all\ncopies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\nSOFTWARE.\n"
+  },
+  "artifacts": [],
+  "remote": {
+    "resolved": "https://registry.npmjs.org/find-replace/-/find-replace-2.0.1.tgz#6d9683a7ca20f8f9aabeabad07e4e2580f528550",
+    "type": "tarball",
+    "reference": "https://registry.npmjs.org/find-replace/-/find-replace-2.0.1.tgz",
+    "hash": "6d9683a7ca20f8f9aabeabad07e4e2580f528550",
+    "registry": "npm",
+    "packageName": "find-replace"
+  },
+  "registry": "npm",
+  "hash": "6d9683a7ca20f8f9aabeabad07e4e2580f528550"
+}

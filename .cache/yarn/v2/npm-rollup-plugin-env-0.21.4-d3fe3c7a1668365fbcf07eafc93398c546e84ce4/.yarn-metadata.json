@@ -1,0 +1,59 @@
+{
+  "manifest": {
+    "name": "rollup-plugin-env",
+    "version": "0.21.4",
+    "description": "Inject environment variables into your rollup.js builds.",
+    "main": "dist/index.js",
+    "jsnext:main": "lib/index.js",
+    "scripts": {
+      "test": "eslint src",
+      "build": "rollup -c",
+      "prepublish": "npm test && npm build"
+    },
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/mshick/rollup-plugin-env.git"
+    },
+    "keywords": [
+      "rollup",
+      "environment",
+      "build",
+      "process.env",
+      "NODE_ENV"
+    ],
+    "author": {
+      "name": "Michael Shick"
+    },
+    "license": "ISC",
+    "bugs": {
+      "url": "https://github.com/mshick/rollup-plugin-env/issues"
+    },
+    "devDependencies": {
+      "babel": "^6.1.18",
+      "babel-cli": "^6.2.0",
+      "babel-preset-es2015-rollup": "^1.0.0",
+      "eslint": "^1.9.0",
+      "eslint-config-defaults": "^7.0.1",
+      "eslint-plugin-filenames": "^0.2.0",
+      "rollup": "^0.21.0",
+      "rollup-plugin-babel": "^2.1.0"
+    },
+    "homepage": "https://github.com/mshick/rollup-plugin-env#readme",
+    "_registry": "npm",
+    "_loc": "/home/vagrant/.cache/yarn/v2/npm-rollup-plugin-env-0.21.4-d3fe3c7a1668365fbcf07eafc93398c546e84ce4/package.json",
+    "readmeFilename": "README.md",
+    "readme": "rollup-plugin-env\n=================\n\nSafely injects variables into your process.env.\n\n[Actually sort of useless](https://github.com/mshick/rollup-plugin-env/issues/2#issuecomment-244660431). I put this together before I figured some bits of build process out.\n",
+    "licenseText": "Copyright (c) 2015, Michael Shick\n\nPermission to use, copy, modify, and/or distribute this software for any\npurpose with or without fee is hereby granted, provided that the above\ncopyright notice and this permission notice appear in all copies.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\" AND THE AUTHOR DISCLAIMS ALL WARRANTIES\nWITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF\nMERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR\nANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES\nWHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN\nACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF\nOR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.\n\n"
+  },
+  "artifacts": [],
+  "remote": {
+    "resolved": "https://registry.npmjs.org/rollup-plugin-env/-/rollup-plugin-env-0.21.4.tgz#d3fe3c7a1668365fbcf07eafc93398c546e84ce4",
+    "type": "tarball",
+    "reference": "https://registry.npmjs.org/rollup-plugin-env/-/rollup-plugin-env-0.21.4.tgz",
+    "hash": "d3fe3c7a1668365fbcf07eafc93398c546e84ce4",
+    "registry": "npm",
+    "packageName": "rollup-plugin-env"
+  },
+  "registry": "npm",
+  "hash": "d3fe3c7a1668365fbcf07eafc93398c546e84ce4"
+}

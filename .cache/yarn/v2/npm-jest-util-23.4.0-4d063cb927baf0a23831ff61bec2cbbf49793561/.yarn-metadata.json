@@ -1,0 +1,38 @@
+{
+  "manifest": {
+    "name": "jest-util",
+    "version": "23.4.0",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/facebook/jest.git"
+    },
+    "license": "MIT",
+    "main": "build/index.js",
+    "dependencies": {
+      "callsites": "^2.0.0",
+      "chalk": "^2.0.1",
+      "graceful-fs": "^4.1.11",
+      "is-ci": "^1.0.10",
+      "jest-message-util": "^23.4.0",
+      "mkdirp": "^0.5.1",
+      "slash": "^1.0.0",
+      "source-map": "^0.6.0"
+    },
+    "devDependencies": {
+      "jest-mock": "^23.2.0"
+    },
+    "_registry": "npm",
+    "_loc": "/home/vagrant/.cache/yarn/v2/npm-jest-util-23.4.0-4d063cb927baf0a23831ff61bec2cbbf49793561/package.json"
+  },
+  "artifacts": [],
+  "remote": {
+    "resolved": "https://registry.npmjs.org/jest-util/-/jest-util-23.4.0.tgz#4d063cb927baf0a23831ff61bec2cbbf49793561",
+    "type": "tarball",
+    "reference": "https://registry.npmjs.org/jest-util/-/jest-util-23.4.0.tgz",
+    "hash": "4d063cb927baf0a23831ff61bec2cbbf49793561",
+    "registry": "npm",
+    "packageName": "jest-util"
+  },
+  "registry": "npm",
+  "hash": "4d063cb927baf0a23831ff61bec2cbbf49793561"
+}

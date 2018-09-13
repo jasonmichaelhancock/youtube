@@ -1,0 +1,52 @@
+{
+  "manifest": {
+    "name": "stream-buffers",
+    "version": "3.0.2",
+    "description": "Buffer-backed Streams for reading and writing.",
+    "keywords": [
+      "memory streams",
+      "streams",
+      "buffer streams"
+    ],
+    "author": {
+      "name": "Sam Day",
+      "email": "me@samcday.com.au"
+    },
+    "main": "./lib/streambuffer.js",
+    "engines": {
+      "node": ">= 0.10.0"
+    },
+    "dependencies": {},
+    "devDependencies": {
+      "chai": "^3.4.1",
+      "eslint": "^1.9.0",
+      "istanbul": "^0.4.0",
+      "mocha": "^2.3.4"
+    },
+    "license": "Unlicense",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/samcday/node-stream-buffer.git"
+    },
+    "scripts": {
+      "test": "istanbul test _mocha",
+      "lint": "eslint ."
+    },
+    "_registry": "npm",
+    "_loc": "/home/vagrant/.cache/yarn/v2/npm-stream-buffers-3.0.2-5249005a8d5c2d00b3a32e6e0a6ea209dc4f3521/package.json",
+    "readmeFilename": "README.md",
+    "readme": "# Node Stream Buffers\n\n[![Build Status][badge-travis-img]][badge-travis-url]\n[![Dependency Information][badge-david-img]][badge-david-url]\n[![Code Climate][badge-climate-img]][badge-climate-url]\n[![Code Coverage][badge-coverage-img]][badge-coverage-url]\n[![npm][badge-npm-img]][badge-npm-url]\n\nSimple Readable and Writable Streams that use a [Buffer][node-buffer-docs] to store received data, or for data to send out. Useful for test code, debugging, and a wide range of other utilities.\n\n```\nnpm install stream-buffers --save\n```\n\n## Usage\n\nTo use the stream buffers in your module, simply import it and away you go.\n\n```js\nvar streamBuffers = require('stream-buffers');\n```\n\n### WritableStreamBuffer\n\n`WritableStreamBuffer` implements the standard [`stream.Writable`](https://nodejs.org/api/stream.html#stream_class_stream_writable) interface. All writes to this stream will accumulate in an internal [`Buffer`](https://nodejs.org/api/buffer.html). If the internal buffer overflows it will be resized automatically. The initial size of the Buffer and the amount in which it grows can be configured in the constructor.\n\n```js\nvar myWritableStreamBuffer = new streamBuffers.WritableStreamBuffer({\n\tinitialSize: (100 * 1024),   // start at 100 kilobytes.\n\tincrementAmount: (10 * 1024) // grow by 10 kilobytes each time buffer overflows.\n});\n```\n\nThe default initial size and increment amount are stored in the following constants:\n\n```js\nstreamBuffers.DEFAULT_INITIAL_SIZE      // (8 * 1024)\nstreamBuffers.DEFAULT_INCREMENT_AMOUNT  // (8 * 1024)\n```\n\nWriting is standard Stream stuff:\n\n```js\nmyWritableStreamBuffer.write(myBuffer);\n// - or -\nmyWritableStreamBuffer.write('\\u00bd + \\u00bc = \\u00be', 'utf8');\n```\n\nYou can query the size of the data being held in the Buffer, and also how big the Buffer's max capacity currently is: \n\n```js\nmyWritableStreamBuffer.write('ASDF');\nstreamBuffers.size();     // 4.\nstreamBuffers.maxSize();  // Whatever was configured as initial size. In our example: (100 * 1024).\n```\n\nRetrieving the contents of the Buffer is simple.\n\n```js\n// Gets all held data as a Buffer.\nmyWritableStreamBuffer.getContents();\n\n// Gets all held data as a utf8 string.\nmyWritableStreamBuffer.getContentsAsString('utf8');\n\n// Gets first 5 bytes as a Buffer.\nmyWritableStreamBuffer.getContents(5);\n\n// Gets first 5 bytes as a utf8 string.\nmyWritableStreamBuffer.getContentsAsString('utf8', 5);\n```\n\n**Care should be taken when getting encoded strings from WritableStream, as it doesn't really care about the contents (multi-byte characters will not be respected).**\n\nDestroying or ending the WritableStream will not delete the contents of Buffer, but will disallow any further writes.\n\n```js\nmyWritableStreamBuffer.write('ASDF');\nmyWritableStreamBuffer.end();\nmyWritableStreamBuffer.getContentsAsString(); // -> 'ASDF'\n```\t\n\n### ReadableStreamBuffer\n\n`ReadableStreamBuffer` implements the standard [`stream.Readable`](https://nodejs.org/api/stream.html#stream_class_stream_readable), but can have data inserted into it. This data will then be pumped out in chunks as readable events. The data to be sent out is held in a Buffer, which can grow in much the same way as a `WritableStreamBuffer` does, if data is being put in Buffer faster than it is being pumped out. \n\nThe frequency in which chunks are pumped out, and the size of the chunks themselves can be configured in the constructor. The initial size and increment amount of internal Buffer can be configured too. In the following example 2kb chunks will be output every 10 milliseconds:\n\n```js\nvar myReadableStreamBuffer = new streamBuffers.ReadableStreamBuffer({\n\tfrequency: 10,   // in milliseconds.\n\tchunkSize: 2048  // in bytes.\n});\n```\n\nDefault frequency and chunk size:\n\n```js\nstreamBuffers.DEFAULT_CHUNK_SIZE  // (1024)\nstreamBuffers.DEFAULT_FREQUENCY   // (1)\n```\n\nPutting data in Buffer to be pumped out is easy:\n\n```js\nmyReadableStreamBuffer.put(aBuffer);\nmyReadableStreamBuffer.put('A String', 'utf8');\n```\n\nChunks are pumped out via standard `stream.Readable` semantics. This means you can use the old streams1 way:\n\n```js\nmyReadableStreamBuffer.on('data', function(data) {\n  // streams1.x style data\n  assert.isTrue(data instanceof Buffer);\n});\n```\n\nOr the streams2+ way:\n\n```js\nmyReadableStreamBuffer.on('readable', function(data) {\n  var chunk;\n  while((chunk = myReadableStreamBuffer.read()) !== null) {\n    assert.isTrue(chunk instanceof Buffer);\n  }\n});\n```\n\nBecause `ReadableStreamBuffer` is simply an implementation of [`stream.Readable`](https://nodejs.org/api/stream.html#stream_class_stream_readable), it implements pause / resume / setEncoding / etc.\n\nOnce you're done putting data into a `ReadableStreamBuffer`, you can call `stop()` on it.\n\n```js\nmyReadableStreamBuffer.put('the last data this stream will ever see');\nmyReadableStreamBuffer.stop();\n```\n\nOnce the `ReadableStreamBuffer` is done pumping out the data in its internal buffer, it will emit the usual [`end`](https://nodejs.org/api/stream.html#stream_event_end) event. You cannot write any more data to the stream once you've called `stop()` on it.\n\n## Disclaimer\n\nNot supposed to be a speed demon, it's more for tests/debugging or weird edge cases. It works with an internal buffer that it copies contents to/from/around.\n\n## Contributors\n\nThanks to the following people for taking some time to contribute to this project.\n\n * Igor Dralyuk <idralyuk@ebay.com>\n * Simon Koudijs <simon.koudijs@intellifi.nl>\n\n## License\n\nnode-stream-buffer is free and unencumbered public domain software. For more information, see the accompanying UNLICENSE file.\n\n[badge-travis-img]: http://img.shields.io/travis/samcday/node-stream-buffer.svg?style=flat-square\n[badge-travis-url]: https://travis-ci.org/samcday/node-stream-buffer\n[badge-david-img]: https://img.shields.io/david/samcday/node-stream-buffer.svg?style=flat-square\n[badge-david-url]: https://david-dm.org/samcday/node-stream-buffer\n[badge-climate-img]: http://img.shields.io/codeclimate/github/samcday/node-stream-buffer.svg?style=flat-square\n[badge-climate-url]: https://codeclimate.com/github/samcday/node-stream-buffer\n[badge-coverage-img]: http://img.shields.io/codeclimate/coverage/github/samcday/node-stream-buffer.svg?style=flat-square\n[badge-coverage-url]: https://codeclimate.com/github/samcday/node-stream-buffer\n[badge-npm-img]: https://img.shields.io/npm/dm/stream-buffers.svg?style=flat-square\n[badge-npm-url]: https://www.npmjs.org/package/stream-buffers\n\n[node-buffer-docs]: http://nodejs.org/api/buffer.html\n",
+    "licenseText": "This is free and unencumbered software released into the public domain.\n\nAnyone is free to copy, modify, publish, use, compile, sell, or\ndistribute this software, either in source code form or as a compiled\nbinary, for any purpose, commercial or non-commercial, and by any\nmeans.\n\nIn jurisdictions that recognize copyright laws, the author or authors\nof this software dedicate any and all copyright interest in the\nsoftware to the public domain. We make this dedication for the benefit\nof the public at large and to the detriment of our heirs and\nsuccessors. We intend this dedication to be an overt act of\nrelinquishment in perpetuity of all present and future rights to this\nsoftware under copyright law.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND,\nEXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF\nMERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.\nIN NO EVENT SHALL THE AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES OR\nOTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,\nARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR\nOTHER DEALINGS IN THE SOFTWARE.\n\nFor more information, please refer to <http://unlicense.org/>"
+  },
+  "artifacts": [],
+  "remote": {
+    "resolved": "https://registry.npmjs.org/stream-buffers/-/stream-buffers-3.0.2.tgz#5249005a8d5c2d00b3a32e6e0a6ea209dc4f3521",
+    "type": "tarball",
+    "reference": "https://registry.npmjs.org/stream-buffers/-/stream-buffers-3.0.2.tgz",
+    "hash": "5249005a8d5c2d00b3a32e6e0a6ea209dc4f3521",
+    "registry": "npm",
+    "packageName": "stream-buffers"
+  },
+  "registry": "npm",
+  "hash": "5249005a8d5c2d00b3a32e6e0a6ea209dc4f3521"
+}

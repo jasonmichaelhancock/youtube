@@ -1,0 +1,56 @@
+{
+  "manifest": {
+    "name": "workbox-streams",
+    "version": "3.5.0",
+    "license": "Apache-2.0",
+    "author": {
+      "name": "Google's Web DevRel Team"
+    },
+    "description": "A library that makes it easier to work with Streams in the browser.",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/googlechrome/workbox.git"
+    },
+    "bugs": {
+      "url": "https://github.com/googlechrome/workbox/issues"
+    },
+    "homepage": "https://github.com/GoogleChrome/workbox",
+    "keywords": [
+      "workbox",
+      "workboxjs",
+      "service worker",
+      "sw",
+      "streams",
+      "readablestream"
+    ],
+    "scripts": {
+      "build": "gulp build-packages --package workbox-streams",
+      "version": "npm run build",
+      "prepare": "npm run build"
+    },
+    "workbox": {
+      "browserNamespace": "workbox.streams",
+      "packageType": "browser"
+    },
+    "main": "build/workbox-streams.prod.js",
+    "module": "index.mjs",
+    "dependencies": {
+      "workbox-core": "^3.5.0"
+    },
+    "_registry": "npm",
+    "_loc": "/home/vagrant/.cache/yarn/v2/npm-workbox-streams-3.5.0-a2295c5e28f05eecb3c275296e1f67e2f07d2eac/package.json",
+    "readmeFilename": "README.md",
+    "readme": "This module's documentation can be found at https://developers.google.com/web/tools/workbox/reference-docs/latest/workbox.streams\n"
+  },
+  "artifacts": [],
+  "remote": {
+    "resolved": "https://registry.npmjs.org/workbox-streams/-/workbox-streams-3.5.0.tgz#a2295c5e28f05eecb3c275296e1f67e2f07d2eac",
+    "type": "tarball",
+    "reference": "https://registry.npmjs.org/workbox-streams/-/workbox-streams-3.5.0.tgz",
+    "hash": "a2295c5e28f05eecb3c275296e1f67e2f07d2eac",
+    "registry": "npm",
+    "packageName": "workbox-streams"
+  },
+  "registry": "npm",
+  "hash": "a2295c5e28f05eecb3c275296e1f67e2f07d2eac"
+}

@@ -1,0 +1,40 @@
+{
+  "manifest": {
+    "name": "@webassemblyjs/helper-buffer",
+    "version": "1.7.6",
+    "description": "Buffer manipulation utility",
+    "main": "lib/index.js",
+    "module": "esm/index.js",
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/xtuc/webassemblyjs.git"
+    },
+    "publishConfig": {
+      "access": "public"
+    },
+    "author": {
+      "name": "Sven Sauleau"
+    },
+    "license": "MIT",
+    "devDependencies": {
+      "@webassemblyjs/wasm-parser": "1.7.6",
+      "jest-diff": "^22.4.0"
+    },
+    "_registry": "npm",
+    "_loc": "/home/vagrant/.cache/yarn/v2/npm-@webassemblyjs/helper-buffer-1.7.6-ba0648be12bbe560c25c997e175c2018df39ca3e/package.json"
+  },
+  "artifacts": [],
+  "remote": {
+    "resolved": "https://registry.npmjs.org/@webassemblyjs/helper-buffer/-/helper-buffer-1.7.6.tgz#ba0648be12bbe560c25c997e175c2018df39ca3e",
+    "type": "tarball",
+    "reference": "https://registry.npmjs.org/@webassemblyjs/helper-buffer/-/helper-buffer-1.7.6.tgz",
+    "hash": "ba0648be12bbe560c25c997e175c2018df39ca3e",
+    "registry": "npm",
+    "packageName": "@webassemblyjs/helper-buffer"
+  },
+  "registry": "npm",
+  "hash": "ba0648be12bbe560c25c997e175c2018df39ca3e"
+}

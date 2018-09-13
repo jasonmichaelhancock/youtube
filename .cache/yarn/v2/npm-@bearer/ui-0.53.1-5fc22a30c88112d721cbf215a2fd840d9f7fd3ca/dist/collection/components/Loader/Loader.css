@@ -1,0 +1,64 @@
+:host {
+  --dot-size: 15px;
+  --dot-stretch-width: 30px;
+  --dot-stretch-height: 12px;
+  --dot-count: 5; }
+
+#root {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+  margin-bottom: 50px; }
+
+#loader {
+  position: relative;
+  height: var(--dot-size);
+  width: calc(var(--dot-size) * var(--dot-count));
+  margin: var(--dot-stretch-height) 0; }
+
+#loader div {
+  width: var(--dot-size);
+  height: var(--dot-size);
+  border-radius: 50%;
+  position: absolute; }
+
+#d1 {
+  background: #3179eb;
+  animation: animate 3s linear infinite; }
+
+#d2 {
+  background: #4260e2;
+  animation: animate 3s linear infinite -0.6s; }
+
+#d3 {
+  background: #575fe7;
+  animation: animate 3s linear infinite -1.2s; }
+
+#d4 {
+  background: #7651e7;
+  animation: animate 3s linear infinite -1.8s; }
+
+#d5 {
+  background: #8d62ea;
+  animation: animate 3s linear infinite -2.4s; }
+
+@-webkit-keyframes animate {
+  0% {
+    left: calc(var(--dot-size) * var(--dot-count));
+    top: 0; }
+  80% {
+    left: 0;
+    top: 0; }
+  85% {
+    left: 0;
+    width: var(--dot-size);
+    height: var(--dot-size); }
+  90% {
+    width: var(--dot-stretch-width);
+    height: var(--dot-stretch-height); }
+  95% {
+    width: 0;
+    left: calc(var(--dot-size) * var(--dot-count)); }
+  100% {
+    left: calc(var(--dot-size) * var(--dot-count));
+    top: 0; } }

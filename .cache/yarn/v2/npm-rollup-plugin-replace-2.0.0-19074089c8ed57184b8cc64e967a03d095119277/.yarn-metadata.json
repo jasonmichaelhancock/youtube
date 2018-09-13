@@ -1,0 +1,67 @@
+{
+  "manifest": {
+    "name": "rollup-plugin-replace",
+    "version": "2.0.0",
+    "devDependencies": {
+      "eslint": "^4.6.1",
+      "mocha": "^3.5.0",
+      "rollup": "^0.49.2",
+      "rollup-plugin-buble": "^0.15.0"
+    },
+    "main": "dist/rollup-plugin-replace.cjs.js",
+    "module": "dist/rollup-plugin-replace.es.js",
+    "dependencies": {
+      "magic-string": "^0.22.4",
+      "minimatch": "^3.0.2",
+      "rollup-pluginutils": "^2.0.1"
+    },
+    "scripts": {
+      "test": "mocha",
+      "pretest": "npm run build",
+      "build": "rollup -c",
+      "prebuild": "rm -rf dist/*",
+      "prepublish": "npm test"
+    },
+    "files": [
+      "src",
+      "dist",
+      "README.md"
+    ],
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/rollup/rollup-plugin-replace.git"
+    },
+    "keywords": [
+      "rollup",
+      "rollup-plugin",
+      "es2015",
+      "npm",
+      "modules"
+    ],
+    "author": {
+      "name": "Rich Harris",
+      "email": "richard.a.harris@gmail.com"
+    },
+    "license": "MIT",
+    "bugs": {
+      "url": "https://github.com/rollup/rollup-plugin-replace/issues"
+    },
+    "homepage": "https://github.com/rollup/rollup-plugin-replace#readme",
+    "_registry": "npm",
+    "_loc": "/home/vagrant/.cache/yarn/v2/npm-rollup-plugin-replace-2.0.0-19074089c8ed57184b8cc64e967a03d095119277/package.json",
+    "readmeFilename": "README.md",
+    "readme": "# rollup-plugin-replace\n\nReplace strings in files while bundling them.\n\n\n## Installation\n\n```bash\nnpm install --save-dev rollup-plugin-replace\n```\n\n\n## Usage\n\nGenerally, you need to ensure that rollup-plugin-replace goes *before* other things (like rollup-plugin-commonjs) in your `plugins` array, so that those plugins can apply any optimisations such as dead code removal.\n\n\n```js\n// rollup.config.js\nimport replace from 'rollup-plugin-replace';\n\nexport default {\n  // ...\n  plugins: [\n    replace({\n      ENVIRONMENT: JSON.stringify('production')\n    })\n  ]\n};\n```\n\n\n## Options\n\n```js\n{\n  // a minimatch pattern, or array of patterns, of files that\n  // should be processed by this plugin (if omitted, all files\n  // are included by default)...\n  include: 'config.js',\n\n  // ...and those that shouldn't, if `include` is otherwise\n  // too permissive\n  exclude: 'node_modules/**',\n\n  // To replace every occurence of `<@foo@>` instead of every\n  // occurence of `foo`, supply delimiters\n  delimiters: ['<@', '@>'],\n\n  // All other options are treated as `string: replacement`\n  // replacers...\n  VERSION: '1.0.0',\n  ENVIRONMENT: JSON.stringify('development'),\n\n  // or `string: (id) => replacement` functions...\n  __dirname: (id) => `'${path.dirname(id)}'`,\n\n  // ...unless you want to be careful about separating\n  // values from other options, in which case you can:\n  values: {\n    VERSION: '1.0.0',\n    ENVIRONMENT: JSON.stringify('development')\n  }\n}\n```\n\n\n## Word boundaries\n\nBy default, values will only match if they are surrounded by *word boundaries* — i.e. with options like this...\n\n```js\n{\n  changed: 'replaced'\n}\n```\n\n...and code like this...\n\n```js\nconsole.log('changed');\nconsole.log('unchanged');\n```\n\n...the result will be this:\n\n```js\nconsole.log('replaced');\nconsole.log('unchanged');\n```\n\nIf that's not what you want, specify empty strings as delimiters:\n\n```js\n{\n  changed: 'replaced',\n  delimiters: ['', '']\n}\n```\n\n\n\n## License\n\nMIT\n",
+    "description": "Replace strings in files while bundling them."
+  },
+  "artifacts": [],
+  "remote": {
+    "resolved": "https://registry.npmjs.org/rollup-plugin-replace/-/rollup-plugin-replace-2.0.0.tgz#19074089c8ed57184b8cc64e967a03d095119277",
+    "type": "tarball",
+    "reference": "https://registry.npmjs.org/rollup-plugin-replace/-/rollup-plugin-replace-2.0.0.tgz",
+    "hash": "19074089c8ed57184b8cc64e967a03d095119277",
+    "registry": "npm",
+    "packageName": "rollup-plugin-replace"
+  },
+  "registry": "npm",
+  "hash": "19074089c8ed57184b8cc64e967a03d095119277"
+}

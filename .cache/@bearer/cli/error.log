@@ -1,0 +1,25 @@
+2018-09-13T21:21:12.866Z Error: no s3 host is set
+2018-09-13T21:21:12.866Z     at Config.s3Url (/usr/lib/node_modules/@bearer/cli/node_modules/@oclif/config/lib/config.js:219:19)
+2018-09-13T21:21:12.866Z     at UpdateCommand.fetchManifest (/usr/lib/node_modules/@bearer/cli/node_modules/@oclif/plugin-update/lib/commands/update.js:40:37)
+2018-09-13T21:21:12.866Z     at UpdateCommand.run (/usr/lib/node_modules/@bearer/cli/node_modules/@oclif/plugin-update/lib/commands/update.js:25:37)
+2018-09-13T21:21:12.866Z     at <anonymous>
+2018-09-13T21:24:56.873Z Error: Missing 1 required arg:
+2018-09-13T21:24:56.873Z ScenarioName
+2018-09-13T21:24:56.873Z See more help with --help
+2018-09-13T21:24:56.873Z     at validateArgs (/usr/lib/node_modules/@bearer/cli/node_modules/@oclif/parser/lib/validate.js:15:19)
+2018-09-13T21:24:56.873Z     at Object.validate (/usr/lib/node_modules/@bearer/cli/node_modules/@oclif/parser/lib/validate.js:38:5)
+2018-09-13T21:24:56.873Z     at Object.parse (/usr/lib/node_modules/@bearer/cli/node_modules/@oclif/parser/lib/index.js:26:7)
+2018-09-13T21:24:56.873Z     at New.parse (/usr/lib/node_modules/@bearer/cli/node_modules/@oclif/command/lib/command.js:68:41)
+2018-09-13T21:24:56.873Z     at New.run (/usr/lib/node_modules/@bearer/cli/lib/commands/new.js:7:31)
+2018-09-13T21:24:56.873Z     at New._run (/usr/lib/node_modules/@bearer/cli/node_modules/@oclif/command/lib/command.js:29:31)
+2018-09-13T21:24:56.873Z     at <anonymous>
+2018-09-13T23:01:57.354Z Error: Missing 1 required arg:
+2018-09-13T23:01:57.354Z ScenarioName
+2018-09-13T23:01:57.354Z See more help with --help
+2018-09-13T23:01:57.354Z     at validateArgs (/usr/lib/node_modules/@bearer/cli/node_modules/@oclif/parser/lib/validate.js:15:19)
+2018-09-13T23:01:57.354Z     at Object.validate (/usr/lib/node_modules/@bearer/cli/node_modules/@oclif/parser/lib/validate.js:38:5)
+2018-09-13T23:01:57.354Z     at Object.parse (/usr/lib/node_modules/@bearer/cli/node_modules/@oclif/parser/lib/index.js:26:7)
+2018-09-13T23:01:57.354Z     at New.parse (/usr/lib/node_modules/@bearer/cli/node_modules/@oclif/command/lib/command.js:68:41)
+2018-09-13T23:01:57.354Z     at New.run (/usr/lib/node_modules/@bearer/cli/lib/commands/new.js:7:31)
+2018-09-13T23:01:57.354Z     at New._run (/usr/lib/node_modules/@bearer/cli/node_modules/@oclif/command/lib/command.js:29:31)
+2018-09-13T23:01:57.354Z     at <anonymous>

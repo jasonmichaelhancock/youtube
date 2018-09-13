@@ -1,0 +1,25 @@
+{
+  "manifest": {
+    "name": "jest-regex-util",
+    "version": "23.3.0",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/facebook/jest.git"
+    },
+    "license": "MIT",
+    "main": "build/index.js",
+    "_registry": "npm",
+    "_loc": "/home/vagrant/.cache/yarn/v2/npm-jest-regex-util-23.3.0-5f86729547c2785c4002ceaa8f849fe8ca471bc5/package.json"
+  },
+  "artifacts": [],
+  "remote": {
+    "resolved": "https://registry.npmjs.org/jest-regex-util/-/jest-regex-util-23.3.0.tgz#5f86729547c2785c4002ceaa8f849fe8ca471bc5",
+    "type": "tarball",
+    "reference": "https://registry.npmjs.org/jest-regex-util/-/jest-regex-util-23.3.0.tgz",
+    "hash": "5f86729547c2785c4002ceaa8f849fe8ca471bc5",
+    "registry": "npm",
+    "packageName": "jest-regex-util"
+  },
+  "registry": "npm",
+  "hash": "5f86729547c2785c4002ceaa8f849fe8ca471bc5"
+}

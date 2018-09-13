@@ -1,0 +1,101 @@
+{
+  "manifest": {
+    "name": "@bearer/core",
+    "version": "0.53.1",
+    "description": "Bearer Core",
+    "main": "dist/main.js",
+    "types": "dist/index.d.ts",
+    "module": "dist/main.es.js",
+    "author": {
+      "name": "Bearer"
+    },
+    "license": "MIT",
+    "files": [
+      "dist/"
+    ],
+    "scripts": {
+      "start": "yarn build",
+      "build": "per-env",
+      "build:development": "yarn build:bundle -w",
+      "build:production": "NODE_ENV=production yarn build:bundle ",
+      "build:bundle": "rollup -c",
+      "prepublish": "yarn build:production",
+      "prepublishOnly": "BUILD=distribution NODE_ENV=production yarn build:production",
+      "test": "jest"
+    },
+    "jest": {
+      "moduleFileExtensions": [
+        "ts",
+        "tsx",
+        "js"
+      ],
+      "transform": {
+        "^.+\\.(ts|tsx)$": "<rootDir>/preprocessor.js"
+      },
+      "testMatch": [
+        "**/__tests__/*.+(ts|tsx|js)"
+      ],
+      "setupFiles": [
+        "./jest.setup.js"
+      ]
+    },
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/Bearer/bearer.git"
+    },
+    "devDependencies": {
+      "@types/fbemitter": "^2.0.32",
+      "@types/jest": "^23.1.1",
+      "@types/node": "9.6.7",
+      "babel-core": "^6.26.3",
+      "babel-loader": "^7.1.4",
+      "babel-plugin-external-helpers": "^6.22.0",
+      "babel-plugin-transform-inline-environment-variables": "^0.4.3",
+      "babel-plugin-transform-runtime": "^6.23.0",
+      "babel-polyfill": "^6.26.0",
+      "babel-preset-env": "^1.7.0",
+      "dotenv": "^6.0.0",
+      "eslint": "^4.19.1",
+      "eslint-config-airbnb-base": "^13.0.0",
+      "eslint-plugin-import": "^2.12.0",
+      "jest": "^23.1.0",
+      "jest-fetch-mock": "^1.6.5",
+      "per-env": "^1.0.2",
+      "rollup": "^0.61.1",
+      "rollup-plugin-commonjs": "^9.1.3",
+      "rollup-plugin-copy": "^0.2.3",
+      "rollup-plugin-html-entry": "^0.2.0",
+      "rollup-plugin-node-resolve": "^3.3.0",
+      "rollup-plugin-terser": "^1.0.1",
+      "rollup-plugin-typescript2": "^0.15.0",
+      "rollup-watch": "^4.3.1",
+      "ts-jest": "^22.4.6"
+    },
+    "dependencies": {
+      "@stencil/core": "0.11.2",
+      "babel-plugin-inline-dotenv": "^1.1.2",
+      "fbemitter": "^2.1.1",
+      "post-robot": "^8.0.26",
+      "rc": "^1.2.8",
+      "rollup-plugin-env": "^0.21.4",
+      "rollup-plugin-replace": "^2.0.0",
+      "typescript": "^2.9.2"
+    },
+    "gitHead": "cb2654b19000e2ad6f31a0e4ed715a6298c8df2d",
+    "_registry": "npm",
+    "_loc": "/home/vagrant/.cache/yarn/v2/npm-@bearer/core-0.53.1-963216ef4b4f77c7d55494af1b55718c6c4d999f/package.json",
+    "readmeFilename": "README.md",
+    "readme": "# Bearer Core\n\nBearer Core contains helpers and business logic that you must use if you want create new components and interact with Bearer servers.\n\n* Authentication\n* networks helpers\n* Decorators [README](./src/README/md)\n\n## Development\n\nBuild a local bundle\n\n```bash\ncp .env{.example,}\n\nyarn build\nyarn link\n```\n\nsomewhere else in a different repository\n\n```bash\nyarn link \"@bearer/core\"\n```\n"
+  },
+  "artifacts": [],
+  "remote": {
+    "resolved": "https://registry.npmjs.org/@bearer/core/-/core-0.53.1.tgz#963216ef4b4f77c7d55494af1b55718c6c4d999f",
+    "type": "tarball",
+    "reference": "https://registry.npmjs.org/@bearer/core/-/core-0.53.1.tgz",
+    "hash": "963216ef4b4f77c7d55494af1b55718c6c4d999f",
+    "registry": "npm",
+    "packageName": "@bearer/core"
+  },
+  "registry": "npm",
+  "hash": "963216ef4b4f77c7d55494af1b55718c6c4d999f"
+}

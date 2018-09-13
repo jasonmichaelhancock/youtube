@@ -1,0 +1,62 @@
+{
+  "manifest": {
+    "name": "http-assert",
+    "description": "assert with status codes",
+    "version": "1.4.0",
+    "license": "MIT",
+    "keywords": [
+      "assert",
+      "http"
+    ],
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/jshttp/http-assert.git"
+    },
+    "dependencies": {
+      "deep-equal": "~1.0.1",
+      "http-errors": "~1.7.1"
+    },
+    "devDependencies": {
+      "eslint": "5.5.0",
+      "eslint-config-standard": "12.0.0",
+      "eslint-plugin-import": "2.14.0",
+      "eslint-plugin-markdown": "1.0.0-beta.6",
+      "eslint-plugin-node": "7.0.1",
+      "eslint-plugin-promise": "4.0.0",
+      "eslint-plugin-standard": "4.0.0",
+      "istanbul": "0.4.5",
+      "mocha": "2.5.3"
+    },
+    "files": [
+      "HISTORY.md",
+      "LICENSE",
+      "README.md",
+      "index.js"
+    ],
+    "engines": {
+      "node": ">= 0.8"
+    },
+    "scripts": {
+      "lint": "eslint --plugin markdown --ext js,md .",
+      "test": "mocha --reporter spec --bail --check-leaks test/",
+      "test-cov": "istanbul cover node_modules/mocha/bin/_mocha -- --reporter dot --check-leaks test/",
+      "test-travis": "istanbul cover node_modules/mocha/bin/_mocha --report lcovonly -- --reporter spec --check-leaks test/"
+    },
+    "_registry": "npm",
+    "_loc": "/home/vagrant/.cache/yarn/v2/npm-http-assert-1.4.0-0e550b4fca6adf121bbeed83248c17e62f593a9a/package.json",
+    "readmeFilename": "README.md",
+    "readme": "# http-assert\n\n[![NPM Version][npm-image]][npm-url]\n[![NPM Downloads][downloads-image]][downloads-url]\n[![Node.js Version][node-version-image]][node-version-url]\n[![Build Status][travis-image]][travis-url]\n[![Test Coverage][coveralls-image]][coveralls-url]\n\nAssert with status codes. Like ctx.throw() in Koa, but with a guard.\n\n## Install\n\nThis is a [Node.js](https://nodejs.org/en/) module available through the\n[npm registry](https://www.npmjs.com/). Installation is done using the\n[`npm install` command](https://docs.npmjs.com/getting-started/installing-npm-packages-locally):\n\n```bash\n$ npm install http-assert\n```\n\n## Example\n```js\nvar assert = require('http-assert')\nvar ok = require('assert')\n\nvar username = 'foobar' // username from request\n\ntry {\n  assert(username === 'fjodor', 401, 'authentication failed')\n} catch (err) {\n  ok(err.status === 401)\n  ok(err.message === 'authentication failed')\n  ok(err.expose)\n}\n```\n\n## API\n\nThe API of this module is intended to be similar to the\n[Node.js `assert` module](https://nodejs.org/dist/latest/docs/api/assert.html).\n\nEach function will throw an instance of `HttpError` from\n[the `http-errors` module](https://www.npmjs.com/package/http-errors)\nwhen the assertion fails.\n\n### assert(value, [status], [message], [properties])\n\nTests if `value` is truthy. If `value` is not truthy, an `HttpError`\nis thrown that is constructed with the given `status`, `message`,\nand `properties`.\n\n### assert.deepEqual(a, b, [status], [message], [properties])\n\nTests for deep equality between `a` and `b`. Primitive values are\ncompared with the Abstract Equality Comparison (`==`). If `a` and `b`\nare not equal, an `HttpError` is thrown that is constructed with the\ngiven `status`, `message`, and `properties`.\n\n### assert.equal(a, b, [status], [message], [properties])\n\nTests shallow, coercive equality between `a` and `b` using the Abstract\nEquality Comparison (`==`). If `a` and `b` are not equal, an `HttpError`\nis thrown that is constructed with the given `status`, `message`,\nand `properties`.\n\n### assert.notDeepEqual(a, b, [status], [message], [properties])\n\nTests for deep equality between `a` and `b`. Primitive values are\ncompared with the Abstract Equality Comparison (`==`). If `a` and `b`\nare equal, an `HttpError` is thrown that is constructed with the given\n`status`, `message`, and `properties`.\n\n### assert.notEqual(a, b, [status], [message], [properties])\n\nTests shallow, coercive equality between `a` and `b` using the Abstract\nEquality Comparison (`==`). If `a` and `b` are equal, an `HttpError` is\nthrown that is constructed with the given `status`, `message`, and\n`properties`.\n\n### assert.notStrictEqual(a, b, [status], [message], [properties])\n\nTests strict equality between `a` and `b` as determined by the SameValue\nComparison (`===`). If `a` and `b` are equal, an `HttpError` is thrown\nthat is constructed with the given `status`, `message`, and `properties`.\n\n### assert.ok(value, [status], [message], [properties])\n\nTests if `value` is truthy. If `value` is not truthy, an `HttpError`\nis thrown that is constructed with the given `status`, `message`,\nand `properties`.\n\n### assert.strictEqual(a, b, [status], [message], [properties])\n\nTests strict equality between `a` and `b` as determined by the SameValue\nComparison (`===`). If `a` and `b` are not equal, an `HttpError`\nis thrown that is constructed with the given `status`, `message`,\nand `properties`.\n\n## Licence\n\n[MIT](LICENSE)\n\n[npm-image]: https://img.shields.io/npm/v/http-assert.svg\n[npm-url]: https://npmjs.org/package/http-assert\n[node-version-image]: https://img.shields.io/node/v/http-assert.svg\n[node-version-url]: https://nodejs.org/en/download/\n[travis-image]: https://img.shields.io/travis/jshttp/http-assert/master.svg\n[travis-url]: https://travis-ci.org/jshttp/http-assert\n[coveralls-image]: https://img.shields.io/coveralls/jshttp/http-assert/master.svg\n[coveralls-url]: https://coveralls.io/r/jshttp/http-assert\n[downloads-image]: https://img.shields.io/npm/dm/http-assert.svg\n[downloads-url]: https://npmjs.org/package/http-assert\n",
+    "licenseText": "(The MIT License)\n\nCopyright (c) 2014 \n\nPermission is hereby granted, free of charge, to any person obtaining\na copy of this software and associated documentation files (the\n'Software'), to deal in the Software without restriction, including\nwithout limitation the rights to use, copy, modify, merge, publish,\ndistribute, sublicense, and/or sell copies of the Software, and to\npermit persons to whom the Software is furnished to do so, subject to\nthe following conditions:\n\nThe above copyright notice and this permission notice shall be\nincluded in all copies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND,\nEXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF\nMERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.\nIN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY\nCLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,\nTORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE\nSOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.\n"
+  },
+  "artifacts": [],
+  "remote": {
+    "resolved": "https://registry.npmjs.org/http-assert/-/http-assert-1.4.0.tgz#0e550b4fca6adf121bbeed83248c17e62f593a9a",
+    "type": "tarball",
+    "reference": "https://registry.npmjs.org/http-assert/-/http-assert-1.4.0.tgz",
+    "hash": "0e550b4fca6adf121bbeed83248c17e62f593a9a",
+    "registry": "npm",
+    "packageName": "http-assert"
+  },
+  "registry": "npm",
+  "hash": "0e550b4fca6adf121bbeed83248c17e62f593a9a"
+}

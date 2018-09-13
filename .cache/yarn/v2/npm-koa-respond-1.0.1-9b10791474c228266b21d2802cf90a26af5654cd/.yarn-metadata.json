@@ -1,0 +1,73 @@
+{
+  "manifest": {
+    "name": "koa-respond",
+    "version": "1.0.1",
+    "description": "Add useful methods to the Koa context for sending a response",
+    "main": "lib/koa-respond.js",
+    "engines": {
+      "node": ">=4.0.0",
+      "npm": ">=3.7.0"
+    },
+    "scripts": {
+      "test": "mocha test/**/*.js --require test/index.js",
+      "test-watch": "npm run test -- --watch",
+      "lint": "esw lib/ test/",
+      "lint-watch": "npm run lint -- --watch",
+      "cover": "istanbul cover  -x \"**example/**\" ./node_modules/mocha/bin/_mocha -- test/**/*.js --require test/index.js",
+      "coveralls": "istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- test/**/*.js --require test/index.js && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
+      "do-publish": "npm run lint && npm run cover && npm publish"
+    },
+    "files": [
+      "lib/"
+    ],
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/jeffijoe/koa-respond.git"
+    },
+    "keywords": [],
+    "author": {
+      "name": "Jeff Hansen",
+      "email": "jeff@jeffijoe.com"
+    },
+    "license": "MIT",
+    "bugs": {
+      "url": "https://github.com/jeffijoe/koa-respond/issues"
+    },
+    "homepage": "https://github.com/jeffijoe/koa-respond#readme",
+    "devDependencies": {
+      "chai": "^3.5.0",
+      "coveralls": "^2.11.12",
+      "eslint": "^3.5.0",
+      "eslint-config-standard": "^6.0.0",
+      "eslint-plugin-promise": "^2.0.1",
+      "eslint-plugin-standard": "^2.0.0",
+      "eslint-watch": "^2.1.14",
+      "istanbul": "^0.4.5",
+      "koa": "^2.0.0",
+      "koa-router": "^7.0.1",
+      "mocha": "^3.0.2",
+      "sinon": "^1.17.5",
+      "sinon-chai": "^2.8.0",
+      "supertest": "^2.0.0"
+    },
+    "dependencies": {
+      "is-string": "^1.0.4"
+    },
+    "_registry": "npm",
+    "_loc": "/home/vagrant/.cache/yarn/v2/npm-koa-respond-1.0.1-9b10791474c228266b21d2802cf90a26af5654cd/package.json",
+    "readmeFilename": "README.md",
+    "readme": "# koa-respond\n\n[![npm](https://img.shields.io/npm/v/koa-respond.svg)](https://www.npmjs.com/package/koa-respond)\n[![dependency Status](https://img.shields.io/david/jeffijoe/koa-respond.svg)](https://david-dm.org/jeffijoe/koa-respond)\n[![devDependency Status](https://img.shields.io/david/dev/jeffijoe/koa-respond.svg)](https://david-dm.org/jeffijoe/koa-respond)\n[![Build Status](https://img.shields.io/travis/jeffijoe/koa-respond.svg)](https://travis-ci.org/jeffijoe/koa-respond)\n[![Coveralls](https://img.shields.io/coveralls/jeffijoe/koa-respond.svg)](https://coveralls.io/github/jeffijoe/koa-respond)\n[![Code Climate](https://img.shields.io/codeclimate/github/jeffijoe/koa-respond.svg)](https://codeclimate.com/github/jeffijoe/koa-respond)\n[![npm](https://img.shields.io/npm/dt/koa-respond.svg)](https://www.npmjs.com/package/koa-respond)\n[![license](https://img.shields.io/npm/l/koa-respond.svg)](https://github.com/jeffijoe/koa-respond/blob/master/LICENSE.md)\n[![node](https://img.shields.io/node/v/koa-respond.svg)](https://www.npmjs.com/package/koa-respond)\n[![JavaScript Style Guide](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)\n\nMiddleware for Koa that adds useful methods to the Koa context.\n\n## Installation\n\n```bash\nnpm install --save koa-respond\n```\n\n## Usage\n\n```js\n// Install it\nconst respond = require('koa-respond');\n\n// For Koa v2 - if you are looking for v1, scroll to the bottom.\napp.use(respond());\n\n// Use it\napp.use((ctx) => {\n  // Sets status to 200 and the body to `{ id: 123, name: 'Dat Boi' }`\n  ctx.ok({ id: 123, name: 'Dat Boi' });\n\n  // Both of these set status to 404 and\n  // the body to `{ message: 'Not found, boii' }`\n  ctx.notFound('Not found, boii');\n  ctx.notFound({ message: 'Not found, boii' });\n\n  // And everyone's favorite..\n  ctx.badRequest({ error: 'missing input' });\n\n  // Or if you prefer to do it yourself..\n  // Both of these send a HTTP 201 with a body\n  // of `{ message: 'new beginnings!' }`\n  ctx.send(201, 'new beginnings!');\n  ctx.send(201, { message: 'new beginnings!' });\n});\n```\n\n## Methods\n\nAll methods call the `send` method with the corresponding status code as well as the body. That means they support the same overloads as `send`:\n\n* With a string; wraps it in an object with a `message` property. That means the following 2 calls do the same thing:\n\n  ```js\n  ctx.send(400, 'lol no');\n  ctx.send(400, { message: 'lol no' });\n  ```\n\n* With an object; sends the object as JSON.\n\n  ```js\n  ctx.send(200, { id: 123, name: 'new entity' });\n  ```\n\nIf you wish to disable the automatic wrapping of strings globally, you can instantiate `koa-respond` with `autoMessage: false`.\n\n```js\napp.use(respond({\n  autoMessage: false\n}))\n```\n\n### Available methods\n\n* `ok` - `HTTP 200`\n* `created` - `HTTP 201`\n* `noContent` - `HTTP 204` - **always sends an empty response!**\n* `badRequest` - `HTTP 400`\n* `unauthorized` - `HTTP 401`\n* `forbidden` - `HTTP 403`\n* `notFound` - `HTTP 404`\n* `internalServerError` - `HTTP 500`\n\n## Does this work for Koa 1?\n\n**Not out of the box**, because it's time you move on to v2.\n\nTo use `koa-respond` in Koa v1, you need to patch the context yourself. This is what the v2 middleware does.\n\n```js\nconst respond = require('koa-respond');\n\n// Middleware to install koa-respond.\napp.use(function *(next) {\n  respond().patch(this);\n  yield next;\n});\n\n// Now the methods are available.\napp.use(function *() {\n  this.ok({ id: 123, name: 'Bob' });\n});\n```\n\n## Adding additional methods\n\nIf you feel like some methods are missing, you can add them yourself, like so:\n\n```js\napp.use(respond({\n  statusMethods: {\n    imATeapot: 418,\n    enhanceYourCalm: 420\n  }\n}));\n\napp.use((ctx) => {\n  ctx.imATeapot('Hello, a Teapot I am.');\n  ctx.enhanceYourCalm({ todo: 'blaze it' });\n});\n```\n\n## Even more custom methods\n\nIf you just want to add shortcuts without adding an additional middleware, you can do that, too.\n\n```js\napp.use(respond({\n  methods: {\n    shizzle: (ctx, message) => {\n      ctx.send(200, message + ', fo-shizzle');\n    }\n  }\n}));\n\napp.use((ctx) => {\n  // HTTP 200 { message: 'Koa is the best, fo-shizzle' }\n  ctx.shizzle('Koa is the best');\n});\n```\n\n# Contributing\n\n## `npm run` scripts\n\n* `npm run test`: Runs tests once\n* `npm run test-watch`: Runs tests in watch-mode\n* `npm run lint`: Lints the code once\n* `npm run lint-watch`: Lints the code in watch-mode\n* `npm run cover`: Runs code coverage using `istanbul`\n* `npm run coveralls`: Used by coveralls\n\n# Author\n\nJeff Hansen - [@Jeffijoe](https://twitter.com/Jeffijoe)\n",
+    "licenseText": "# The MIT License (MIT)\n\nCopyright (c) Jeff Hansen 2016 to present.\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all\ncopies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\nSOFTWARE."
+  },
+  "artifacts": [],
+  "remote": {
+    "resolved": "https://registry.npmjs.org/koa-respond/-/koa-respond-1.0.1.tgz#9b10791474c228266b21d2802cf90a26af5654cd",
+    "type": "tarball",
+    "reference": "https://registry.npmjs.org/koa-respond/-/koa-respond-1.0.1.tgz",
+    "hash": "9b10791474c228266b21d2802cf90a26af5654cd",
+    "registry": "npm",
+    "packageName": "koa-respond"
+  },
+  "registry": "npm",
+  "hash": "9b10791474c228266b21d2802cf90a26af5654cd"
+}

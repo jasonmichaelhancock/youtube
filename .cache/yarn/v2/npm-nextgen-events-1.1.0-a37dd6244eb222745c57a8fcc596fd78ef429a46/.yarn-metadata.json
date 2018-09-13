@@ -1,0 +1,74 @@
+{
+  "manifest": {
+    "name": "nextgen-events",
+    "version": "1.1.0",
+    "description": "The next generation of events handling for javascript! New: abstract away the network!",
+    "main": "lib/NextGenEvents.js",
+    "engines": {
+      "node": ">=6.0.0"
+    },
+    "dependencies": {},
+    "devDependencies": {
+      "browserify": "^16.2.2",
+      "uglify-js-es6": "^2.8.9",
+      "ws": "^5.1.1"
+    },
+    "scripts": {
+      "test": "tea-time -R dot"
+    },
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/cronvel/nextgen-events.git"
+    },
+    "keywords": [
+      "events",
+      "async",
+      "emit",
+      "listener",
+      "context",
+      "series",
+      "serialize",
+      "namespace",
+      "proxy",
+      "network"
+    ],
+    "author": {
+      "name": "Cédric Ronvel"
+    },
+    "license": "MIT",
+    "bugs": {
+      "url": "https://github.com/cronvel/nextgen-events/issues"
+    },
+    "config": {
+      "tea-time": {
+        "coverDir": [
+          "lib"
+        ]
+      }
+    },
+    "copyright": {
+      "title": "Next-Gen Events",
+      "years": [
+        2015,
+        2018
+      ],
+      "owner": "Cédric Ronvel"
+    },
+    "_registry": "npm",
+    "_loc": "/home/vagrant/.cache/yarn/v2/npm-nextgen-events-1.1.0-a37dd6244eb222745c57a8fcc596fd78ef429a46/package.json",
+    "readmeFilename": "README.md",
+    "readme": "\n\n# NextGen Events\n\nThe next generation of events handling!\n\n* License: MIT\n* Current status: stable\n* Platform: Node.js and browsers\n\n*NextGen Events* solves common trouble that one may encounter when dealing with events and listeners.\n\n## Feature highlights:\n\n* Standard event-handling 99% compatible with Node.js built-in events\n* `.emit()` supports a completion callback\n* Support for asynchronous event-handling\n* Multiple listeners can be tied to a single context\n* A context can be temporarly *disabled*\n* A context can be in *queue* mode: events for its listeners are stored, they will be *resumed* when the context is enabled again\n* A context can be in serialization mode: each sync/async listener run once the previous sync/async listener has fully completed\n* Interruptible event emitting: if the emitter is interruptible, a listener can stop downstream propagation,\n  thus emitting an 'interrupt' event\n* **NEW: state-events**: so late listeners will never miss the *ready* event again!\n* **NEW: handling group of emitters**\n* **NEW: proxy services!** Abstract away your network: emit and listen to emitter on the other side of the plug!\n* **NEW: .waitFor()/.waitForAll()** the Promise returning variant of `.once()`!\n* **NEW: .waitForEmit()** the Promise returning variant of `.emit()` + *completion callback*\n\nEmitting events asynchronously or registering a listener that will be triggered asynchronously because it performs\nnon-critical tasks has some virtues: it gives some breath to the event-loop, so important I/O can be processed as soon as possible.\n\nYou will love the *state-event* concept: you define a *state* bounded to the event of the same name, and when the bounded event fire,\nthat state is *turned on*.\nIf a new listener is added for that event and the bounded state is *on*, the new listener is triggered immediately with\nthe same arguments that was previously *emitted*.\nYou will typically make events like *ready*, *open*, *end* or *close*, etc, *state-events*, **so late listeners will never miss\nyour event again!**\n\nContexts are really useful, it handles a collection of listeners.\nAt first glance, it looks like a sort of namespace for listeners.\nBut it can do more than that: you can turn a context off, so every listener tied to this context will not be triggered anymore.\nThen turn it on and they will be available again. \n\nYou can even switch a context into queue mode: the listeners tied to it will not be triggered, but events for those\nlisteners will be stored in the context. When the context is resumed, all retained events will trigger their listeners.\nThis allow one to postpone some operations, while performing some other high priority tasks, but be careful:\ndepending on your application nature, the queue may grow fast and consumes a lot of memory very quickly.\n\nOne of the top feature of this lib is the context serialization: it greatly eases the flow of the code!\nWhen differents events can fire at the same time, there are use cases when one does not want that async listeners run concurrently.\nThe context serialization feature will ensure you that no concurrency will happen for listeners tied to it.\nYou do not have to code fancy or complicated tests to cover all cases anymore: just let *NextGen Events* do it for you!\n\n**Proxy services are awesome.** They abstract away the network so we can emit and listen to emitter on the other side of the plug!\nBoth side of the channel create a Proxy, and add to it local and remote *services*, i.e. event emitters, and that's all.\nA remote service looks like a normal (i.e. local) emitter, and share the same API (with few limitations).\nIt's totally protocol agnostic, you just define two methods for your proxy: one to read from the network and one to send to it\n(e.g. for Web Socket, this is a one-liner).\n\n\n\n# Install\n\nUse npm:\n\n```\nnpm install nextgen-events\n```\n\n\n# Getting started\n\nBy the way you can create an event emitter simply by creating a new object, this way:\n\n```js\nvar NgEmitter = require( 'nextgen-events' ) ;\nvar emitter = new NgEmitter() ;\n```\n\nYou can use `var emitter = Object.create( NgEmitter.prototype )` as well, the object does not need the constructor.\n\nBut in real life, you would make your own objects inherit it:\n\n```js\nvar NgEmitter = require( 'nextgen-events' ) ;\n\nfunction myClass()\n{\n\t// myClass constructor code here\n}\n\nmyClass.prototype = Object.create( NgEmitter.prototype ) ;\nmyClass.prototype.constructor = myClass ;\t// restore the constructor\n\n// define other methods for myClass...\n```\n\nThe basis of the event emitter works like Node.js built-in events:\n\n```js\nvar NgEmitter = require( 'nextgen-events' ) ;\nvar emitter = new NgEmitter() ;\n\n// Normal listener\nemitter.on( 'message' , function( message ) {\n\tconsole.log( 'Message received: ' , message ) ;\n} ) ;\n\n// One time listener:\nemitter.once( 'close' , function() {\n\tconsole.log( 'Connection closed!' ) ;\n} ) ;\n\n// The error listener: if it is not defined, the error event will throw an exception\nemitter.on( 'error' , function( error ) {\n\tconsole.log( 'Shit happens: ' , error ) ;\n} ) ;\n\nemitter.emit( 'message' , 'Hello world!' ) ;\n// ...\n```\n\n\n\n# References\n\n## Table of Content\n\n* [Events](doc/documentation.md#ref.events)\n\t* [.addListener() / .on()](doc/documentation.md#ref.events.addListener)\n\t* [.once()](doc/documentation.md#ref.events.once)\n\t* [.waitFor()](doc/documentation.md#ref.events.waitFor)\n\t* [.waitForAll()](doc/documentation.md#ref.events.waitForAll)\n\t* [.removeListener() / .off()](doc/documentation.md#ref.events.removeListener)\n\t* [.removeAllListeners()](doc/documentation.md#ref.events.removeAllListeners)\n\t* [.setMaxListeners()](doc/documentation.md#ref.events.setMaxListeners)\n\t* [.listeners()](doc/documentation.md#ref.events.listeners)\n\t* [.listenerCount()](doc/documentation.md#ref.events.listenerCount)\n\t* [.emit()](doc/documentation.md#ref.events.emit)\n\t* [.waitForEmit()](doc/documentation.md#ref.events.waitForEmit)\n\t* [.defineStates()](doc/documentation.md#ref.events.defineStates)\n\t* [.hasState()](doc/documentation.md#ref.events.hasState)\n\t* [.getAllStates()](doc/documentation.md#ref.events.getAllStates)\n\t* [.setNice()](doc/documentation.md#ref.events.setNice)\n\t* [.desyncUseNextTick()](doc/documentation.md#ref.events.desyncUseNextTick)\n\t* [.setInterruptible()](doc/documentation.md#ref.events.setInterruptible)\n\t* [.addListenerContext()](doc/documentation.md#ref.events.addListenerContext)\n\t* [.disableListenerContext()](doc/documentation.md#ref.events.disableListenerContext)\n\t* [.queueListenerContext()](doc/documentation.md#ref.events.queueListenerContext)\n\t* [.enableListenerContext()](doc/documentation.md#ref.events.enableListenerContext)\n\t* [.setListenerContextNice()](doc/documentation.md#ref.events.setListenerContextNice)\n\t* [.serializeListenerContext()](doc/documentation.md#ref.events.serializeListenerContext)\n\t* [.destroyListenerContext()](doc/documentation.md#ref.events.destroyListenerContext)\n\t* [NextGenEvents.reset()](doc/documentation.md#ref.events.reset)\n\t* [NextGenEvents.share()](doc/documentation.md#ref.events.share)\n\t* [NextGenEvents.groupAddListener() / NextGenEvents.groupOn()](doc/documentation.md#ref.events.groupAddListener)\n\t* [NextGenEvents.groupOnce()](doc/documentation.md#ref.events.groupOnce)\n\t* [NextGenEvents.groupGlobalOnce()](doc/documentation.md#ref.events.groupGlobalOnce)\n\t* [NextGenEvents.groupGlobalOnceAll()](doc/documentation.md#ref.events.groupGlobalOnceAll)\n\t* [NextGenEvents.groupRemoveListener() / NextGenEvents.groupOff()](doc/documentation.md#ref.events.groupRemoveListener)\n\t* [NextGenEvents.groupRemoveAllListener()](doc/documentation.md#ref.events.groupRemoveAllListener)\n\t* [NextGenEvents.groupEmit()](doc/documentation.md#ref.events.groupEmit)\n\t* [NextGenEvents.groupDefineStates()](doc/documentation.md#ref.events.groupDefineStates)\n\t* [Built-in events](doc/documentation.md#ref.builtin-events)\n\t\t* [Error event](doc/documentation.md#ref.builtin-events.error)\n\t\t* [NewListener event](doc/documentation.md#ref.builtin-events.newListener)\n\t\t* [RemoveListener event](doc/documentation.md#ref.builtin-events.removeListener)\n\t\t* [Interrupt event](doc/documentation.md#ref.builtin-events.interrupt)\n\t* [the *nice feature*](doc/documentation.md#ref.note.nice)\n\t* [incompatibilities](doc/documentation.md#incompatibilities)\n* [Proxy Services](doc/documentation.md#ref.proxy)\n\n\n\n",
+    "licenseText": "The MIT License (MIT)\n\nCopyright (c) 2014 Cédric Ronvel\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all\ncopies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\nSOFTWARE.\n"
+  },
+  "artifacts": [],
+  "remote": {
+    "resolved": "https://registry.npmjs.org/nextgen-events/-/nextgen-events-1.1.0.tgz#a37dd6244eb222745c57a8fcc596fd78ef429a46",
+    "type": "tarball",
+    "reference": "https://registry.npmjs.org/nextgen-events/-/nextgen-events-1.1.0.tgz",
+    "hash": "a37dd6244eb222745c57a8fcc596fd78ef429a46",
+    "registry": "npm",
+    "packageName": "nextgen-events"
+  },
+  "registry": "npm",
+  "hash": "a37dd6244eb222745c57a8fcc596fd78ef429a46"
+}

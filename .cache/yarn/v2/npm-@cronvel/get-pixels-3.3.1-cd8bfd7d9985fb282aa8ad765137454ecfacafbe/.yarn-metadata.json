@@ -1,0 +1,59 @@
+{
+  "manifest": {
+    "name": "@cronvel/get-pixels",
+    "version": "3.3.1",
+    "description": "Pruned version of the 'get-pixels' package by Mikola Lysenko (only node.js and local fs files)",
+    "main": "node-pixels.js",
+    "dependencies": {
+      "ndarray": "^1.0.13",
+      "pngjs": "^2.0.0",
+      "ndarray-pack": "^1.1.1",
+      "jpeg-js": "^0.1.1",
+      "omggif": "^1.0.5",
+      "node-bitmap": "0.0.1"
+    },
+    "devDependencies": {},
+    "repository": {
+      "type": "git",
+      "url": "git://github.com/cronvel/get-pixels.git"
+    },
+    "keywords": [
+      "ndarray",
+      "pixel",
+      "get",
+      "read",
+      "pixel",
+      "image",
+      "png",
+      "jpeg",
+      "jpg",
+      "jpe",
+      "gif",
+      "decode",
+      "buffer",
+      "data",
+      "parse",
+      "node"
+    ],
+    "author": {
+      "name": "Mikola Lysenko"
+    },
+    "license": "MIT",
+    "readmeFilename": "README.md",
+    "_registry": "npm",
+    "_loc": "/home/vagrant/.cache/yarn/v2/npm-@cronvel/get-pixels-3.3.1-cd8bfd7d9985fb282aa8ad765137454ecfacafbe/package.json",
+    "readme": "\nPruned version of get-pixels:\n- only node.js\n- only local files\n\nSee the original package [here](https://npmjs.org/package/get-pixels).\n\n\n\n## Credits\n(c) 2013-2014 Mikola Lysenko. MIT License\n",
+    "licenseText": "\nThe MIT License (MIT)\n\nCopyright (c) 2013 Mikola Lysenko\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in\nall copies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN\nTHE SOFTWARE.\n"
+  },
+  "artifacts": [],
+  "remote": {
+    "resolved": "https://registry.npmjs.org/@cronvel/get-pixels/-/get-pixels-3.3.1.tgz#cd8bfd7d9985fb282aa8ad765137454ecfacafbe",
+    "type": "tarball",
+    "reference": "https://registry.npmjs.org/@cronvel/get-pixels/-/get-pixels-3.3.1.tgz",
+    "hash": "cd8bfd7d9985fb282aa8ad765137454ecfacafbe",
+    "registry": "npm",
+    "packageName": "@cronvel/get-pixels"
+  },
+  "registry": "npm",
+  "hash": "cd8bfd7d9985fb282aa8ad765137454ecfacafbe"
+}

@@ -1,0 +1,64 @@
+{
+  "manifest": {
+    "name": "copy-template-dir",
+    "version": "1.4.0",
+    "description": "High throughput template dir writes",
+    "main": "index.js",
+    "scripts": {
+      "deps": "dependency-check . && dependency-check . --extra --no-dev",
+      "test": "standard && npm run deps && NODE_ENV=test node test",
+      "test:cov": "standard && npm run deps && NODE_ENV=test istanbul cover test/index.js"
+    },
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/yoshuawuyts/copy-template-dir.git"
+    },
+    "keywords": [
+      "template",
+      "directory",
+      "boilerplate",
+      "copy",
+      "concurrent"
+    ],
+    "license": "MIT",
+    "dependencies": {
+      "end-of-stream": "^1.1.0",
+      "graceful-fs": "^4.1.3",
+      "maxstache": "^1.0.0",
+      "maxstache-stream": "^1.0.0",
+      "mkdirp": "^0.5.1",
+      "noop2": "^2.0.0",
+      "pump": "^1.0.0",
+      "readdirp": "^2.0.0",
+      "run-parallel": "^1.1.4"
+    },
+    "devDependencies": {
+      "concat-stream": "^1.5.0",
+      "dependency-check": "^2.5.1",
+      "istanbul": "^0.3.21",
+      "rimraf": "^2.4.3",
+      "standard": "^5.3.1",
+      "tape": "^4.2.0"
+    },
+    "files": [
+      "index.js",
+      "bin/*"
+    ],
+    "_registry": "npm",
+    "_loc": "/home/vagrant/.cache/yarn/v2/npm-copy-template-dir-1.4.0-cb2bd62415abe963a53bb867bb24379df3998112/package.json",
+    "readmeFilename": "README.md",
+    "readme": "# copy-template-dir\n[![NPM version][npm-image]][npm-url]\n[![build status][travis-image]][travis-url]\n[![Test coverage][codecov-image]][codecov-url]\n[![Downloads][downloads-image]][downloads-url]\n[![js-standard-style][standard-image]][standard-url]\n\nHigh throughput template dir writes. Supports variable injection using the\nmustache `{{ }}` syntax.\n\n## Installation\n```sh\n$ npm install copy-template-dir\n```\n\n## Usage\n```js\nconst copy = require('copy-template-dir')\nconst path = require('path.join')\n\nconst vars = { foo: 'bar' }\nconst inDir = path.join(process.cwd(), 'templates')\nconst outDir = path.join(process.cwd(), 'dist')\n\ncopy(inDir, outDir, vars, (err, createdFiles) => {\n  if (err) throw err\n  createdFiles.forEach(filePath => console.log(`Created ${filePath}`))\n  console.log('done!')\n})\n```\n\n## API\n### copyTemplateDir(templateDir, targetDir, vars, cb)\nCopy a directory of files over to the target directory, and inject the files\nwith variables. Takes the following arguments:\n- __templateDir__: The directory that holds the templates. Filenames prepended\n  with a `_` will have it removed when copying. Dotfiles need to be prepended\n  with a `_`. Files and filenames are populated with variables using the\n  `{{varName}}` syntax.\n- __targetDir__: the output directory\n- __vars__: An object with variables that are injected into the template files\n  and file names.\n- __cb(err, createdFiles)__: A callback that is called on completion, with\npaths to created files if there were no errors.\n\n## See Also\n- [maxstache-stream](https://github.com/yoshuawuyts/maxstache-stream)\n\n## License\n[MIT](https://tldrlegal.com/license/mit-license)\n\n[npm-image]: https://img.shields.io/npm/v/copy-template-dir.svg?style=flat-square\n[npm-url]: https://npmjs.org/package/copy-template-dir\n[travis-image]: https://img.shields.io/travis/yoshuawuyts/copy-template-dir/master.svg?style=flat-square\n[travis-url]: https://travis-ci.org/yoshuawuyts/copy-template-dir\n[codecov-image]: https://img.shields.io/codecov/c/github/yoshuawuyts/copy-template-dir/master.svg?style=flat-square\n[codecov-url]: https://codecov.io/github/yoshuawuyts/copy-template-dir\n[downloads-image]: http://img.shields.io/npm/dm/copy-template-dir.svg?style=flat-square\n[downloads-url]: https://npmjs.org/package/copy-template-dir\n[standard-image]: https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat-square\n[standard-url]: https://github.com/feross/standard\n",
+    "licenseText": "The MIT License (MIT)\n\nCopyright (c) 2015 Yoshua Wuyts\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all\ncopies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\nSOFTWARE.\n"
+  },
+  "artifacts": [],
+  "remote": {
+    "resolved": "https://registry.npmjs.org/copy-template-dir/-/copy-template-dir-1.4.0.tgz#cb2bd62415abe963a53bb867bb24379df3998112",
+    "type": "tarball",
+    "reference": "https://registry.npmjs.org/copy-template-dir/-/copy-template-dir-1.4.0.tgz",
+    "hash": "cb2bd62415abe963a53bb867bb24379df3998112",
+    "registry": "npm",
+    "packageName": "copy-template-dir"
+  },
+  "registry": "npm",
+  "hash": "cb2bd62415abe963a53bb867bb24379df3998112"
+}

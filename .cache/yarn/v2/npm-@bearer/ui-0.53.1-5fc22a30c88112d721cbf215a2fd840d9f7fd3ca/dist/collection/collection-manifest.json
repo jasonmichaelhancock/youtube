@@ -1,0 +1,1283 @@
+{
+  "components": [
+    {
+      "tag": "auth-config",
+      "dependencies": [
+        "bearer-input"
+      ],
+      "componentClass": "AuthConfig",
+      "componentPath": "components/auth-config/auth-config.js",
+      "styles": {
+        "$": {
+          "stylePaths": [
+            "components/auth-config/auth-config.scss"
+          ]
+        }
+      },
+      "events": [
+        {
+          "event": "submit"
+        }
+      ],
+      "shadow": true
+    },
+    {
+      "tag": "bearer-alert",
+      "dependencies": [],
+      "componentClass": "Alert",
+      "componentPath": "components/Alert/Alert.js",
+      "styles": {
+        "$": {
+          "stylePaths": [
+            "components/Alert/Alert.scss"
+          ]
+        }
+      },
+      "props": [
+        {
+          "name": "content",
+          "type": "Any",
+          "attr": "content"
+        },
+        {
+          "name": "kind",
+          "type": "String",
+          "attr": "kind"
+        },
+        {
+          "name": "onDismiss",
+          "attr": "on-dismiss"
+        }
+      ],
+      "shadow": true
+    },
+    {
+      "tag": "bearer-authorized",
+      "dependencies": [],
+      "componentClass": "BearerAuthorized",
+      "componentPath": "components/Authorized/bearer-authorized.js",
+      "styles": {},
+      "props": [
+        {
+          "name": "renderAuthorized",
+          "attr": "render-authorized"
+        },
+        {
+          "name": "renderUnauthorized",
+          "attr": "render-unauthorized"
+        }
+      ],
+      "states": [
+        {
+          "name": "authorized"
+        },
+        {
+          "name": "sessionInitialized"
+        }
+      ],
+      "methods": [
+        {
+          "name": "authenticate"
+        },
+        {
+          "name": "revoke"
+        }
+      ],
+      "context": [
+        {
+          "name": "bearerContext",
+          "id": "bearer"
+        }
+      ]
+    },
+    {
+      "tag": "bearer-badge",
+      "dependencies": [],
+      "componentClass": "BearerBadge",
+      "componentPath": "components/Badge/Badge.js",
+      "styles": {
+        "$": {
+          "stylePaths": [
+            "components/Badge/Badge.scss"
+          ]
+        }
+      },
+      "props": [
+        {
+          "name": "content",
+          "type": "Any",
+          "attr": "content"
+        },
+        {
+          "name": "kind",
+          "type": "String",
+          "attr": "kind"
+        }
+      ],
+      "shadow": true
+    },
+    {
+      "tag": "bearer-button",
+      "dependencies": [],
+      "componentClass": "Button",
+      "componentPath": "components/Button/Button.js",
+      "styles": {
+        "$": {
+          "stylePaths": [
+            "components/Button/Button.scss"
+          ]
+        }
+      },
+      "props": [
+        {
+          "name": "as",
+          "type": "String",
+          "attr": "as"
+        },
+        {
+          "name": "content",
+          "type": "Any",
+          "attr": "content"
+        },
+        {
+          "name": "disabled",
+          "type": "Boolean",
+          "attr": "disabled"
+        },
+        {
+          "name": "kind",
+          "type": "String",
+          "attr": "kind"
+        },
+        {
+          "name": "size",
+          "type": "String",
+          "attr": "size"
+        }
+      ],
+      "shadow": true
+    },
+    {
+      "tag": "bearer-button-popover",
+      "dependencies": [
+        "bearer-button",
+        "bearer-navigator-back"
+      ],
+      "componentClass": "BearerButtonPopover",
+      "componentPath": "components/button-popover/button-popover.js",
+      "styles": {
+        "$": {
+          "stylePaths": [
+            "components/button-popover/button-popover.scss"
+          ]
+        }
+      },
+      "props": [
+        {
+          "name": "arrow",
+          "type": "Boolean",
+          "attr": "arrow"
+        },
+        {
+          "name": "backNav",
+          "type": "Boolean",
+          "attr": "back-nav"
+        },
+        {
+          "name": "btnProps",
+          "attr": "btn-props"
+        },
+        {
+          "name": "direction",
+          "type": "String",
+          "attr": "direction"
+        },
+        {
+          "name": "header",
+          "type": "String",
+          "attr": "header"
+        },
+        {
+          "name": "opened",
+          "type": "Boolean",
+          "attr": "opened"
+        }
+      ],
+      "states": [
+        {
+          "name": "_visible"
+        }
+      ],
+      "listeners": [
+        {
+          "event": "body:click",
+          "method": "clickOutsideHandler",
+          "passive": false,
+          "capture": false
+        },
+        {
+          "event": "click",
+          "method": "clickInsideHandler",
+          "passive": false,
+          "capture": false
+        }
+      ],
+      "methods": [
+        {
+          "name": "toggle"
+        }
+      ],
+      "events": [
+        {
+          "event": "visibilityChange"
+        }
+      ],
+      "shadow": true
+    },
+    {
+      "tag": "bearer-checkbox",
+      "dependencies": [],
+      "componentClass": "BearerCheckbox",
+      "componentPath": "components/Forms/Checkbox/Checkbox.js",
+      "styles": {
+        "$": {
+          "stylePaths": [
+            "components/Forms/Checkbox/Checkbox.scss"
+          ]
+        }
+      },
+      "props": [
+        {
+          "name": "buttons",
+          "attr": "buttons"
+        },
+        {
+          "name": "controlName",
+          "type": "String",
+          "attr": "control-name"
+        },
+        {
+          "name": "inline",
+          "type": "Boolean",
+          "attr": "inline"
+        },
+        {
+          "name": "label",
+          "type": "String",
+          "attr": "label"
+        },
+        {
+          "name": "value",
+          "mutable": true,
+          "attr": "value"
+        }
+      ],
+      "hostElement": {
+        "name": "el"
+      },
+      "events": [
+        {
+          "event": "valueChange"
+        }
+      ],
+      "shadow": true
+    },
+    {
+      "tag": "bearer-config",
+      "dependencies": [
+        "bearer-alert",
+        "bearer-form",
+        "bearer-loading"
+      ],
+      "componentClass": "BearerConfig",
+      "componentPath": "components/config/config.js",
+      "styles": {
+        "$": {
+          "stylePaths": [
+            "components/config/config.scss"
+          ]
+        }
+      },
+      "props": [
+        {
+          "name": "fields",
+          "type": "String",
+          "attr": "fields"
+        },
+        {
+          "name": "referenceId",
+          "type": "String",
+          "attr": "reference-id"
+        },
+        {
+          "name": "scenarioId",
+          "type": "String",
+          "attr": "scenario-id"
+        }
+      ],
+      "states": [
+        {
+          "name": "error"
+        },
+        {
+          "name": "fieldSet"
+        },
+        {
+          "name": "loading"
+        }
+      ],
+      "hostElement": {
+        "name": "element"
+      },
+      "events": [
+        {
+          "event": "stepCompleted"
+        }
+      ],
+      "shadow": true
+    },
+    {
+      "tag": "bearer-config-display",
+      "dependencies": [
+        "bearer-badge"
+      ],
+      "componentClass": "BearerConfigDisplay",
+      "componentPath": "components/config-display/config-display.js",
+      "styles": {},
+      "props": [
+        {
+          "name": "scenarioId",
+          "type": "String",
+          "attr": "scenario-id"
+        }
+      ],
+      "states": [
+        {
+          "name": "configId"
+        },
+        {
+          "name": "isConfig"
+        }
+      ],
+      "shadow": true
+    },
+    {
+      "tag": "bearer-dropdown-button",
+      "dependencies": [
+        "bearer-button"
+      ],
+      "componentClass": "BearerDropdownButton",
+      "componentPath": "components/dropdown-button/dropdown-button.js",
+      "styles": {
+        "$": {
+          "stylePaths": [
+            "components/dropdown-button/dropdown-button.scss"
+          ]
+        }
+      },
+      "props": [
+        {
+          "name": "btnProps",
+          "attr": "btn-props"
+        },
+        {
+          "name": "innerListener",
+          "type": "String",
+          "attr": "inner-listener"
+        },
+        {
+          "name": "opened",
+          "type": "Boolean",
+          "attr": "opened"
+        }
+      ],
+      "states": [
+        {
+          "name": "visible"
+        }
+      ],
+      "listeners": [
+        {
+          "event": "body:click",
+          "method": "clickOutsideHandler",
+          "passive": false,
+          "capture": false
+        },
+        {
+          "event": "click",
+          "method": "clickInsideHandler",
+          "passive": false,
+          "capture": false
+        }
+      ],
+      "methods": [
+        {
+          "name": "toggle"
+        }
+      ],
+      "shadow": true
+    },
+    {
+      "tag": "bearer-form",
+      "dependencies": [
+        "bearer-checkbox",
+        "bearer-input",
+        "bearer-radio",
+        "bearer-select",
+        "bearer-textarea"
+      ],
+      "componentClass": "BearerForm",
+      "componentPath": "components/Forms/Form.js",
+      "styles": {
+        "$": {
+          "stylePaths": [
+            "components/Forms/Form.scss"
+          ]
+        }
+      },
+      "props": [
+        {
+          "name": "clearOnInput",
+          "type": "Boolean",
+          "attr": "clear-on-input"
+        },
+        {
+          "name": "fields",
+          "mutable": true,
+          "attr": "fields"
+        }
+      ],
+      "states": [
+        {
+          "name": "hasBeenCleared"
+        },
+        {
+          "name": "values"
+        }
+      ],
+      "listeners": [
+        {
+          "event": "keydown.enter",
+          "method": "handleEnterKey",
+          "passive": false,
+          "capture": false
+        }
+      ],
+      "methods": [
+        {
+          "name": "updateFieldSet"
+        }
+      ],
+      "events": [
+        {
+          "event": "submit"
+        }
+      ],
+      "shadow": true
+    },
+    {
+      "tag": "bearer-input",
+      "dependencies": [],
+      "componentClass": "BearerInput",
+      "componentPath": "components/Forms/Input/Input.js",
+      "styles": {
+        "$": {
+          "stylePaths": [
+            "components/Forms/Input/Input.scss"
+          ]
+        }
+      },
+      "props": [
+        {
+          "name": "controlName",
+          "type": "String",
+          "attr": "control-name"
+        },
+        {
+          "name": "disabled",
+          "type": "Boolean",
+          "attr": "disabled"
+        },
+        {
+          "name": "hint",
+          "type": "String",
+          "mutable": true,
+          "attr": "hint"
+        },
+        {
+          "name": "label",
+          "type": "String",
+          "attr": "label"
+        },
+        {
+          "name": "placeholder",
+          "type": "String",
+          "attr": "placeholder"
+        },
+        {
+          "name": "type",
+          "type": "String",
+          "attr": "type"
+        },
+        {
+          "name": "value",
+          "type": "String",
+          "mutable": true,
+          "attr": "value"
+        }
+      ],
+      "hostElement": {
+        "name": "el"
+      },
+      "events": [
+        {
+          "event": "inputClick"
+        },
+        {
+          "event": "submit"
+        },
+        {
+          "event": "valueChange"
+        }
+      ],
+      "shadow": true
+    },
+    {
+      "tag": "bearer-loading",
+      "dependencies": [],
+      "componentClass": "Button",
+      "componentPath": "components/Loader/Loader.js",
+      "styles": {
+        "$": {
+          "stylePaths": [
+            "components/Loader/Loader.scss"
+          ]
+        }
+      },
+      "shadow": true
+    },
+    {
+      "tag": "bearer-navigator",
+      "dependencies": [
+        "bearer-button-popover"
+      ],
+      "componentClass": "BearerPopoverNavigator",
+      "componentPath": "components/navigator/navigator.js",
+      "styles": {},
+      "props": [
+        {
+          "name": "btnProps",
+          "attr": "btn-props"
+        },
+        {
+          "name": "complete",
+          "attr": "complete"
+        },
+        {
+          "name": "direction",
+          "type": "String",
+          "attr": "direction"
+        },
+        {
+          "name": "display",
+          "type": "String",
+          "attr": "display"
+        }
+      ],
+      "states": [
+        {
+          "name": "_isVisible"
+        },
+        {
+          "name": "_visibleScreenIndex"
+        },
+        {
+          "name": "navigationTitle"
+        },
+        {
+          "name": "screenData"
+        },
+        {
+          "name": "screens"
+        }
+      ],
+      "listeners": [
+        {
+          "event": "navigatorGoBack",
+          "method": "prev",
+          "passive": false,
+          "capture": false
+        },
+        {
+          "event": "scenarioCompleted",
+          "method": "scenarioCompletedHandler",
+          "passive": false,
+          "capture": false
+        },
+        {
+          "event": "stepCompleted",
+          "method": "stepCompletedHandler",
+          "passive": false,
+          "capture": false
+        }
+      ],
+      "hostElement": {
+        "name": "el"
+      },
+      "shadow": true
+    },
+    {
+      "tag": "bearer-navigator-auth-screen",
+      "dependencies": [
+        "bearer-authorized",
+        "bearer-button",
+        "bearer-navigator-screen"
+      ],
+      "componentClass": "BearerNavigatorAuthScreen",
+      "componentPath": "components/navigator/navigator-auth-screen.js",
+      "styles": {
+        "$": {
+          "stylePaths": [
+            "components/navigator/NavigatorScreen.scss"
+          ]
+        }
+      },
+      "states": [
+        {
+          "name": "scenarioAuthorized"
+        }
+      ],
+      "methods": [
+        {
+          "name": "getTitle"
+        },
+        {
+          "name": "willAppear"
+        },
+        {
+          "name": "willDisappear"
+        }
+      ],
+      "hostElement": {
+        "name": "el"
+      },
+      "events": [
+        {
+          "event": "scenarioAuthenticate"
+        },
+        {
+          "event": "stepCompleted"
+        }
+      ],
+      "shadow": true
+    },
+    {
+      "tag": "bearer-navigator-back",
+      "dependencies": [],
+      "componentClass": "BearerNavigatorBack",
+      "componentPath": "components/navigator/navigator-back.js",
+      "styles": {
+        "$": {
+          "stylePaths": [
+            "components/navigator/navigator-back.scss"
+          ]
+        }
+      },
+      "props": [
+        {
+          "name": "disabled",
+          "type": "Boolean",
+          "attr": "disabled"
+        }
+      ],
+      "events": [
+        {
+          "event": "navigatorGoBack"
+        }
+      ]
+    },
+    {
+      "tag": "bearer-navigator-collection",
+      "dependencies": [],
+      "componentClass": "BearerNavigatorCollection",
+      "componentPath": "components/navigator/navigator-collection.js",
+      "styles": {
+        "$": {
+          "stylePaths": [
+            "components/navigator/navigator-collection-screen.scss"
+          ]
+        }
+      },
+      "props": [
+        {
+          "name": "data",
+          "type": "Any",
+          "attr": "data",
+          "watch": [
+            "dataWatcher"
+          ]
+        },
+        {
+          "name": "displayMemberProp",
+          "type": "String",
+          "attr": "display-member-prop"
+        },
+        {
+          "name": "renderFunc",
+          "attr": "render-func"
+        }
+      ],
+      "states": [
+        {
+          "name": "collection"
+        }
+      ],
+      "events": [
+        {
+          "event": "completeScreen"
+        }
+      ],
+      "shadow": true
+    },
+    {
+      "tag": "bearer-navigator-screen",
+      "dependencies": [],
+      "componentClass": "BearerNavigatorScreen",
+      "componentPath": "components/navigator/navigator-screen.js",
+      "styles": {
+        "$": {
+          "stylePaths": [
+            "components/navigator/NavigatorScreen.scss"
+          ]
+        }
+      },
+      "props": [
+        {
+          "name": "name",
+          "type": "String",
+          "attr": "name"
+        },
+        {
+          "name": "navigationTitle",
+          "type": "String",
+          "attr": "navigation-title"
+        },
+        {
+          "name": "renderFunc",
+          "attr": "render-func"
+        }
+      ],
+      "states": [
+        {
+          "name": "data"
+        },
+        {
+          "name": "visible"
+        }
+      ],
+      "listeners": [
+        {
+          "event": "completeScreen",
+          "method": "completeScreenHandler",
+          "passive": false,
+          "capture": false
+        }
+      ],
+      "methods": [
+        {
+          "name": "getTitle"
+        },
+        {
+          "name": "willAppear"
+        },
+        {
+          "name": "willDisappear"
+        }
+      ],
+      "events": [
+        {
+          "event": "navigatorGoBack"
+        },
+        {
+          "event": "scenarioCompleted"
+        },
+        {
+          "event": "stepCompleted"
+        }
+      ],
+      "shadow": true
+    },
+    {
+      "tag": "bearer-pagination",
+      "dependencies": [],
+      "componentClass": "BearerPagination",
+      "componentPath": "components/paginator/pagination.js",
+      "styles": {
+        "$": {
+          "stylePaths": [
+            "components/paginator/pagination.scss"
+          ]
+        }
+      },
+      "props": [
+        {
+          "name": "currentPage",
+          "type": "Number",
+          "attr": "current-page"
+        },
+        {
+          "name": "displayNextPrev",
+          "type": "Boolean",
+          "attr": "display-next-prev"
+        },
+        {
+          "name": "displayPages",
+          "type": "Boolean",
+          "attr": "display-pages"
+        },
+        {
+          "name": "hasNext",
+          "type": "Boolean",
+          "attr": "has-next"
+        },
+        {
+          "name": "pageCount",
+          "type": "Number",
+          "attr": "page-count"
+        },
+        {
+          "name": "window",
+          "type": "Number",
+          "attr": "window"
+        }
+      ],
+      "events": [
+        {
+          "event": "BearerPaginationGoTo",
+          "method": "goTo"
+        },
+        {
+          "event": "BearerPaginationNext",
+          "method": "next"
+        },
+        {
+          "event": "BearerPaginationPrev",
+          "method": "prev"
+        }
+      ],
+      "shadow": true
+    },
+    {
+      "tag": "bearer-paginator",
+      "dependencies": [
+        "bearer-loading",
+        "bearer-pagination"
+      ],
+      "componentClass": "BearerPaginator",
+      "componentPath": "components/paginator/paginator.js",
+      "styles": {
+        "$": {
+          "stylePaths": [
+            "components/paginator/pagination.scss"
+          ]
+        }
+      },
+      "props": [
+        {
+          "name": "fetcher",
+          "attr": "fetcher"
+        },
+        {
+          "name": "pageCount",
+          "type": "Number",
+          "attr": "page-count"
+        },
+        {
+          "name": "perPage",
+          "type": "Number",
+          "attr": "per-page"
+        },
+        {
+          "name": "renderCollection",
+          "attr": "render-collection"
+        },
+        {
+          "name": "renderFetching",
+          "attr": "render-fetching"
+        }
+      ],
+      "states": [
+        {
+          "name": "collection"
+        },
+        {
+          "name": "currentPage"
+        },
+        {
+          "name": "fetching"
+        },
+        {
+          "name": "maxPages"
+        }
+      ],
+      "listeners": [
+        {
+          "event": "BearerPaginationGoTo",
+          "method": "goToHandler",
+          "passive": false,
+          "capture": false
+        },
+        {
+          "event": "BearerPaginationNext",
+          "method": "nextHandler",
+          "passive": false,
+          "capture": false
+        },
+        {
+          "event": "BearerPaginationPrev",
+          "method": "prevHandler",
+          "passive": false,
+          "capture": false
+        }
+      ],
+      "methods": [
+        {
+          "name": "reset"
+        }
+      ],
+      "shadow": true
+    },
+    {
+      "tag": "bearer-radio",
+      "dependencies": [],
+      "componentClass": "BearerRadio",
+      "componentPath": "components/Forms/Radio/Radio.js",
+      "styles": {
+        "$": {
+          "stylePaths": [
+            "components/Forms/Radio/Radio.scss"
+          ]
+        }
+      },
+      "props": [
+        {
+          "name": "buttons",
+          "attr": "buttons"
+        },
+        {
+          "name": "controlName",
+          "type": "String",
+          "attr": "control-name"
+        },
+        {
+          "name": "inline",
+          "type": "Boolean",
+          "attr": "inline"
+        },
+        {
+          "name": "label",
+          "type": "String",
+          "attr": "label"
+        },
+        {
+          "name": "value",
+          "type": "String",
+          "mutable": true,
+          "attr": "value"
+        }
+      ],
+      "hostElement": {
+        "name": "el"
+      },
+      "events": [
+        {
+          "event": "valueChange"
+        }
+      ],
+      "shadow": true
+    },
+    {
+      "tag": "bearer-scrollable",
+      "dependencies": [
+        "bearer-loading",
+        "bearer-navigator-collection"
+      ],
+      "componentClass": "BearerScrollable",
+      "componentPath": "components/scrollable/scrollable.js",
+      "styles": {
+        "$": {
+          "stylePaths": [
+            "components/scrollable/scrollable.scss"
+          ]
+        }
+      },
+      "props": [
+        {
+          "name": "fetcher",
+          "attr": "fetcher"
+        },
+        {
+          "name": "perPage",
+          "type": "Number",
+          "attr": "per-page"
+        },
+        {
+          "name": "renderCollection",
+          "attr": "render-collection"
+        },
+        {
+          "name": "rendererProps",
+          "attr": "renderer-props"
+        },
+        {
+          "name": "renderFetching",
+          "attr": "render-fetching"
+        }
+      ],
+      "states": [
+        {
+          "name": "collection"
+        },
+        {
+          "name": "content"
+        },
+        {
+          "name": "fetching"
+        },
+        {
+          "name": "hasMore"
+        },
+        {
+          "name": "page"
+        }
+      ],
+      "listeners": [
+        {
+          "event": "BearerScrollableNext",
+          "method": "fetchNext",
+          "passive": false,
+          "capture": false
+        }
+      ],
+      "methods": [
+        {
+          "name": "reset"
+        }
+      ],
+      "hostElement": {
+        "name": "element"
+      }
+    },
+    {
+      "tag": "bearer-select",
+      "dependencies": [],
+      "componentClass": "BearerSelect",
+      "componentPath": "components/Forms/Select/Select.js",
+      "styles": {
+        "$": {
+          "stylePaths": [
+            "components/Forms/Select/Select.scss"
+          ]
+        }
+      },
+      "props": [
+        {
+          "name": "controlName",
+          "type": "String",
+          "attr": "control-name"
+        },
+        {
+          "name": "label",
+          "type": "String",
+          "attr": "label"
+        },
+        {
+          "name": "options",
+          "mutable": true,
+          "attr": "options"
+        },
+        {
+          "name": "value",
+          "type": "String",
+          "mutable": true,
+          "attr": "value"
+        }
+      ],
+      "hostElement": {
+        "name": "el"
+      },
+      "events": [
+        {
+          "event": "valueChange"
+        }
+      ],
+      "shadow": true
+    },
+    {
+      "tag": "bearer-setup",
+      "dependencies": [
+        "bearer-alert",
+        "bearer-form",
+        "bearer-loading"
+      ],
+      "componentClass": "BearerSetup",
+      "componentPath": "components/setup/setup.js",
+      "styles": {
+        "$": {
+          "stylePaths": [
+            "components/setup/setup.scss"
+          ]
+        }
+      },
+      "props": [
+        {
+          "name": "fields",
+          "type": "String",
+          "attr": "fields"
+        },
+        {
+          "name": "referenceId",
+          "type": "String",
+          "attr": "reference-id"
+        },
+        {
+          "name": "scenarioId",
+          "type": "String",
+          "attr": "scenario-id"
+        }
+      ],
+      "states": [
+        {
+          "name": "error"
+        },
+        {
+          "name": "fieldSet"
+        },
+        {
+          "name": "loading"
+        }
+      ],
+      "hostElement": {
+        "name": "element"
+      },
+      "events": [
+        {
+          "event": "setupSuccess"
+        }
+      ],
+      "shadow": true
+    },
+    {
+      "tag": "bearer-setup-display",
+      "dependencies": [
+        "bearer-badge"
+      ],
+      "componentClass": "BearerSetupDisplay",
+      "componentPath": "components/setup-display/setup-display.js",
+      "styles": {},
+      "props": [
+        {
+          "name": "scenarioId",
+          "type": "String",
+          "attr": "scenario-id"
+        },
+        {
+          "name": "setupId",
+          "type": "String",
+          "mutable": true,
+          "attr": "setup-id"
+        }
+      ],
+      "states": [
+        {
+          "name": "isSetup"
+        }
+      ],
+      "shadow": true
+    },
+    {
+      "tag": "bearer-textarea",
+      "dependencies": [],
+      "componentClass": "BearerTextarea",
+      "componentPath": "components/Forms/Textarea/Textarea.js",
+      "styles": {
+        "$": {
+          "stylePaths": [
+            "components/Forms/Textarea/Textarea.scss"
+          ]
+        }
+      },
+      "props": [
+        {
+          "name": "controlName",
+          "type": "String",
+          "attr": "control-name"
+        },
+        {
+          "name": "hint",
+          "type": "String",
+          "mutable": true,
+          "attr": "hint"
+        },
+        {
+          "name": "label",
+          "type": "String",
+          "attr": "label"
+        },
+        {
+          "name": "placeholder",
+          "type": "String",
+          "attr": "placeholder"
+        },
+        {
+          "name": "value",
+          "type": "String",
+          "mutable": true,
+          "attr": "value"
+        }
+      ],
+      "hostElement": {
+        "name": "el"
+      },
+      "events": [
+        {
+          "event": "valueChange"
+        }
+      ],
+      "shadow": true
+    },
+    {
+      "tag": "bearer-typography",
+      "dependencies": [],
+      "componentClass": "Typography",
+      "componentPath": "components/Typography/Typography.js",
+      "styles": {
+        "$": {
+          "stylePaths": [
+            "components/Typography/Typography.scss"
+          ]
+        }
+      },
+      "props": [
+        {
+          "name": "as",
+          "type": "String",
+          "attr": "as"
+        },
+        {
+          "name": "kind",
+          "type": "String",
+          "attr": "kind"
+        }
+      ],
+      "shadow": true
+    }
+  ],
+  "collections": [],
+  "compiler": {
+    "name": "@stencil/core",
+    "version": "0.11.2",
+    "typescriptVersion": "2.9.2"
+  },
+  "bundles": []
+}

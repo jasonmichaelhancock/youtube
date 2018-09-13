@@ -1,0 +1,29 @@
+{
+  "manifest": {
+    "name": "@webassemblyjs/helper-fsm",
+    "version": "1.7.6",
+    "description": "FSM implementation",
+    "main": "lib/index.js",
+    "module": "esm/index.js",
+    "author": {
+      "name": "Mauro Bringolf"
+    },
+    "license": "ISC",
+    "publishConfig": {
+      "access": "public"
+    },
+    "_registry": "npm",
+    "_loc": "/home/vagrant/.cache/yarn/v2/npm-@webassemblyjs/helper-fsm-1.7.6-ae1741c6f6121213c7a0b587fb964fac492d3e49/package.json"
+  },
+  "artifacts": [],
+  "remote": {
+    "resolved": "https://registry.npmjs.org/@webassemblyjs/helper-fsm/-/helper-fsm-1.7.6.tgz#ae1741c6f6121213c7a0b587fb964fac492d3e49",
+    "type": "tarball",
+    "reference": "https://registry.npmjs.org/@webassemblyjs/helper-fsm/-/helper-fsm-1.7.6.tgz",
+    "hash": "ae1741c6f6121213c7a0b587fb964fac492d3e49",
+    "registry": "npm",
+    "packageName": "@webassemblyjs/helper-fsm"
+  },
+  "registry": "npm",
+  "hash": "ae1741c6f6121213c7a0b587fb964fac492d3e49"
+}

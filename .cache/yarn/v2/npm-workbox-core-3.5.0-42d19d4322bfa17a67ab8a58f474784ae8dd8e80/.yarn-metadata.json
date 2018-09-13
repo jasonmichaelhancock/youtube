@@ -1,0 +1,52 @@
+{
+  "manifest": {
+    "name": "workbox-core",
+    "version": "3.5.0",
+    "license": "Apache-2.0",
+    "author": {
+      "name": "Google's Web DevRel Team"
+    },
+    "description": "This module is used by a number of the other Workbox modules to share common code.",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/googlechrome/workbox.git"
+    },
+    "bugs": {
+      "url": "https://github.com/googlechrome/workbox/issues"
+    },
+    "homepage": "https://github.com/GoogleChrome/workbox",
+    "keywords": [
+      "workbox",
+      "workboxjs",
+      "service worker",
+      "sw"
+    ],
+    "scripts": {
+      "build": "gulp build-packages --package workbox-core",
+      "version": "npm run build",
+      "prepare": "npm run build"
+    },
+    "workbox": {
+      "browserNamespace": "workbox.core",
+      "packageType": "browser",
+      "includeBabelHelpers": true
+    },
+    "main": "build/workbox-core.prod.js",
+    "module": "index.mjs",
+    "_registry": "npm",
+    "_loc": "/home/vagrant/.cache/yarn/v2/npm-workbox-core-3.5.0-42d19d4322bfa17a67ab8a58f474784ae8dd8e80/package.json",
+    "readmeFilename": "README.md",
+    "readme": "This module's documentation can be found at https://developers.google.com/web/tools/workbox/modules/workbox-core\n"
+  },
+  "artifacts": [],
+  "remote": {
+    "resolved": "https://registry.npmjs.org/workbox-core/-/workbox-core-3.5.0.tgz#42d19d4322bfa17a67ab8a58f474784ae8dd8e80",
+    "type": "tarball",
+    "reference": "https://registry.npmjs.org/workbox-core/-/workbox-core-3.5.0.tgz",
+    "hash": "42d19d4322bfa17a67ab8a58f474784ae8dd8e80",
+    "registry": "npm",
+    "packageName": "workbox-core"
+  },
+  "registry": "npm",
+  "hash": "42d19d4322bfa17a67ab8a58f474784ae8dd8e80"
+}

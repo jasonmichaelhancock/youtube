@@ -1,0 +1,33 @@
+{
+  "manifest": {
+    "name": "g",
+    "version": "2.0.1",
+    "description": "Globalize module functions",
+    "author": {
+      "name": "Joe Hitchens",
+      "email": "joe@sleepless.com",
+      "url": "sleepless.com"
+    },
+    "license": "MIT",
+    "repository": {
+      "type": "git",
+      "url": "git://github.com/sleeplessinc/g.git"
+    },
+    "_registry": "npm",
+    "_loc": "/home/vagrant/.cache/yarn/v2/npm-g-2.0.1-0b5963ebd0ca70e3bc8c6766934a021821c8b857/package.json",
+    "readmeFilename": "README.md",
+    "readme": "\n# g\n\nLet's you easily get some module functions made into globals:\n\n    require(\"g\")(\"util\");\n\tinspect([\"foo\"]);\n\nor\n\n    require(\"g\")(\"log5\");\n\tI(\"Hi mom\");\n\n\n## Yes, I know ...\n\nYes, I know.\nIt rubs you the wrong way. \nIt goes against everything you've been taught.\nIt's sick and wrong. \nIt's dangerous and irresponsible.\nIt's immoral and a crime against humanity.\n\nSo ...\n\nTHIS IS NOT FOR PRODUCTION SOFTWARE.\nONLY USE IT FOR PROTOTYPING AND PROOF-OF-CONCEPT WORK.\nDO NOT USE THIS FOR ANYTHING TRULY IMPORTANT.\n\nOkay?  We good?  Alright then.\n\n\n",
+    "licenseText": "Copyright 2011 Sleepless Software Inc. All rights reserved.\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to\ndeal in the Software without restriction, including without limitation the\nrights to use, copy, modify, merge, publish, distribute, sublicense, and/or\nsell copies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in\nall copies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING\nFROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS\nIN THE SOFTWARE. \n"
+  },
+  "artifacts": [],
+  "remote": {
+    "resolved": "https://registry.npmjs.org/g/-/g-2.0.1.tgz#0b5963ebd0ca70e3bc8c6766934a021821c8b857",
+    "type": "tarball",
+    "reference": "https://registry.npmjs.org/g/-/g-2.0.1.tgz",
+    "hash": "0b5963ebd0ca70e3bc8c6766934a021821c8b857",
+    "registry": "npm",
+    "packageName": "g"
+  },
+  "registry": "npm",
+  "hash": "0b5963ebd0ca70e3bc8c6766934a021821c8b857"
+}

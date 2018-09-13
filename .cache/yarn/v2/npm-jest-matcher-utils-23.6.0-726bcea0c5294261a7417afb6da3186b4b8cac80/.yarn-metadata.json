@@ -1,0 +1,31 @@
+{
+  "manifest": {
+    "name": "jest-matcher-utils",
+    "description": "A set of utility functions for expect and related packages",
+    "version": "23.6.0",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/facebook/jest.git"
+    },
+    "license": "MIT",
+    "main": "build/index.js",
+    "dependencies": {
+      "chalk": "^2.0.1",
+      "jest-get-type": "^22.1.0",
+      "pretty-format": "^23.6.0"
+    },
+    "_registry": "npm",
+    "_loc": "/home/vagrant/.cache/yarn/v2/npm-jest-matcher-utils-23.6.0-726bcea0c5294261a7417afb6da3186b4b8cac80/package.json"
+  },
+  "artifacts": [],
+  "remote": {
+    "resolved": "https://registry.npmjs.org/jest-matcher-utils/-/jest-matcher-utils-23.6.0.tgz#726bcea0c5294261a7417afb6da3186b4b8cac80",
+    "type": "tarball",
+    "reference": "https://registry.npmjs.org/jest-matcher-utils/-/jest-matcher-utils-23.6.0.tgz",
+    "hash": "726bcea0c5294261a7417afb6da3186b4b8cac80",
+    "registry": "npm",
+    "packageName": "jest-matcher-utils"
+  },
+  "registry": "npm",
+  "hash": "726bcea0c5294261a7417afb6da3186b4b8cac80"
+}

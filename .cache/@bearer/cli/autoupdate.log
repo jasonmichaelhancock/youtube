@@ -1,0 +1,72 @@
+[2018-09-13T20:17:09.792Z] starting `bearer update --autoupdate` from /usr/bin/bearer -v
+waiting until 2018-09-13T21:17:09.784Z to update
+waiting until 2018-09-13T21:17:51.000Z to update
+waiting until 2018-09-13T21:19:02.000Z to update
+waiting until 2018-09-13T21:19:02.000Z to update
+waiting until 2018-09-13T21:21:01.000Z to update
+waiting until 2018-09-13T21:21:01.000Z to update
+waiting until 2018-09-13T21:21:01.000Z to update
+waiting until 2018-09-13T21:21:01.000Z to update
+waiting until 2018-09-13T21:21:01.000Z to update
+waiting until 2018-09-13T21:21:01.000Z to update
+waiting until 2018-09-13T21:21:01.000Z to update
+waiting until 2018-09-13T21:21:01.000Z to update
+waiting until 2018-09-13T21:21:01.000Z to update
+waiting until 2018-09-13T21:21:01.000Z to update
+waiting until 2018-09-13T21:21:01.000Z to update
+waiting until 2018-09-13T21:21:01.000Z to update
+waiting until 2018-09-13T21:21:01.000Z to update
+waiting until 2018-09-13T21:21:01.000Z to update
+waiting until 2018-09-13T21:21:01.000Z to update
+waiting until 2018-09-13T21:21:01.000Z to update
+waiting until 2018-09-13T21:21:01.000Z to update
+waiting until 2018-09-13T21:21:01.000Z to update
+waiting until 2018-09-13T21:21:01.000Z to update
+waiting until 2018-09-13T21:21:01.000Z to update
+waiting until 2018-09-13T21:21:01.000Z to update
+waiting until 2018-09-13T21:21:01.000Z to update
+waiting until 2018-09-13T21:21:01.000Z to update
+waiting until 2018-09-13T21:21:01.000Z to update
+waiting until 2018-09-13T21:21:01.000Z to update
+waiting until 2018-09-13T21:21:01.000Z to update
+waiting until 2018-09-13T21:21:01.000Z to update
+waiting until 2018-09-13T21:21:01.000Z to update
+waiting until 2018-09-13T21:21:01.000Z to update
+waiting until 2018-09-13T21:21:01.000Z to update
+waiting until 2018-09-13T21:21:01.000Z to update
+waiting until 2018-09-13T21:21:01.000Z to update
+waiting until 2018-09-13T21:21:01.000Z to update
+waiting until 2018-09-13T21:21:01.000Z to update
+waiting until 2018-09-13T21:21:01.000Z to update
+waiting until 2018-09-13T21:21:01.000Z to update
+waiting until 2018-09-13T21:21:01.000Z to update
+waiting until 2018-09-13T21:21:01.000Z to update
+waiting until 2018-09-13T21:21:01.000Z to update
+waiting until 2018-09-13T21:21:01.000Z to update
+waiting until 2018-09-13T21:21:01.000Z to update
+waiting until 2018-09-13T21:21:01.000Z to update
+waiting until 2018-09-13T21:21:01.000Z to update
+waiting until 2018-09-13T21:21:01.000Z to update
+waiting until 2018-09-13T21:21:01.000Z to update
+waiting until 2018-09-13T21:21:01.000Z to update
+waiting until 2018-09-13T21:21:01.000Z to update
+waiting until 2018-09-13T21:21:01.000Z to update
+waiting until 2018-09-13T21:21:01.000Z to update
+waiting until 2018-09-13T21:21:01.000Z to update
+waiting until 2018-09-13T21:21:01.000Z to update
+waiting until 2018-09-13T21:21:01.000Z to update
+waiting until 2018-09-13T21:21:01.000Z to update
+waiting until 2018-09-13T21:21:01.000Z to update
+waiting until 2018-09-13T21:21:01.000Z to update
+waiting until 2018-09-13T21:21:01.000Z to update
+waiting until 2018-09-13T21:21:01.000Z to update
+waiting until 2018-09-13T21:21:01.000Z to update
+waiting until 2018-09-13T21:21:01.000Z to update
+waiting until 2018-09-13T21:21:01.000Z to update
+time to update
+@bearer/cli: Updating CLI... !
+Error: no s3 host is set
+    at Config.s3Url (/usr/lib/node_modules/@bearer/cli/node_modules/@oclif/config/lib/config.js:219:19)
+    at UpdateCommand.fetchManifest (/usr/lib/node_modules/@bearer/cli/node_modules/@oclif/plugin-update/lib/commands/update.js:40:37)
+    at UpdateCommand.run (/usr/lib/node_modules/@bearer/cli/node_modules/@oclif/plugin-update/lib/commands/update.js:25:37)
+    at <anonymous>

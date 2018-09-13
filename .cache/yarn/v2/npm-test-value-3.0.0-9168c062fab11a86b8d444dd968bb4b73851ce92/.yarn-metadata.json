@@ -1,0 +1,48 @@
+{
+  "manifest": {
+    "name": "test-value",
+    "author": {
+      "name": "Lloyd Brookes",
+      "email": "75pound@gmail.com"
+    },
+    "version": "3.0.0",
+    "description": "Test a value in a variety of ways",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/75lb/test-value.git"
+    },
+    "license": "MIT",
+    "keywords": [],
+    "engines": {
+      "node": ">=4.0.0"
+    },
+    "dependencies": {
+      "array-back": "^2.0.0",
+      "typical": "^2.6.1"
+    },
+    "scripts": {
+      "test": "test-runner test.js",
+      "docs": "jsdoc2md -t README.hbs index.js > README.md; echo"
+    },
+    "devDependencies": {
+      "jsdoc-to-markdown": "^3.0.2",
+      "test-runner": "^0.4.1"
+    },
+    "_registry": "npm",
+    "_loc": "/home/vagrant/.cache/yarn/v2/npm-test-value-3.0.0-9168c062fab11a86b8d444dd968bb4b73851ce92/package.json",
+    "readmeFilename": "README.hbs",
+    "readme": "[![view on npm](http://img.shields.io/npm/v/test-value.svg)](https://www.npmjs.org/package/test-value)\n[![npm module downloads](http://img.shields.io/npm/dt/test-value.svg)](https://www.npmjs.org/package/test-value)\n[![Build Status](https://travis-ci.org/75lb/test-value.svg?branch=master)](https://travis-ci.org/75lb/test-value)\n[![Dependency Status](https://david-dm.org/75lb/test-value.svg)](https://david-dm.org/75lb/test-value)\n[![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](https://github.com/feross/standard)\n\n{{>main}}\n\n* * *\n\n&copy; 2015-18 Lloyd Brookes \\<75pound@gmail.com\\>. Documented by [jsdoc-to-markdown](https://github.com/jsdoc2md/jsdoc-to-markdown).\n",
+    "licenseText": "The MIT License (MIT)\n\nCopyright (c) 2015-18 Lloyd Brookes <75pound@gmail.com>\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all\ncopies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\nSOFTWARE.\n"
+  },
+  "artifacts": [],
+  "remote": {
+    "resolved": "https://registry.npmjs.org/test-value/-/test-value-3.0.0.tgz#9168c062fab11a86b8d444dd968bb4b73851ce92",
+    "type": "tarball",
+    "reference": "https://registry.npmjs.org/test-value/-/test-value-3.0.0.tgz",
+    "hash": "9168c062fab11a86b8d444dd968bb4b73851ce92",
+    "registry": "npm",
+    "packageName": "test-value"
+  },
+  "registry": "npm",
+  "hash": "9168c062fab11a86b8d444dd968bb4b73851ce92"
+}

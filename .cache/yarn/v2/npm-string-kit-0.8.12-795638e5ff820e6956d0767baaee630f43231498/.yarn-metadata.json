@@ -1,0 +1,74 @@
+{
+  "manifest": {
+    "name": "string-kit",
+    "version": "0.8.12",
+    "engines": {
+      "node": ">=6.0.0"
+    },
+    "description": "A string manipulation toolbox, featuring a string formatter (inspired by sprintf), a variable inspector (output featuring ANSI colors and HTML) and various escape functions (shell argument, regexp, html, etc).",
+    "main": "lib/string.js",
+    "dependencies": {
+      "xregexp": "^4.2.0"
+    },
+    "scripts": {
+      "test": "tea-time -R dot"
+    },
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/cronvel/string-kit.git"
+    },
+    "keywords": [
+      "string",
+      "manipulation",
+      "format",
+      "sprintf",
+      "printf",
+      "inspect",
+      "color",
+      "debug",
+      "dump",
+      "escape",
+      "shell",
+      "regexp",
+      "html"
+    ],
+    "author": {
+      "name": "Cédric Ronvel"
+    },
+    "license": "MIT",
+    "bugs": {
+      "url": "https://github.com/cronvel/string-kit/issues"
+    },
+    "config": {
+      "tea-time": {
+        "coverDir": [
+          "lib"
+        ]
+      }
+    },
+    "copyright": {
+      "title": "String Kit",
+      "years": [
+        2014,
+        2018
+      ],
+      "owner": "Cédric Ronvel"
+    },
+    "_registry": "npm",
+    "_loc": "/home/vagrant/.cache/yarn/v2/npm-string-kit-0.8.12-795638e5ff820e6956d0767baaee630f43231498/package.json",
+    "readmeFilename": "README.md",
+    "readme": "\n\n# String Kit\n\nA string manipulation toolbox, featuring a string formatter (inspired by sprintf), a variable inspector\n(output featuring ANSI colors and HTML) and various escape functions (shell argument, regexp, html, etc).\n\n* License: MIT\n* Current status: beta\n* Platform: Node.js only (browser support is planned)\n\n\n\n# Install\n\nUse Node Package Manager:\n\n    npm install string-kit\n\n\n\n# Reference\n\n* [.format()](#ref.format)\n* [.format.count()](#ref.format.count)\n* [.inspect()](#ref.inspect)\n* Escape functions collection\n\t* [.escape.shellArg()](#ref.escape.shellArg)\n\t* [.escape.regExp()](#ref.escape.regExp)\n\t* [.escape.regExpPattern()](#ref.escape.regExp)\n\t* [.escape.regExpReplacement()](#ref.escape.regExpReplacement)\n\t* [.escape.html()](#ref.escape.html)\n\t* [.escape.htmlAttr()](#ref.escape.htmlAttr)\n\t* [.escape.htmlSpecialChars()](#ref.escape.htmlSpecialChars)\n\t* [.escape.control()](#ref.escape.control)\n\n\n\n<a name=\"ref.format\"></a>\n### .format( formatString , ... )\n\n* formatString `String` a string containing some `sprintf()`-like formating\n* ... `mixed` a variable list of arguments to insert into the formatString\n\nThis function is inspired by the `C`'s `sprintf()` function.\n\nBasicly, if `formatString` includes *format specifiers* (subsequences beginning with %), the additional arguments\nfollowing `formatString` are formatted and inserted in the resulting string replacing their respective specifiers.\n\nAlso it diverges from `C` in quite a few places.\n\n**New:** Since *v0.3.x* we can add styles markup (color, bold, italic, and so on...) using the `^` caret.\nSee [the format markup documentation](#ref.format.markup).\n\nBasic usage:\n```js\nvar format = require( 'string-kit' ).format ;\nconsole.log( format( 'Hello %s %s, how are you?' , 'Joe' , 'Doe' ) ) ;\n// Output: 'Hello Joe Doe, how are you?'\n```\n\nSpecifiers:\n* `%%` write a single %\n* `%s` string\n* `%f` float\n* `%d` *or* %i integer\n* `%u` unsigned integer\n* `%U` unsigned positive integer (>0)\n* `%h` unsigned hexadecimal\n* `%x` unsigned hexadecimal, force pair of symbols (e.g. 'f' -> '0f')\n* `%o` unsigned octal\n* `%b` unsigned binary\n* `%I` call string-kit's inspect()\n* `%Y` call string-kit's inspect(), but do not inspect non-enumerable\n* `%E` call string-kit's inspectError()\n* `%J` JSON.stringify()\n* `%D` drop, the argument does not produce anything but is eaten anyway\n* `%F` filter function existing in the *this* context, e.g. %[filter:%a%a]F\n* `%a` argument for a filter function\n\nFew examples:\n```js\nvar format = require( 'string-kit' ).format ;\n\nconsole.log( format( 'This company regains %d%% of market share.' , 36 ) ) ;\n// Output: 'This company regains 36% of market share.'\n\nconsole.log( format( '11/8=%f' , 11/8 ) ) ;\n// Output: '11/8=1.375'\n\nconsole.log( format( 'Hexa %h %x' , 11 , 11 ) ) ;\n// Output: 'Hexa b 0b'\n```\n\nWe can insert a number between the *%* sign and the letter of the specifier, this way, rather than using the next\nargument, it uses the *Nth* argument, this is the absolute position:\n```js\nconsole.log( format( '%2s%1s%3s' , 'A' , 'B' , 'C' ) ) ; // 'BAC'\n```\n\nAlso, the internal pointer is moved anyway, so the *Nth* format specifier still use the *Nth* argument if it doesn't\nspecify any position:\n```js\nconsole.log( format( '%2s%s%s' , 'A' , 'B' , 'C' ) ) ; // 'BBC'\n```\n\nIf the number is preceded by a *plus* or a *minus* sign, the relative position is used rather than the absolute position.\n```js\nconsole.log( format( '%+1s%-1s%s' , 'A' , 'B' , 'C' ) ) ; // 'BAC'\n```\n\nUse case: language.\n```js\nvar hello = {\n\ten: 'Hello %s %s!' ,\n\tjp: 'Konnichiwa %2s %1s!'\n} ;\n\nconsole.log( format( hello[ lang ] , firstName , lastName ) ) ;\n// Output the appropriate greeting in a language.\n// In japanese the last name will come before the first name,\n// but the argument list doesn't need to be changed.\n```\n\nThe mysterious `%[]F` format specifier is used when we want custom formatter.\nFirstly we need to build an object containing one or many functions.\nThen, `format()` should be used with `call()`, to pass the functions collection as the *this* context.\n\nThe `%[` is followed by the function's name, followed by a `:`, followed by a variable list of arguments using `%a`.\nIt is still possible to use relative and absolute positionning.\nThe whole *format specifier* is finished when a `]F` is encountered.\n\nExample:\n```js\nvar filters = {\n\tfxy: function( a , b ) { return '' + ( a * a + b ) ; }\n} ;\n\nconsole.log( format.call( filters , '%s%[fxy:%a%a]F' , 'f(x,y)=' , 5 , 3 ) ) ;\n// Output: 'f(x,y)=28'\n\nconsole.log( format.call( filters , '%s%[fxy:%+1a%-1a]F' , 'f(x,y)=' , 5 , 3 ) ) ;\n// Output: 'f(x,y)=14'\n```\n\n<a name=\"ref.format.markup\"></a>\n##### Style markup reference\n\nSince *v0.3.x* we can add styles (color, bold, italic, and so on...) using the `^` caret:\n```js\nvar format = require( 'string-kit' ).format ;\nconsole.log( format( 'This is ^rred^ and ^bblue^:!' , 'Joe' , 'Doe' ) ) ;\n// Output: 'This is red and blue!' with 'red' written in red and 'blue' written in blue.\n```\n\nStyle markup:\n* `^^` write a single caret `^`\n* `^b` switch to blue\n* `^B` switch to bright blue\n* `^c` switch to cyan\n* `^C` switch to bright cyan\n* `^g` switch to green\n* `^G` switch to bright green\n* `^k` switch to black\n* `^K` switch to bright black\n* `^m` switch to magenta\n* `^M` switch to bright magenta\n* `^r` switch to red\n* `^R` switch to bright red\n* `^w` switch to white\n* `^W` switch to bright white\n* `^y` switch to yellow (i.e. brown or orange)\n* `^Y` switch to bright yellow (i.e. yellow)\n* `^_` switch to underline\n* `^/` switch to italic\n* `^!` switch to inverse (inverse background and foreground color)\n* `^+` switch to bold\n* `^-` switch to dim\n* `^:` reset the style\n* `^ ` (caret followed by a space) reset the style and write a single space\n* `^#` background modifier: next color will be a background color instead of a foreground color,\n  e.g.: `'Some ^#^r^bred background` text' will write *red background* in blue over red.\n\n**Note:** as soon as the format string has **one** style markup, a style reset will be added at the end of the string.\n\n\n\n<a name=\"ref.format.count\"></a>\n### .format.count( formatString )\n\n* formatString `String` a string containing some `sprintf()`-like formating\n\nIt just counts the number of *format specifier* in the `formatString`.\n\n\n\n<a name=\"ref.inspect\"></a>\n### .inspect( [options] , variable )\n\n* options `Object` display options, the following key are possible:\n\t* style `String` this is the style to use, the value can be:\n\t\t* 'none': (default) normal output suitable for console.log() or writing into a file\n\t\t* 'inline': like 'none', but without newlines\n\t\t* 'color': colorful output suitable for terminal\n\t\t* 'html': html output\n\t* depth: depth limit, default: 3\n\t* maxLength: length limit for strings, default: 250\n\t* outputMaxLength:  length limit for the inspect output string, default: 5000\n\t* noFunc: do not display functions\n\t* noDescriptor: do not display descriptor information\n\t* noArrayProperty: do not display array properties\n\t* noType: do not display type and constructor\n\t* enumOnly: only display enumerable properties\n\t* funcDetails: display function's details\n\t* proto: display object's prototype\n\t* sort: sort the keys\n\t* minimal: imply noFunc: true, noDescriptor: true, noType: true, enumOnly: true, proto: false and funcDetails: false.\n\t  Display a minimal JSON-like output.\n\t* protoBlackList: `Set` of blacklisted object prototype (will not recurse inside it)\n\t* propertyBlackList: `Set` of blacklisted property names (will not even display it)\n\t* useInspect: use .inspect() method when available on an object (default to false)\n* variable `mixed` anything we want to inspect/debug\n\nIt inspect a variable, and return a string ready to be displayed with console.log(), or even as HTML output.\n\nIt produces a slightly better output than node's `util.inspect()`, with more options to control what should be displayed.\n\nSince `options` come first, it is possible to use `bind()` to create some custom variable inspector.\n\nFor example:\n```js\nvar colorInspect = require( 'string-kit' ).inspect.bind( undefined , { style: 'color' } ) ;\n```\n\n\n\n## Escape functions collection\n\n\n\n<a name=\"ref.escape.shellArg\"></a>\n### .escape.shellArg( str )\n\n* str `String` the string to filter\n\nIt escapes the string so that it will be suitable as a shell command's argument.\n\n\n\n<a name=\"ref.escape.regExp\"></a>\n### .escape.regExp( str ) , .escape.regExpPattern( str ) \n\n* str `String` the string to filter\n\nIt escapes the string so that it will be suitable to inject it in a regular expression's pattern as a literal string.\n\nExample of a search and replace from a user's input:\n```js\nvar result = data.replace(\n\tnew RegExp( stringKit.escape.regExp( userInputSearch ) , 'g' ) ,\n\tstringKit.escape.regExpReplacement( userInputReplace )\n) ;\n```\n\n\n\n<a name=\"ref.escape.regExpReplacement\"></a>\n### .escape.regExpReplacement( str )\n\n* str `String` the string to filter\n\nIt escapes the string so that it will be suitable as a literal string for a regular expression's replacement.\n\n\n\n<a name=\"ref.escape.html\"></a>\n### .escape.html( str )\n\n* str `String` the string to filter\n\nIt escapes the string so that it will be suitable as HTML content.\n\nOnly  `< > &` are replaced by HTML entities.\n\n\n\n<a name=\"ref.escape.htmlAttr\"></a>\n### .escape.htmlAttr( str )\n\n* str `String` the string to filter\n\nIt escapes the string so that it will be suitable as an HTML tag attribute's value.\n\nOnly  `< > & \"` are replaced by HTML entities.\n\nIt assumes valid HTML: the attribute's value should be into double quote, not in single quote.\n\n\n\n<a name=\"ref.escape.htmlSpecialChars\"></a>\n### .escape.htmlSpecialChars( str )\n\n* str `String` the string to filter\n\nIt escapes all HTML special characters, `< > & \" '` are replaced by HTML entities.\n\n\n\n<a name=\"ref.escape.control\"></a>\n### .escape.control( str )\n\n* str `String` the string to filter\n\nIt escapes all ASCII control characters (code lesser than or equals to 0x1F, or *backspace*).\n\n*Carriage return*, *newline* and *tabulation* are respectively replaced by `\\r`, `\\n` and `\\t`.\nOther characters are replaced by the unicode notation, e.g. `NUL` is replaced by `\\x00`.\n\n\n\n\n\nFull BDD spec generated by Mocha:\n\n\n",
+    "licenseText": "The MIT License (MIT)\n\nCopyright (c) 2014 Cédric Ronvel\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all\ncopies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\nSOFTWARE.\n"
+  },
+  "artifacts": [],
+  "remote": {
+    "resolved": "https://registry.npmjs.org/string-kit/-/string-kit-0.8.12.tgz#795638e5ff820e6956d0767baaee630f43231498",
+    "type": "tarball",
+    "reference": "https://registry.npmjs.org/string-kit/-/string-kit-0.8.12.tgz",
+    "hash": "795638e5ff820e6956d0767baaee630f43231498",
+    "registry": "npm",
+    "packageName": "string-kit"
+  },
+  "registry": "npm",
+  "hash": "795638e5ff820e6956d0767baaee630f43231498"
+}

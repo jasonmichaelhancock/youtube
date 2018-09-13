@@ -1,0 +1,80 @@
+{
+  "manifest": {
+    "name": "archiver",
+    "version": "2.1.1",
+    "description": "a streaming interface for archive generation",
+    "homepage": "https://github.com/archiverjs/node-archiver",
+    "author": {
+      "name": "Chris Talkington",
+      "url": "http://christalkington.com/"
+    },
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/archiverjs/node-archiver.git"
+    },
+    "bugs": {
+      "url": "https://github.com/archiverjs/node-archiver/issues"
+    },
+    "license": "MIT",
+    "main": "index.js",
+    "files": [
+      "index.js",
+      "lib"
+    ],
+    "engines": {
+      "node": ">= 4"
+    },
+    "scripts": {
+      "test": "mocha --reporter dot",
+      "jsdoc": "jsdoc -c jsdoc.json README.md",
+      "bench": "node benchmark/simple/pack-zip.js"
+    },
+    "dependencies": {
+      "archiver-utils": "^1.3.0",
+      "async": "^2.0.0",
+      "buffer-crc32": "^0.2.1",
+      "glob": "^7.0.0",
+      "lodash": "^4.8.0",
+      "readable-stream": "^2.0.0",
+      "tar-stream": "^1.5.0",
+      "zip-stream": "^1.2.0"
+    },
+    "devDependencies": {
+      "archiver-jsdoc-theme": "^1.0.0",
+      "jsdoc": "~3.4.0",
+      "chai": "^4.0.0",
+      "mocha": "^3.1.1",
+      "rimraf": "^2.4.2",
+      "mkdirp": "^0.5.0",
+      "stream-bench": "^0.1.2",
+      "tar": "^3.1.0",
+      "yauzl": "^2.3.1"
+    },
+    "keywords": [
+      "archive",
+      "archiver",
+      "stream",
+      "zip",
+      "tar"
+    ],
+    "publishConfig": {
+      "registry": "https://registry.npmjs.org/"
+    },
+    "_registry": "npm",
+    "_loc": "/home/vagrant/.cache/yarn/v2/npm-archiver-2.1.1-ff662b4a78201494a3ee544d3a33fe7496509ebc/package.json",
+    "readmeFilename": "README.md",
+    "readme": "# Archiver\n\n[![Build Status](https://travis-ci.org/archiverjs/node-archiver.svg?branch=master)](https://travis-ci.org/archiverjs/node-archiver) [![Build status](https://ci.appveyor.com/api/projects/status/38kqu3yp159nodxe/branch/master?svg=true)](https://ci.appveyor.com/project/ctalkington/node-archiver/branch/master)\n\na streaming interface for archive generation\n\nVisit the [API documentation](http://archiverjs.com/docs) for a list of all methods available.\n\n## Install\n\n```bash\nnpm install archiver --save\n```\n\n## Quick Start\n\n```js\n// require modules\nvar fs = require('fs');\nvar archiver = require('archiver');\n\n// create a file to stream archive data to.\nvar output = fs.createWriteStream(__dirname + '/example.zip');\nvar archive = archiver('zip', {\n  zlib: { level: 9 } // Sets the compression level.\n});\n\n// listen for all archive data to be written\n// 'close' event is fired only when a file descriptor is involved\noutput.on('close', function() {\n  console.log(archive.pointer() + ' total bytes');\n  console.log('archiver has been finalized and the output file descriptor has closed.');\n});\n\n// This event is fired when the data source is drained no matter what was the data source.\n// It is not part of this library but rather from the NodeJS Stream API.\n// @see: https://nodejs.org/api/stream.html#stream_event_end\noutput.on('end', function() {\n  console.log('Data has been drained');\n});\n\n// good practice to catch warnings (ie stat failures and other non-blocking errors)\narchive.on('warning', function(err) {\n  if (err.code === 'ENOENT') {\n    // log warning\n  } else {\n    // throw error\n    throw err;\n  }\n});\n\n// good practice to catch this error explicitly\narchive.on('error', function(err) {\n  throw err;\n});\n\n// pipe archive data to the file\narchive.pipe(output);\n\n// append a file from stream\nvar file1 = __dirname + '/file1.txt';\narchive.append(fs.createReadStream(file1), { name: 'file1.txt' });\n\n// append a file from string\narchive.append('string cheese!', { name: 'file2.txt' });\n\n// append a file from buffer\nvar buffer3 = Buffer.from('buff it!');\narchive.append(buffer3, { name: 'file3.txt' });\n\n// append a file\narchive.file('file1.txt', { name: 'file4.txt' });\n\n// append files from a sub-directory and naming it `new-subdir` within the archive\narchive.directory('subdir/', 'new-subdir');\n\n// append files from a sub-directory, putting its contents at the root of archive\narchive.directory('subdir/', false);\n\n// append files from a glob pattern\narchive.glob('subdir/*.txt');\n\n// finalize the archive (ie we are done appending files but streams have to finish yet)\n// 'close', 'end' or 'finish' may be fired right after calling this method so register to them beforehand\narchive.finalize();\n```\n\n## Formats\n\nArchiver ships with out of the box support for TAR and ZIP archives.\n\nYou can register additional formats with `registerFormat`.\n\n_Formats will be changing in the next few releases to implement a middleware approach._\n",
+    "licenseText": "Copyright (c) 2012-2014 Chris Talkington, contributors.\n\nPermission is hereby granted, free of charge, to any person\nobtaining a copy of this software and associated documentation\nfiles (the \"Software\"), to deal in the Software without\nrestriction, including without limitation the rights to use,\ncopy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the\nSoftware is furnished to do so, subject to the following\nconditions:\n\nThe above copyright notice and this permission notice shall be\nincluded in all copies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND,\nEXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES\nOF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND\nNONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT\nHOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,\nWHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING\nFROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR\nOTHER DEALINGS IN THE SOFTWARE."
+  },
+  "artifacts": [],
+  "remote": {
+    "resolved": "https://registry.npmjs.org/archiver/-/archiver-2.1.1.tgz#ff662b4a78201494a3ee544d3a33fe7496509ebc",
+    "type": "tarball",
+    "reference": "https://registry.npmjs.org/archiver/-/archiver-2.1.1.tgz",
+    "hash": "ff662b4a78201494a3ee544d3a33fe7496509ebc",
+    "registry": "npm",
+    "packageName": "archiver"
+  },
+  "registry": "npm",
+  "hash": "ff662b4a78201494a3ee544d3a33fe7496509ebc"
+}

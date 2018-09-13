@@ -1,0 +1,42 @@
+{
+  "manifest": {
+    "name": "string-range",
+    "description": "check if a string is within a range",
+    "version": "1.2.2",
+    "homepage": "https://github.com/dominictarr/string-range",
+    "repository": {
+      "type": "git",
+      "url": "git://github.com/dominictarr/string-range.git"
+    },
+    "dependencies": {},
+    "devDependencies": {
+      "tape": "~0.3.0",
+      "level-fix-range": "~1.1.2"
+    },
+    "scripts": {
+      "test": "set -e; for t in test/*.js; do node $t; done"
+    },
+    "author": {
+      "name": "Dominic Tarr",
+      "email": "dominic.tarr@gmail.com",
+      "url": "http://dominictarr.com"
+    },
+    "license": "MIT",
+    "_registry": "npm",
+    "_loc": "/home/vagrant/.cache/yarn/v2/npm-string-range-1.2.2-a893ed347e72299bc83befbbf2a692a8d239d5dd/package.json",
+    "readmeFilename": "README.md",
+    "readme": "# string-range\n\nCheck whether a string is within a range.\n\n## Example\n\n``` js\nvar ranges = require('string-range')\n\nranges.satisfies('hello', {min: 'a', max: 'z'})\n=> true\nranges.satisfies('Hello', {min: 'a', max: 'z'})\n=> false\n\n//force a range inside a prefix!\n\nranges.satisfies('TYPE~key', ranges.prefix({min:'a', max:'z'}, 'TYPE')\n=> true\n```\n\n`min` and `max` are alaises for `start` and `end`.\n\n## License\n\nMIT\n",
+    "licenseText": "Copyright (c) 2013 Dominic Tarr\n\nPermission is hereby granted, free of charge, \nto any person obtaining a copy of this software and \nassociated documentation files (the \"Software\"), to \ndeal in the Software without restriction, including \nwithout limitation the rights to use, copy, modify, \nmerge, publish, distribute, sublicense, and/or sell \ncopies of the Software, and to permit persons to whom \nthe Software is furnished to do so, \nsubject to the following conditions:\n\nThe above copyright notice and this permission notice \nshall be included in all copies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, \nEXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES \nOF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. \nIN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR \nANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, \nTORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE \nSOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.\n"
+  },
+  "artifacts": [],
+  "remote": {
+    "resolved": "http://registry.npmjs.org/string-range/-/string-range-1.2.2.tgz#a893ed347e72299bc83befbbf2a692a8d239d5dd",
+    "type": "tarball",
+    "reference": "http://registry.npmjs.org/string-range/-/string-range-1.2.2.tgz",
+    "hash": "a893ed347e72299bc83befbbf2a692a8d239d5dd",
+    "registry": "npm",
+    "packageName": "string-range"
+  },
+  "registry": "npm",
+  "hash": "a893ed347e72299bc83befbbf2a692a8d239d5dd"
+}

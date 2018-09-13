@@ -1,0 +1,51 @@
+{
+  "manifest": {
+    "name": "noop2",
+    "version": "2.0.0",
+    "description": "No operation as a module™",
+    "main": "index.js",
+    "scripts": {
+      "test": "make test"
+    },
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/yoshuawuyts/noop2.git"
+    },
+    "keywords": [
+      "noop",
+      "no-op",
+      "no operation",
+      "operation, it has not"
+    ],
+    "license": "MIT",
+    "dependencies": {},
+    "devDependencies": {
+      "istanbul": "^0.3.2",
+      "make-lint": "^1.0.1",
+      "mocha": "^2.0.1",
+      "should": "^4.2.0"
+    },
+    "files": [
+      "lib",
+      "LICENSE",
+      "index.js",
+      "HISTORY.md"
+    ],
+    "_registry": "npm",
+    "_loc": "/home/vagrant/.cache/yarn/v2/npm-noop2-2.0.0-4b636015e9882b54783c02b412f699d8c5cd0a5b/package.json",
+    "readmeFilename": "README.md",
+    "readme": "# noop2\n[![NPM version][npm-image]][npm-url]\n[![build status][travis-image]][travis-url]\n[![Test coverage][coveralls-image]][coveralls-url]\n[![Downloads][downloads-image]][downloads-url]\n\nNo operation as a module™. The long awaited successor to [`noop`][noop1]. Noop2\ndoes even less than its predecessor, and is 100% tested to guarantee nothing\nhappens.\n\n## Installation\n```bash\nnpm install noop2\n```\n\n## Usage\n```js\nvar noop = require('noop2');\n\nnoop();\n// nothing happened\n```\n\n## Why?\nThis is both a joke and actually useful. Obviously we _might_ be taking npm\na bit too far by bundling this as a module, but when running tests it's\nsometimes nice to be able to import an empty function if only to keep style\nconsistent. So here you have it.\n\n## See also\n- [the original noop][noop1]\n- [nop][nop]\n- [no-op][no-op]\n\n## License\n[MIT](https://tldrlegal.com/license/mit-license)\n\n[npm-image]: https://img.shields.io/npm/v/noop2.svg?style=flat-square\n[npm-url]: https://npmjs.org/package/noop2\n[travis-image]: https://img.shields.io/travis/yoshuawuyts/noop2.svg?style=flat-square\n[travis-url]: https://travis-ci.org/yoshuawuyts/noop2\n[coveralls-image]: https://img.shields.io/coveralls/yoshuawuyts/noop2.svg?style=flat-square\n[coveralls-url]: https://coveralls.io/r/yoshuawuyts/noop2?branch=master\n[downloads-image]: http://img.shields.io/npm/dm/noop2.svg?style=flat-square\n[downloads-url]: https://npmjs.org/package/noop2\n\n[noop1]: http://ghub.io/noop\n[nop]: https://github.com/supershabam/nop\n[no-op]: https://github.com/mattdesl/no-op\n",
+    "licenseText": "The MIT License (MIT)\n\nCopyright (c) 2014 \n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all\ncopies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\nSOFTWARE."
+  },
+  "artifacts": [],
+  "remote": {
+    "resolved": "https://registry.npmjs.org/noop2/-/noop2-2.0.0.tgz#4b636015e9882b54783c02b412f699d8c5cd0a5b",
+    "type": "tarball",
+    "reference": "https://registry.npmjs.org/noop2/-/noop2-2.0.0.tgz",
+    "hash": "4b636015e9882b54783c02b412f699d8c5cd0a5b",
+    "registry": "npm",
+    "packageName": "noop2"
+  },
+  "registry": "npm",
+  "hash": "4b636015e9882b54783c02b412f699d8c5cd0a5b"
+}

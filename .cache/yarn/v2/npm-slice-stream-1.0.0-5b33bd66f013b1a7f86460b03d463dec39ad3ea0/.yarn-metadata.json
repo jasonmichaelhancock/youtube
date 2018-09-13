@@ -1,0 +1,51 @@
+{
+  "manifest": {
+    "name": "slice-stream",
+    "version": "1.0.0",
+    "description": "Pipe data through a stream until some fixed length is reached, then callback.",
+    "main": "slicestream.js",
+    "scripts": {
+      "test": "tap ./test/*.js"
+    },
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/EvanOxfeld/slice-stream.git"
+    },
+    "keywords": [
+      "slice",
+      "fixed",
+      "length",
+      "stream",
+      "split"
+    ],
+    "author": {
+      "name": "Evan Oxfeld",
+      "email": "eoxfeld@gmail.com"
+    },
+    "license": "MIT",
+    "readmeFilename": "README.md",
+    "gitHead": "9054cbab67c2e71ab9241dbe88401c786b270f8e",
+    "dependencies": {
+      "readable-stream": "~1.0.31"
+    },
+    "devDependencies": {
+      "stream-buffers": ">= 0.2.4 < 1",
+      "tap": ">= 0.4.0 < 1"
+    },
+    "_registry": "npm",
+    "_loc": "/home/vagrant/.cache/yarn/v2/npm-slice-stream-1.0.0-5b33bd66f013b1a7f86460b03d463dec39ad3ea0/package.json",
+    "readme": "slice-stream [![Build Status](https://travis-ci.org/EvanOxfeld/slice-stream.png)](https://travis-ci.org/EvanOxfeld/slice-stream)\n============\n\nPipe data through a stream until some fixed length is reached, then callback.\n\n## Installation\n\n```bash\n$ npm install slice-stream\n```\n\n## Quick Example\n\n### End stream once a fixed length has been reached\n\n```javascript\nvar SliceStream = require('../');\nvar streamBuffers = require(\"stream-buffers\");\n\nvar ss = new SliceStream({ length: 5}, function (buf, sliceEnd, extra) {\n  if (!sliceEnd) {\n    return this.push(buf);\n  }\n  this.push(buf);\n  return this.push(null); //signal end of data\n});\n\nvar sourceStream = new streamBuffers.ReadableStreamBuffer();\nsourceStream.put(\"Hello World\");\nvar writableStream = new streamBuffers.WritableStreamBuffer();\n\nsourceStream\n  .pipe(ss)\n  .pipe(writableStream)\n  .once('close', function () {\n    var str = writableStream.getContentsAsString('utf8');\n    console.log('First 5 bytes piped:', \"'\" + str + \"'\");\n    sourceStream.destroy();\n  });\n\n//Output\n//Piped data before pattern occurs: 'Hello'\n```\n\n## License\n\nMIT",
+    "licenseText": "Copyright (c) 2013 Evan Oxfeld\n\nMIT License\n\nPermission is hereby granted, free of charge, to any person obtaining\na copy of this software and associated documentation files (the\n\"Software\"), to deal in the Software without restriction, including\nwithout limitation the rights to use, copy, modify, merge, publish,\ndistribute, sublicense, and/or sell copies of the Software, and to\npermit persons to whom the Software is furnished to do so, subject to\nthe following conditions:\n\nThe above copyright notice and this permission notice shall be\nincluded in all copies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND,\nEXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF\nMERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND\nNONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE\nLIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION\nOF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION\nWITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.\n"
+  },
+  "artifacts": [],
+  "remote": {
+    "resolved": "https://registry.npmjs.org/slice-stream/-/slice-stream-1.0.0.tgz#5b33bd66f013b1a7f86460b03d463dec39ad3ea0",
+    "type": "tarball",
+    "reference": "https://registry.npmjs.org/slice-stream/-/slice-stream-1.0.0.tgz",
+    "hash": "5b33bd66f013b1a7f86460b03d463dec39ad3ea0",
+    "registry": "npm",
+    "packageName": "slice-stream"
+  },
+  "registry": "npm",
+  "hash": "5b33bd66f013b1a7f86460b03d463dec39ad3ea0"
+}

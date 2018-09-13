@@ -1,0 +1,77 @@
+{
+  "manifest": {
+    "name": "@oclif/config",
+    "description": "base config object and standard interfaces for oclif components",
+    "version": "1.7.5",
+    "author": {
+      "name": "Jeff Dickey @jdxcode"
+    },
+    "bugs": {
+      "url": "https://github.com/oclif/config/issues"
+    },
+    "dependencies": {
+      "debug": "^4.0.1",
+      "tslib": "^1.9.3"
+    },
+    "devDependencies": {
+      "@oclif/errors": "^1.2.0",
+      "@oclif/parser": "^3.6.1",
+      "@oclif/tslint": "^3.1.0",
+      "@types/chai": "^4.1.4",
+      "@types/globby": "^8.0.0",
+      "@types/indent-string": "^3.0.0",
+      "@types/lodash": "^4.14.116",
+      "@types/mocha": "^5.2.5",
+      "@types/node": "^10.9.4",
+      "@types/wrap-ansi": "^3.0.0",
+      "chai": "^4.1.2",
+      "fancy-test": "^1.4.0",
+      "globby": "^8.0.1",
+      "lodash": "^4.17.11",
+      "mocha": "^5.2.0",
+      "ts-node": "^7.0.1",
+      "tslint": "^5.11.0",
+      "typescript": "^3.0.3"
+    },
+    "engines": {
+      "node": ">=8.0.0"
+    },
+    "files": [
+      "/lib"
+    ],
+    "homepage": "https://github.com/oclif/config",
+    "keywords": [
+      "oclif"
+    ],
+    "license": "MIT",
+    "main": "lib/index.js",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/oclif/config.git"
+    },
+    "scripts": {
+      "build": "rm -rf lib && tsc",
+      "lint": "tsc -p test --noEmit && tslint -p test",
+      "posttest": "yarn run lint",
+      "prepack": "yarn run build",
+      "test": "mocha --forbid-only \"test/**/*.test.ts\""
+    },
+    "types": "lib/index.d.ts",
+    "_registry": "npm",
+    "_loc": "/home/vagrant/.cache/yarn/v2/npm-@oclif/config-1.7.5-df302da3b6f590b0c6cc8a515bf97e746ec513b8/package.json",
+    "readmeFilename": "README.md",
+    "readme": "@oclif/config\n==============\n\nbase config object and standard interfaces for oclif components\n\n[![Version](https://img.shields.io/npm/v/@oclif/config.svg)](https://npmjs.org/package/@oclif/config)\n[![CircleCI](https://circleci.com/gh/oclif/config/tree/master.svg?style=svg)](https://circleci.com/gh/oclif/config/tree/master)\n[![Appveyor CI](https://ci.appveyor.com/api/projects/status/github/oclif/config?branch=master&svg=true)](https://ci.appveyor.com/project/heroku/config/branch/master)\n[![Codecov](https://codecov.io/gh/oclif/config/branch/master/graph/badge.svg)](https://codecov.io/gh/oclif/config)\n[![Greenkeeper](https://badges.greenkeeper.io/oclif/config.svg)](https://greenkeeper.io/)\n[![Known Vulnerabilities](https://snyk.io/test/npm/@oclif/config/badge.svg)](https://snyk.io/test/npm/@oclif/config)\n[![Downloads/week](https://img.shields.io/npm/dw/@oclif/config.svg)](https://npmjs.org/package/@oclif/config)\n[![License](https://img.shields.io/npm/l/@oclif/config.svg)](https://github.com/oclif/config/blob/master/package.json)\n",
+    "licenseText": "MIT License\n\nCopyright (c) 2018 Salesforce.com\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all\ncopies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\nSOFTWARE.\n"
+  },
+  "artifacts": [],
+  "remote": {
+    "resolved": "https://registry.npmjs.org/@oclif/config/-/config-1.7.5.tgz#df302da3b6f590b0c6cc8a515bf97e746ec513b8",
+    "type": "tarball",
+    "reference": "https://registry.npmjs.org/@oclif/config/-/config-1.7.5.tgz",
+    "hash": "df302da3b6f590b0c6cc8a515bf97e746ec513b8",
+    "registry": "npm",
+    "packageName": "@oclif/config"
+  },
+  "registry": "npm",
+  "hash": "df302da3b6f590b0c6cc8a515bf97e746ec513b8"
+}
